@@ -38,6 +38,8 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("p_down"):
 			input_velocity.y += roll_speed
 		rolling = true
+		$player_hand.hide()
+		$p_sword/sword_sprite.hide()
 		$roll_timer.start()
 
 	velocity = velocity.lerp(input_velocity, friction)
@@ -55,22 +57,30 @@ func _process(delta: float) -> void:
 
 	var mouse_pos = get_global_mouse_position()
 
-	# Get the player's global position (after camera movement)
+
 	var player_global_pos = $player_sprite.global_position
-	# Calculate angle between player and mouse
 	var angle = atan2(mouse_pos.y - player_global_pos.y, mouse_pos.x - player_global_pos.x)
-
-	# Set the sword's position relative to the player, using global positions
-	var offset = Vector2(cos(angle), sin(angle)) * 30  # Adjust the distance as needed
+	$player_sprite.flip_h = angle >= 1.5 or angle <= -1.5
+	
+	# sword
+	var offset = Vector2(cos(angle), sin(angle)) * 16
 	$p_sword.global_position = player_global_pos + offset
-
-	$p_sword/sword_sprite.flip_v = angle >= 1.5 or angle <= -1.5
-	# Rotate the sword to face the mouse
-	$p_sword.rotation = angle + 45
+	$p_sword/sword_sprite.flip_h = angle >= 1.5 or angle <= -1.5
+	$p_sword.rotation = angle + 1.25
 	if angle >= 1.5 or angle <= -1.5 :
-		$p_sword.rotation = angle -45
+		$p_sword.rotation = angle + 1.75
+	
+	# hand
+	var hand_offset = Vector2(cos(angle), sin(angle))
+	if angle >= 1.5 or angle <= -1.5 :
+		hand_offset = Vector2(cos(angle), sin(angle))
+	$player_hand.flip_v = angle >= 1.5 or angle <= -1.5
+	$player_hand.rotation = angle
+	$player_hand.global_position = player_global_pos + hand_offset
 
 
 func _on_roll_timer_timeout() -> void:
 	$player_sprite.animation = "idle"
 	rolling = false
+	$player_hand.show()
+	$p_sword/sword_sprite.show()

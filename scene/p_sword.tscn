@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://vae7nqxekj24"]
+[gd_scene load_steps=3 format=3 uid="uid://vae7nqxekj24"]
 
 [ext_resource type="Texture2D" uid="uid://d3j837kfxidcw" path="res://assets/sword1.png" id="1_l016k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uoiur"]
+radius = 3.0
+height = 36.0
 
 [node name="p_sword" type="Node2D"]
 
 [node name="sword_sprite" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("1_l016k")
-flip_h = true
+centered = false
+offset = Vector2(-8, -15)
+
+[node name="sword_coll" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("CapsuleShape2D_uoiur")
