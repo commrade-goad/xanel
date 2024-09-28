@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://camw5ti3r4wbu"]
+[gd_scene load_steps=7 format=3 uid="uid://camw5ti3r4wbu"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_2dlal"]
 [ext_resource type="Texture2D" uid="uid://e13hkcampy3g" path="res://assets/p_idle_1.png" id="1_ks1pt"]
 [ext_resource type="Texture2D" uid="uid://cd5tirr6relfq" path="res://assets/shadow.png" id="2_b5x2o"]
 [ext_resource type="Texture2D" uid="uid://crqshnpitr8po" path="res://assets/p_side_1.png" id="4_tctsl"]
+[ext_resource type="PackedScene" uid="uid://vae7nqxekj24" path="res://scene/p_sword.tscn" id="5_46ljp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5lrru"]
 animations = [{
@@ -28,7 +29,7 @@ animations = [{
 script = ExtResource("1_2dlal")
 
 [node name="player_shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.501961)
+modulate = Color(1, 1, 1, 0.439216)
 texture = ExtResource("2_b5x2o")
 offset = Vector2(0, 30)
 
@@ -40,5 +41,7 @@ animation = &"roll"
 
 [node name="roll_timer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="p_sword" parent="." instance=ExtResource("5_46ljp")]
 
 [connection signal="timeout" from="roll_timer" to="." method="_on_roll_timer_timeout"]

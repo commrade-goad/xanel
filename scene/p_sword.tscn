@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://vae7nqxekj24"]
+
+[ext_resource type="Texture2D" uid="uid://d3j837kfxidcw" path="res://assets/sword1.png" id="1_l016k"]
+
+[node name="p_sword" type="Node2D"]
+
+[node name="sword_sprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_l016k")
+flip_h = true
