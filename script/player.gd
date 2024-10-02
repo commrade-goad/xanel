@@ -12,6 +12,8 @@ var attacking = false
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	position.x = 0
+	position.y = 0
 
 func _process(delta: float) -> void:
 
@@ -31,21 +33,25 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("p_roll") and rolling == false:
 		if Input.is_action_pressed("p_right"):
 			input_velocity.x += roll_speed
+			rolling = true
 		if Input.is_action_pressed("p_left"):
 			input_velocity.x -= roll_speed
+			rolling = true
 		if Input.is_action_pressed("p_up"):
 			input_velocity.y -= roll_speed
+			rolling = true
 		if Input.is_action_pressed("p_down"):
 			input_velocity.y += roll_speed
-		rolling = true
-		$player_hand.hide()
-		$p_sword/sword_sprite.hide()
-		$roll_timer.start()
+			rolling = true
+		if rolling == true:
+			$player_hand.hide()
+			$p_sword/sword_sprite.hide()
+			$roll_timer.start()
 
 	velocity = velocity.lerp(input_velocity, friction)
 
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	#position = position.clamp(Vector2.ZERO, screen_size)
 
 	if velocity.x != 0:
 		$player_sprite.flip_h = velocity.x < 0

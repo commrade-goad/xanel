@@ -6,7 +6,7 @@
 radius = 3.0
 height = 36.0
 
-[node name="p_sword" type="Node2D"]
+[node name="p_sword" type="Area2D"]
 
 [node name="sword_sprite" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
