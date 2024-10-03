@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://camw5ti3r4wbu"]
+[gd_scene load_steps=16 format=3 uid="uid://camw5ti3r4wbu"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_2dlal"]
 [ext_resource type="Texture2D" uid="uid://e13hkcampy3g" path="res://assets/p_idle_1.png" id="1_ks1pt"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://bajkembes3hdc" path="res://assets/hand.png" id="6_jg4tw"]
 [ext_resource type="Texture2D" uid="uid://cht8cqsi36wyk" path="res://assets/p_side_2.png" id="7_ekp5x"]
 [ext_resource type="Texture2D" uid="uid://da0od0g86g8f2" path="res://assets/p_side_3.png" id="8_lmrvs"]
+[ext_resource type="Texture2D" uid="uid://dx3xw41sjsbyc" path="res://assets/p_walk1.png" id="9_5k2ti"]
+[ext_resource type="Texture2D" uid="uid://bgefs8bxlau6n" path="res://assets/p_walk3.png" id="10_tis6y"]
+[ext_resource type="Texture2D" uid="uid://dkosmr2vhoe3d" path="res://assets/p_walk2.png" id="11_ka2ra"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5lrru"]
 animations = [{
@@ -42,7 +45,24 @@ animations = [{
 }],
 "loop": true,
 "name": &"roll",
-"speed": 10.0
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5k2ti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tis6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ka2ra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5k2ti")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w1drn"]
@@ -60,7 +80,9 @@ offset = Vector2(0, 30)
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5lrru")
-animation = &"roll"
+animation = &"walk"
+frame = 2
+frame_progress = 0.0112363
 
 [node name="roll_timer" type="Timer" parent="."]
 wait_time = 0.2

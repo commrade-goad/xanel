@@ -14,12 +14,19 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	position.x = 0
 	position.y = 0
+	$player_sprite.play()
 
 func _process(delta: float) -> void:
+
 	if rolling == true:
-		$player_sprite.play("roll")
+		if $player_sprite.animation != "roll":
+			$player_sprite.animation = "roll"
+	elif velocity.length() > 1 and rolling == false:
+		if $player_sprite.animation != "walk":
+			$player_sprite.animation = "walk"
 	else:
-		$player_sprite.play("idle")
+		if $player_sprite.animation != "idle":
+			$player_sprite.animation = "idle"
 
 	var input_velocity = Vector2.ZERO
 	if Input.is_action_pressed("p_right"):
@@ -33,6 +40,7 @@ func _process(delta: float) -> void:
 
 	if input_velocity.length() > 0:
 		input_velocity = input_velocity.normalized() * speed
+
 
 	if Input.is_action_just_pressed("p_roll") and rolling == false:
 		if Input.is_action_pressed("p_right"):
@@ -57,13 +65,10 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	#position = position.clamp(Vector2.ZERO, screen_size)
 
+	print(velocity)
 	if velocity.x != 0:
 		$player_sprite.flip_h = velocity.x < 0
-	
-	if rolling == true :
-		$player_sprite.animation = "roll"
-	else :
-		$player_sprite.animation = "idle"
+
 
 	var mouse_pos = get_global_mouse_position()
 
@@ -91,7 +96,9 @@ func _process(delta: float) -> void:
 
 
 func _on_roll_timer_timeout() -> void:
-	$player_sprite.animation = "idle"
-	rolling = false
-	$player_hand.show()
-	$p_sword/sword_sprite.show()
+	if rolling == true:
+		$player_sprite.animation = "idle"
+		rolling = false
+		$player_hand.show()
+		$p_sword/sword_sprite.show()
+		velocity = Vector2.ZERO
