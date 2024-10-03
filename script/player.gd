@@ -16,6 +16,10 @@ func _ready() -> void:
 	position.y = 0
 
 func _process(delta: float) -> void:
+	if rolling == true:
+		$player_sprite.play("roll")
+	else:
+		$player_sprite.play("idle")
 
 	var input_velocity = Vector2.ZERO
 	if Input.is_action_pressed("p_right"):
@@ -66,7 +70,8 @@ func _process(delta: float) -> void:
 
 	var player_global_pos = $player_sprite.global_position
 	var angle = atan2(mouse_pos.y - player_global_pos.y, mouse_pos.x - player_global_pos.x)
-	$player_sprite.flip_h = angle >= 1.5 or angle <= -1.5
+	if rolling == false:
+		$player_sprite.flip_h = angle >= 1.5 or angle <= -1.5
 	
 	# sword
 	var offset = Vector2(cos(angle), sin(angle)) * 16

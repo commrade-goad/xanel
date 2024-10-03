@@ -1,29 +1,48 @@
-[gd_scene load_steps=9 format=3 uid="uid://camw5ti3r4wbu"]
+[gd_scene load_steps=13 format=3 uid="uid://camw5ti3r4wbu"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_2dlal"]
 [ext_resource type="Texture2D" uid="uid://e13hkcampy3g" path="res://assets/p_idle_1.png" id="1_ks1pt"]
 [ext_resource type="Texture2D" uid="uid://cd5tirr6relfq" path="res://assets/shadow.png" id="2_b5x2o"]
+[ext_resource type="Texture2D" uid="uid://dacj6jvfrxt4a" path="res://assets/p_idle_2.png" id="4_kwgm1"]
 [ext_resource type="Texture2D" uid="uid://crqshnpitr8po" path="res://assets/p_side_1.png" id="4_tctsl"]
+[ext_resource type="Texture2D" uid="uid://b3s6wmhka250r" path="res://assets/p_idle_3.png" id="5_0femp"]
 [ext_resource type="PackedScene" uid="uid://vae7nqxekj24" path="res://scene/p_sword.tscn" id="5_46ljp"]
 [ext_resource type="Texture2D" uid="uid://bajkembes3hdc" path="res://assets/hand.png" id="6_jg4tw"]
+[ext_resource type="Texture2D" uid="uid://cht8cqsi36wyk" path="res://assets/p_side_2.png" id="7_ekp5x"]
+[ext_resource type="Texture2D" uid="uid://da0od0g86g8f2" path="res://assets/p_side_3.png" id="8_lmrvs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5lrru"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_ks1pt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kwgm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0femp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kwgm1")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 7.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_tctsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ekp5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lmrvs")
 }],
 "loop": true,
 "name": &"roll",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w1drn"]
@@ -39,10 +58,9 @@ texture = ExtResource("2_b5x2o")
 offset = Vector2(0, 30)
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.298039, 1, 1, 1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5lrru")
-animation = &"idle"
+animation = &"roll"
 
 [node name="roll_timer" type="Timer" parent="."]
 wait_time = 0.2
@@ -54,7 +72,6 @@ position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_w1drn")
 
 [node name="player_hand" type="Sprite2D" parent="."]
-modulate = Color(0.298039, 1, 1, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("6_jg4tw")
 centered = false
