@@ -58,20 +58,18 @@ func _process(delta: float) -> void:
 		if rolling == true:
 			$player_hand.hide()
 			$p_sword/sword_sprite.hide()
+			$player_hand_main.hide()
 			$roll_timer.start()
 
 	velocity = velocity.lerp(input_velocity, friction)
 
 	position += velocity * delta
-	#position = position.clamp(Vector2.ZERO, screen_size)
+	#position = position.clamp(Vector2(-1600, 1600), Vector2(1600, -1600))
 
-	print(velocity)
 	if velocity.x != 0:
 		$player_sprite.flip_h = velocity.x < 0
 
-
 	var mouse_pos = get_global_mouse_position()
-
 
 	var player_global_pos = $player_sprite.global_position
 	var angle = atan2(mouse_pos.y - player_global_pos.y, mouse_pos.x - player_global_pos.x)
@@ -79,26 +77,34 @@ func _process(delta: float) -> void:
 		$player_sprite.flip_h = angle >= 1.5 or angle <= -1.5
 	
 	# sword
-	var offset = Vector2(cos(angle), sin(angle)) * 16
-	$p_sword.global_position = player_global_pos + offset
+	var offset = Vector2(cos(angle), sin(angle)) * 18
+	$p_sword.global_position = Vector2(player_global_pos.x - 5, player_global_pos.y + 2) + offset
 	$p_sword/sword_sprite.flip_h = angle >= 1.5 or angle <= -1.5
-	$p_sword.rotation = angle + 1.25
 	if angle >= 1.5 or angle <= -1.5 :
-		$p_sword.rotation = angle + 1.75
+		$p_sword.global_position.x += 10
+	$p_sword.rotation = angle + PI / 2
 	
 	# hand
-	var hand_offset = Vector2(cos(angle), sin(angle))
+	var hand_offset = Vector2(cos(angle) - 5, sin(angle))
 	if angle >= 1.5 or angle <= -1.5 :
-		hand_offset = Vector2(cos(angle), sin(angle))
+		hand_offset = Vector2(cos(angle) + 5, sin(angle))
+	$player_hand_main.flip_v = angle >= 1.5 or angle <= -1.5
+	$player_hand_main.rotation = angle
+	$player_hand_main.global_position = player_global_pos + hand_offset
 	$player_hand.flip_v = angle >= 1.5 or angle <= -1.5
-	$player_hand.rotation = angle
-	$player_hand.global_position = player_global_pos + hand_offset
+	$player_hand.rotation = angle + PI / 18
+	$player_hand.global_position = Vector2(player_global_pos.x, player_global_pos.y) + hand_offset
+	if angle <= -0.8 and angle >= -1.5:
+		$player_hand.hide()
+	elif rolling == false:
+		$player_hand.show()
 
 
 func _on_roll_timer_timeout() -> void:
 	if rolling == true:
 		$player_sprite.animation = "idle"
 		rolling = false
+		$player_hand_main.show()
 		$player_hand.show()
 		$p_sword/sword_sprite.show()
 		velocity = Vector2.ZERO
