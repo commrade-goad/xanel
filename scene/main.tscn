@@ -1,11 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://k4cdpjgjjdn5"]
+[gd_scene load_steps=6 format=3 uid="uid://k4cdpjgjjdn5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_0bfpd"]
 [ext_resource type="PackedScene" uid="uid://camw5ti3r4wbu" path="res://scene/player.tscn" id="1_ox42w"]
+[ext_resource type="PackedScene" uid="uid://ttq4gsdl055k" path="res://scene/bg.tscn" id="3_cvj4k"]
+
+[sub_resource type="Gradient" id="Gradient_ccbh3"]
+offsets = PackedFloat32Array(0, 0.621762)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8hgtq"]
+gradient = SubResource("Gradient_ccbh3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Node" type="Node"]
 script = ExtResource("1_0bfpd")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2935.0
+offset_top = -2336.0
+offset_right = 1374.0
+offset_bottom = 1408.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="camera" type="Camera2D" parent="."]
 
 [node name="player" parent="." instance=ExtResource("1_ox42w")]
+
+[node name="PointLight2D" type="PointLight2D" parent="player"]
+z_as_relative = false
+energy = 10.03
+texture = SubResource("GradientTexture2D_8hgtq")
+texture_scale = 11.86
+
+[node name="bg" parent="." instance=ExtResource("3_cvj4k")]
+z_index = -2
+position = Vector2(-574, -328)

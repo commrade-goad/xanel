@@ -7,6 +7,8 @@ signal rotate_sword(flip:bool)
 @export var roll_speed = 2000
 @export var speed = 350
 @export var friction = 0.2 
+@export var hp = 100
+@export var sp = 100
 var screen_size
 var velocity = Vector2.ZERO
 var rolling = false
@@ -67,7 +69,6 @@ func _process(delta: float) -> void:
 	velocity = velocity.lerp(input_velocity, friction)
 
 	position += velocity * delta
-	#position = position.clamp(Vector2(-1600, 1600), Vector2(1600, -1600))
 
 	if velocity.x != 0:
 		$player_sprite.flip_h = velocity.x < 0

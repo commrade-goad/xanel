@@ -70,6 +70,7 @@ radius = 11.0
 height = 56.0
 
 [node name="player" type="CharacterBody2D"]
+modulate = Color(0.114897, 0.114897, 0.114897, 1)
 script = ExtResource("1_2dlal")
 
 [node name="player_shadow" type="Sprite2D" parent="."]

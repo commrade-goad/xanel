@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cbw3h2gnv2lcp" path="res://assets/sword3.png" id="2_3f0em"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uoiur"]
-radius = 11.0
-height = 46.0
+radius = 3.0
+height = 38.0
 
 [node name="p_sword" type="Area2D"]
 script = ExtResource("1_b12wl")
@@ -16,7 +16,6 @@ scale = Vector2(3, 3)
 texture = ExtResource("1_l016k")
 centered = false
 offset = Vector2(-8, -15)
-flip_h = true
 
 [node name="basic_sword_coll" type="CollisionShape2D" parent="."]
 position = Vector2(0, -28)

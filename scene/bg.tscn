@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ttq4gsdl055k"]
+
+[ext_resource type="Script" path="res://script/tile_map_layer.gd" id="2_l36k4"]
+[ext_resource type="Texture2D" uid="uid://dup2mho2d5sbu" path="res://assets/tile_dirt.png" id="2_wyeal"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fclau"]
+resource_name = "dirt"
+texture = ExtResource("2_wyeal")
+0:0/next_alternative_id = 2
+0:0/0 = 0
+1:0/next_alternative_id = 2
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/next_alternative_id = 2
+0:1/0 = 0
+1:1/next_alternative_id = 2
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_m7ypq"]
+sources/0 = SubResource("TileSetAtlasSource_fclau")
+
+[node name="bg" type="Node2D"]
+
+[node name="tile" type="TileMapLayer" parent="."]
+modulate = Color(0.0605303, 0.0605303, 0.0605303, 1)
+tile_set = SubResource("TileSet_m7ypq")
+script = ExtResource("2_l36k4")
