@@ -109,4 +109,7 @@ texture = ExtResource("6_jg4tw")
 centered = false
 offset = Vector2(-2, -8)
 
+[connection signal="hide_sword" from="." to="p_sword" method="_on_player_hide_sword"]
+[connection signal="rotate_sword" from="." to="p_sword" method="_on_player_rotate_sword"]
+[connection signal="show_sword" from="." to="p_sword" method="_on_player_show_sword"]
 [connection signal="timeout" from="roll_timer" to="." method="_on_roll_timer_timeout"]

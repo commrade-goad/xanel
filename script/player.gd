@@ -1,6 +1,9 @@
 extends Node2D
 
 signal hit
+signal hide_sword
+signal show_sword
+signal rotate_sword(flip:bool)
 @export var roll_speed = 2000
 @export var speed = 350
 @export var friction = 0.2 
@@ -57,7 +60,7 @@ func _process(delta: float) -> void:
 			rolling = true
 		if rolling == true:
 			$player_hand.hide()
-			$p_sword/sword_sprite.hide()
+			emit_signal("hide_sword")
 			$player_hand_main.hide()
 			$roll_timer.start()
 
@@ -79,7 +82,7 @@ func _process(delta: float) -> void:
 	# sword
 	var offset = Vector2(cos(angle), sin(angle)) * 18
 	$p_sword.global_position = Vector2(player_global_pos.x - 5, player_global_pos.y + 2) + offset
-	$p_sword/sword_sprite.flip_h = angle >= 1.5 or angle <= -1.5
+	emit_signal("rotate_sword", angle >= 1.5 or angle <= -1.5)
 	if angle >= 1.5 or angle <= -1.5 :
 		$p_sword.global_position.x += 10
 	$p_sword.rotation = angle + PI / 2
@@ -94,7 +97,7 @@ func _process(delta: float) -> void:
 	$player_hand.flip_v = angle >= 1.5 or angle <= -1.5
 	$player_hand.rotation = angle + PI / 18
 	$player_hand.global_position = Vector2(player_global_pos.x, player_global_pos.y) + hand_offset
-	if angle <= -0.8 and angle >= -1.5:
+	if (angle <= -0.8 and angle >= -1.5) or (angle <= 2.0 and angle >= 1.5):
 		$player_hand.hide()
 	elif rolling == false:
 		$player_hand.show()
@@ -106,5 +109,6 @@ func _on_roll_timer_timeout() -> void:
 		rolling = false
 		$player_hand_main.show()
 		$player_hand.show()
-		$p_sword/sword_sprite.show()
+		emit_signal("show_sword")
 		velocity = Vector2.ZERO
+	$roll_timer.stop()
