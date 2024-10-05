@@ -47,3 +47,24 @@ tile_set = SubResource("TileSet_m7ypq")
 modulate = Color(0.0605303, 0.0605303, 0.0605303, 1)
 z_index = 5
 tile_set = SubResource("TileSet_m7ypq")
+
+[node name="outer_black_right" type="ColorRect" parent="."]
+z_index = 4
+z_as_relative = false
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="outer_black_bottom" type="ColorRect" parent="."]
+z_index = 4
+z_as_relative = false
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="outer_black_left" type="ColorRect" parent="."]
+z_index = 4
+z_as_relative = false
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
