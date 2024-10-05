@@ -34,11 +34,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="player" parent="." instance=ExtResource("1_ox42w")]
 z_index = 1
-roll_speed = 2000
-speed = 250
-friction = 0.2
-hp = 100
-sp = 100
 
 [node name="PointLight2D" type="PointLight2D" parent="player"]
 z_as_relative = false

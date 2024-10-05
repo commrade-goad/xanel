@@ -6,31 +6,55 @@ signal hit
 @export var hp = 100
 var velocity = Vector2.ZERO
 var player: CharacterBody2D
+var active: String
+var attack_sprite: AnimatedSprite2D
+var attack_coll: CollisionShape2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    # Assuming the player node is a sibling of the enemy node in the scene tree
+    attack_sprite = $enemy_a/slash_sprite
+    attack_coll = $enemy_a/slash_coll
+    attack_sprite.play()
     player = get_parent().get_node("player")
+    active = "enemy_a" 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+    attack_sprite.global_position = position
+    attack_sprite.z_index = 101
     if player:
-        # Calculate the difference vector from the enemy to the player
         var diff = player.position - position
-        
-        # Get the distance (length) between the enemy and the player
         var plen = diff.length()
+        var sprite = get_node(active + "/sprite")
+        sprite.flip_h = diff.x < 0
 
-        if plen > 50:  # Move only if the enemy is far enough from the player (outside 50 units)
-            # Normalize the difference vector to get the direction
+        var angle = atan2(player.global_position.y - global_position.y, player.global_position.x - global_position.x)
+        var offset = Vector2(cos(angle), sin(angle)) * 30
+        attack_sprite.rotation = angle
+
+        if diff.x < 0 :
+            attack_sprite.global_position += offset
+            attack_sprite.flip_v = true
+        else:
+            attack_sprite.global_position += offset
+            attack_sprite.flip_v = false
+
+        attack_coll.global_position = attack_sprite.global_position
+        attack_coll.rotation = attack_sprite.rotation
+
+        if attack_sprite.frame <= 3 or attack_sprite.frame >= 8:
+            attack_coll.disabled = true
+        else:
+            attack_coll.disabled = false
+
+        if attack_sprite.frame == 10:
+            $enemy_a/slash_cooldown.start()
+            $enemy_a/slash_sprite.stop()
+
+
+        if plen > 50:
             var direction = diff.normalized()
-            
-            # Calculate target velocity based on the direction and speed
             var input_velocity = direction * speed
-
-            # Apply friction to velocity (lerp between current velocity and target velocity)
             velocity = velocity.lerp(input_velocity, friction)
-
-            # Update the enemy position based on velocity and delta time
             position += velocity * delta
 
+func _on_slash_cooldown_timeout():
+    $enemy_a/slash_sprite.play()
