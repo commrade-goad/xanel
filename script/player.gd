@@ -5,7 +5,7 @@ signal hide_sword
 signal show_sword
 signal rotate_sword(flip:bool)
 @export var roll_speed = 2000
-@export var speed = 350
+@export var speed = 250 #350
 @export var friction = 0.2 
 @export var hp = 100
 @export var sp = 100

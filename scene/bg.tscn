@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ttq4gsdl055k"]
+[gd_scene load_steps=7 format=3 uid="uid://ttq4gsdl055k"]
 
-[ext_resource type="Script" path="res://script/tile_map_layer.gd" id="2_l36k4"]
+[ext_resource type="Script" path="res://script/bg.gd" id="1_bub7r"]
+[ext_resource type="Texture2D" uid="uid://bgll6gfyikbab" path="res://assets/tile_stonebrick.png" id="2_sstfa"]
 [ext_resource type="Texture2D" uid="uid://dup2mho2d5sbu" path="res://assets/tile_dirt.png" id="2_wyeal"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fclau"]
@@ -19,12 +20,30 @@ texture = ExtResource("2_wyeal")
 2:1/0 = 0
 3:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0cwo2"]
+resource_name = "stonebrick"
+texture = ExtResource("2_sstfa")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_m7ypq"]
 sources/0 = SubResource("TileSetAtlasSource_fclau")
+sources/1 = SubResource("TileSetAtlasSource_0cwo2")
 
 [node name="bg" type="Node2D"]
+script = ExtResource("1_bub7r")
 
-[node name="tile" type="TileMapLayer" parent="."]
+[node name="bg_tile" type="TileMapLayer" parent="."]
 modulate = Color(0.0605303, 0.0605303, 0.0605303, 1)
 tile_set = SubResource("TileSet_m7ypq")
-script = ExtResource("2_l36k4")
+
+[node name="higher_tile" type="TileMapLayer" parent="."]
+modulate = Color(0.0605303, 0.0605303, 0.0605303, 1)
+z_index = 5
+tile_set = SubResource("TileSet_m7ypq")
