@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://x2lqimxfxth6"]
+[gd_scene load_steps=15 format=3 uid="uid://x2lqimxfxth6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr8e08ydbl8s" path="res://assets/enemya.png" id="1_dlg0p"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_hsy4c"]
+[ext_resource type="Texture2D" uid="uid://dt3uctfca5e6d" path="res://assets/test_weapon.png" id="2_dhfjv"]
 [ext_resource type="Texture2D" uid="uid://c8tdpnxbu2a0l" path="res://assets/test_slash1.png" id="3_hmsut"]
 [ext_resource type="Texture2D" uid="uid://xsr0vfbo8tq8" path="res://assets/test_slash2.png" id="4_n5jw6"]
 [ext_resource type="Texture2D" uid="uid://dckcxkqs6eub" path="res://assets/test_slash3.png" id="5_011by"]
@@ -52,7 +53,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 20.0
+"speed": 30.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2owxe"]
@@ -62,8 +63,19 @@ height = 58.0
 [node name="enemy" type="Node2D"]
 script = ExtResource("1_hsy4c")
 speed = 200
+friction = null
+hp = null
 
 [node name="enemy_a" type="CharacterBody2D" parent="."]
+
+[node name="arm" type="Sprite2D" parent="enemy_a"]
+visible = false
+modulate = Color(0.0728426, 0.0728426, 0.0728426, 1)
+z_index = 1
+position = Vector2(-40, 0)
+texture = ExtResource("2_dhfjv")
+offset = Vector2(16, 0)
+flip_h = true
 
 [node name="slash_coll" type="CollisionShape2D" parent="enemy_a"]
 position = Vector2(31, -0.999999)
@@ -72,10 +84,12 @@ scale = Vector2(1.8125, 2.0119)
 shape = SubResource("CapsuleShape2D_1q0ni")
 
 [node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_a"]
+modulate = Color(0.103744, 0.103744, 0.103744, 1)
 position = Vector2(31, -0.999999)
 rotation = 0.101229
 scale = Vector2(1.80962, 2.01497)
 sprite_frames = SubResource("SpriteFrames_yg3qm")
+frame_progress = 0.349522
 
 [node name="slash_cooldown" type="Timer" parent="enemy_a"]
 wait_time = 3.0
