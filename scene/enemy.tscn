@@ -63,10 +63,9 @@ height = 58.0
 [node name="enemy" type="Node2D"]
 script = ExtResource("1_hsy4c")
 speed = 200
-friction = null
-hp = null
 
-[node name="enemy_a" type="CharacterBody2D" parent="."]
+[node name="enemy_a" type="Area2D" parent="." groups=["enemy"]]
+scale = Vector2(0.998313, 1)
 
 [node name="arm" type="Sprite2D" parent="enemy_a"]
 visible = false
@@ -77,13 +76,15 @@ texture = ExtResource("2_dhfjv")
 offset = Vector2(16, 0)
 flip_h = true
 
-[node name="slash_coll" type="CollisionShape2D" parent="enemy_a"]
+[node name="slash_a" type="Area2D" parent="enemy_a"]
+
+[node name="slash_coll" type="CollisionShape2D" parent="enemy_a/slash_a"]
 position = Vector2(31, -0.999999)
 rotation = 0.101229
 scale = Vector2(1.8125, 2.0119)
 shape = SubResource("CapsuleShape2D_1q0ni")
 
-[node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_a"]
+[node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_a/slash_a"]
 modulate = Color(0.103744, 0.103744, 0.103744, 1)
 position = Vector2(31, -0.999999)
 rotation = 0.101229
@@ -91,7 +92,7 @@ scale = Vector2(1.80962, 2.01497)
 sprite_frames = SubResource("SpriteFrames_yg3qm")
 frame_progress = 0.349522
 
-[node name="slash_cooldown" type="Timer" parent="enemy_a"]
+[node name="slash_cooldown" type="Timer" parent="enemy_a/slash_a"]
 wait_time = 3.0
 
 [node name="coll" type="CollisionShape2D" parent="enemy_a"]
@@ -102,4 +103,5 @@ modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
 scale = Vector2(2, 2)
 texture = ExtResource("1_dlg0p")
 
-[connection signal="timeout" from="enemy_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
+[connection signal="area_entered" from="enemy_a" to="." method="_on_enemy_a_area_entered"]
+[connection signal="timeout" from="enemy_a/slash_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]

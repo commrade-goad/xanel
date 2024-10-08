@@ -5,7 +5,8 @@ signal hit
 @export var friction = 0.2
 @export var hp = 100
 var velocity = Vector2.ZERO
-var player: CharacterBody2D
+var enemies: Array
+var player: Area2D 
 var active: String
 var plen
 var offset
@@ -18,9 +19,9 @@ var lock_angle = false
 
 func _ready() -> void:
     active = "enemy_a" 
-    attack_sprite = get_node(active + "/slash_sprite")
-    attack_coll = get_node(active + "/slash_coll")
-    attack_cooldown = get_node(active + "/slash_cooldown")
+    attack_sprite = get_node(active + "/slash_a/slash_sprite")
+    attack_coll = get_node(active + "/slash_a/slash_coll")
+    attack_cooldown = get_node(active + "/slash_a/slash_cooldown")
     arm_sprite = get_node(active + "/arm")
     attack_sprite.play()
     player = get_parent().get_node("player")
@@ -34,6 +35,8 @@ func _process(delta: float) -> void:
         plen = diff.length()
         var sprite = get_node(active + "/sprite")
         sprite.flip_h = diff.x < 0
+        
+        separate_from_others(delta)
 
         if plen <= 50 and can_attack == true:
             attack_sprite.play()
@@ -88,6 +91,34 @@ func _process(delta: float) -> void:
             attack_cooldown.start()
             attack_sprite.stop()
 
+# Function to receive the array of enemies
+func set_enemies(enemy_array: Array) -> void:
+    enemies = enemy_array
+
+func separate_from_others(delta: float) -> void:
+    var separation_force = Vector2.ZERO
+    var separation_radius = 750  # Minimum distance to keep between enemies
+    var separation_strength = 10.0  # Amplify this to make enemies repel more strongly
+
+    for other_enemy in enemies:
+        if other_enemy != self:
+            var diff = position - other_enemy.position
+            var distance = diff.length()
+
+            if distance < separation_radius and distance > 0:
+                var force = diff.normalized() / distance * speed
+                separation_force += force * separation_strength
+
+    velocity += separation_force * delta
+
 
 func _on_slash_cooldown_timeout():
     can_attack = true
+
+
+func _on_enemy_a_area_entered(area: Area2D) -> void:
+    if area.name == "p_sword":
+        var p = get_parent().get_node("player")
+        hp -= p.attack
+        print("enemy healt: " + str(hp))
+    pass # Replace with function body.

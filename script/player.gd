@@ -1,19 +1,23 @@
 extends Node2D
 
-signal hit
+signal ded
 signal hide_sword
 signal show_sword
 signal rotate_sword(flip:bool)
-@export var roll_speed = 2000
+@export var roll_speed = 3000
 @export var speed = 250
 @export var friction = 0.2 
 @export var hp = 100
 @export var sp = 100
+@export var attack = 2
 var screen_size
+var player_ded = false
 var velocity = Vector2.ZERO
 var rolling = false
 var attacking = false
 
+var enemy_dmg_sc = load("res://script/enemy_attack_def.gd")
+var enemy_dmg_in = enemy_dmg_sc.new().enemy_attack
 
 func _ready() -> void:
     screen_size = get_viewport_rect().size
@@ -22,6 +26,16 @@ func _ready() -> void:
     $player_sprite.play()
 
 func _process(delta: float) -> void:
+
+    if hp <= 0 and player_ded == false:
+        player_ded = true
+        $player_sprite.play("die")
+        emit_signal("ded")
+    if player_ded == true:
+        $player_hand.hide()
+        $player_hand_main.hide()
+        emit_signal("hide_sword")
+        return
 
     if rolling == true:
         if $player_sprite.animation != "roll":
@@ -113,3 +127,15 @@ func _on_roll_timer_timeout() -> void:
         emit_signal("show_sword")
         velocity = Vector2.ZERO
     $roll_timer.stop()
+
+
+func _on_area_entered(area: Area2D) -> void:
+    var build_me = "slash"
+    for obj in enemy_dmg_in:
+        if area.name == build_me + "_" + obj["name"] and rolling == false:
+            hp -= obj["damage"]
+            print("player healt: " + str(hp))
+
+func _on_player_sprite_animation_looped() -> void:
+    $player_sprite.stop()
+    $player_sprite.frame = 6

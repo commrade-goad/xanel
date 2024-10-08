@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://k4cdpjgjjdn5"]
+[gd_scene load_steps=6 format=3 uid="uid://k4cdpjgjjdn5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_0bfpd"]
 [ext_resource type="PackedScene" uid="uid://camw5ti3r4wbu" path="res://scene/player.tscn" id="1_ox42w"]
 [ext_resource type="PackedScene" uid="uid://ttq4gsdl055k" path="res://scene/bg.tscn" id="3_cvj4k"]
-[ext_resource type="PackedScene" uid="uid://x2lqimxfxth6" path="res://scene/enemy.tscn" id="4_2iuv3"]
 
 [sub_resource type="Gradient" id="Gradient_ccbh3"]
 offsets = PackedFloat32Array(0, 0.621762)
@@ -32,18 +31,18 @@ color = Color(0, 0, 0, 1)
 
 [node name="camera" type="Camera2D" parent="."]
 
-[node name="player" parent="." instance=ExtResource("1_ox42w")]
-z_index = 1
-
-[node name="PointLight2D" type="PointLight2D" parent="player"]
+[node name="PointLight2D" type="PointLight2D" parent="."]
 z_as_relative = false
+scale = Vector2(1.00195, 1.00449)
 energy = 10.03
 texture = SubResource("GradientTexture2D_8hgtq")
 texture_scale = 11.86
+
+[node name="player" parent="." instance=ExtResource("1_ox42w")]
+z_index = 1
 
 [node name="bg" parent="." instance=ExtResource("3_cvj4k")]
 z_index = -2
 position = Vector2(-574, -328)
 
-[node name="enemy" parent="." instance=ExtResource("4_2iuv3")]
-z_index = 1
+[connection signal="ded" from="player" to="." method="_on_player_ded"]
