@@ -9,6 +9,8 @@ func _ready() -> void:
         var enemy_instance = enemy.instantiate()
         enemy_instance.position = Vector2(i * 20 * 16, i * 16)
         add_child(enemy_instance)
+        var callable = Callable(self, "_on_free_mem")
+        enemy_instance.connect("free_mem", callable, 0)
 
         enemies.append(enemy_instance)
     
@@ -36,3 +38,8 @@ func _process(delta: float) -> void:
 
 func _on_player_ded() -> void:
     pass
+
+
+func _on_free_mem(idx: int) -> void:
+    enemies[idx].queue_free()
+    enemies.remove_at(idx)

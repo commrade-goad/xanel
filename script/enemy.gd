@@ -1,6 +1,6 @@
 extends Node2D
 
-signal hit
+signal free_mem(idx: int)
 @export var speed = 270
 @export var friction = 0.2
 @export var hp = 100
@@ -16,6 +16,8 @@ var attack_cooldown: Timer
 var arm_sprite = Sprite2D
 var can_attack = false
 var lock_angle = false
+var p
+var s
 
 func _ready() -> void:
     active = "enemy_a" 
@@ -25,8 +27,18 @@ func _ready() -> void:
     arm_sprite = get_node(active + "/arm")
     attack_sprite.play()
     player = get_parent().get_node("player")
+    p = get_parent().get_node("player")
+    s = p.get_node("p_sword")
 
 func _process(delta: float) -> void:
+    
+    if hp <= 0:
+        var idx = 0
+        for other_enemy in enemies:
+            if other_enemy == self:
+                emit_signal("free_mem", idx)
+            idx += 1
+    
     attack_sprite.global_position = position
     attack_sprite.z_index = 101
     if player:
@@ -118,7 +130,6 @@ func _on_slash_cooldown_timeout():
 
 func _on_enemy_a_area_entered(area: Area2D) -> void:
     if area.name == "p_sword":
-        var p = get_parent().get_node("player")
-        hp -= p.attack
+        hp -= p.attack + s.bonus_damage
         print("enemy healt: " + str(hp))
     pass # Replace with function body.
