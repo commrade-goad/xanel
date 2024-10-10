@@ -137,5 +137,6 @@ func _on_area_entered(area: Area2D) -> void:
             print("player healt: " + str(hp))
 
 func _on_player_sprite_animation_looped() -> void:
-    $player_sprite.stop()
-    $player_sprite.frame = 6
+    if player_ded == true:
+        $player_sprite.stop()
+        $player_sprite.frame = 6

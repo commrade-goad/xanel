@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://x2lqimxfxth6"]
+[gd_scene load_steps=20 format=3 uid="uid://x2lqimxfxth6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr8e08ydbl8s" path="res://assets/enemya.png" id="1_dlg0p"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_hsy4c"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bhphmftuboi8q" path="res://assets/test_slash6.png" id="7_yxapd"]
 [ext_resource type="Texture2D" uid="uid://caojixj5ogk72" path="res://assets/test_slash7.png" id="8_k2c6k"]
 [ext_resource type="Texture2D" uid="uid://dej4jqo21jm83" path="res://assets/empty.png" id="9_5qo4v"]
+[ext_resource type="Texture2D" uid="uid://b2wsgb7frs8cu" path="res://assets/puff2.png" id="12_f373j"]
+[ext_resource type="Texture2D" uid="uid://cgc5mici7duqa" path="res://assets/p_die4.png" id="13_2lg5t"]
+[ext_resource type="Texture2D" uid="uid://4b22ctnl7dev" path="res://assets/p_die5.png" id="14_aspi5"]
+[ext_resource type="Texture2D" uid="uid://datiiiwvttw3y" path="res://assets/p_die6.png" id="15_y23h1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q0ni"]
 radius = 6.14941
@@ -60,6 +64,37 @@ animations = [{
 radius = 16.0
 height = 58.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ja6q2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dlg0p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_f373j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2lg5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_aspi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_y23h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}],
+"loop": true,
+"name": &"die",
+"speed": 10.0
+}]
+
 [node name="enemy" type="Node2D"]
 script = ExtResource("1_hsy4c")
 speed = 200
@@ -98,10 +133,13 @@ wait_time = 3.0
 [node name="coll" type="CollisionShape2D" parent="enemy_a"]
 shape = SubResource("CapsuleShape2D_2owxe")
 
-[node name="sprite" type="Sprite2D" parent="enemy_a"]
+[node name="sprite" type="AnimatedSprite2D" parent="enemy_a"]
 modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
 scale = Vector2(2, 2)
-texture = ExtResource("1_dlg0p")
+sprite_frames = SubResource("SpriteFrames_ja6q2")
+animation = &"die"
+frame_progress = 0.271633
 
 [connection signal="area_entered" from="enemy_a" to="." method="_on_enemy_a_area_entered"]
 [connection signal="timeout" from="enemy_a/slash_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
+[connection signal="animation_looped" from="enemy_a/sprite" to="." method="_on_sprite_animation_looped"]

@@ -13,11 +13,14 @@ var offset
 var attack_sprite: AnimatedSprite2D
 var attack_coll: CollisionShape2D
 var attack_cooldown: Timer
+var enemy_sprite: AnimatedSprite2D
 var arm_sprite = Sprite2D
 var can_attack = false
 var lock_angle = false
 var p
 var s
+var die = false
+var idx_to_del = -1
 
 func _ready() -> void:
     active = "enemy_a" 
@@ -25,10 +28,13 @@ func _ready() -> void:
     attack_coll = get_node(active + "/slash_a/slash_coll")
     attack_cooldown = get_node(active + "/slash_a/slash_cooldown")
     arm_sprite = get_node(active + "/arm")
+    enemy_sprite = get_node(active + "/sprite")
     attack_sprite.play()
     player = get_parent().get_node("player")
     p = get_parent().get_node("player")
     s = p.get_node("p_sword")
+    enemy_sprite.animation = "default"
+    enemy_sprite.play()
 
 func _process(delta: float) -> void:
     
@@ -36,7 +42,9 @@ func _process(delta: float) -> void:
         var idx = 0
         for other_enemy in enemies:
             if other_enemy == self:
-                emit_signal("free_mem", idx)
+                enemy_sprite.animation = "die"
+                idx_to_del = idx
+                die = true
             idx += 1
     
     attack_sprite.global_position = position
@@ -133,3 +141,9 @@ func _on_enemy_a_area_entered(area: Area2D) -> void:
         hp -= p.attack + s.bonus_damage
         print("enemy healt: " + str(hp))
     pass # Replace with function body.
+
+
+func _on_sprite_animation_looped() -> void:
+    if die == true:
+        emit_signal("free_mem", idx_to_del)
+        
