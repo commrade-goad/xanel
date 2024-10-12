@@ -22,9 +22,15 @@ var p
 var s
 var die = false
 var idx_to_del = -1
+var enemy_type: Array = ["enemy_a", "enemy_b"]
 
 func _ready() -> void:
-    active = "enemy_a" 
+    #active = "enemy_b"
+    if active == enemy_type[0]:
+        $enemy_b.queue_free()
+        print(active)
+    else:
+        $enemy_a.queue_free()
     attack_sprite = get_node(active + "/slash_a/slash_sprite")
     attack_coll = get_node(active + "/slash_a/slash_coll")
     attack_cooldown = get_node(active + "/slash_a/slash_cooldown")

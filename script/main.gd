@@ -1,13 +1,15 @@
 extends Node
 
 var enemies: Array = []  # Initialize the array
+var enemy_type: Array = ["enemy_a", "enemy_b"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     var enemy = preload("res://scene/enemy.tscn")
-    for i in range(2):
+    for i in range(3):
         var enemy_instance = enemy.instantiate()
         enemy_instance.position = Vector2(i * 20 * 16, i * 16)
+        enemy_instance.active = enemy_type[randi() % len(enemy_type)]
         add_child(enemy_instance)
         var callable = Callable(self, "_on_free_mem")
         enemy_instance.connect("free_mem", callable, 0)

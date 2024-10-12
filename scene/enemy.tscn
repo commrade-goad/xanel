@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://x2lqimxfxth6"]
+[gd_scene load_steps=53 format=3 uid="uid://x2lqimxfxth6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr8e08ydbl8s" path="res://assets/enemya.png" id="1_dlg0p"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_hsy4c"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bhphmftuboi8q" path="res://assets/test_slash6.png" id="7_yxapd"]
 [ext_resource type="Texture2D" uid="uid://caojixj5ogk72" path="res://assets/test_slash7.png" id="8_k2c6k"]
 [ext_resource type="Texture2D" uid="uid://dej4jqo21jm83" path="res://assets/empty.png" id="9_5qo4v"]
+[ext_resource type="Texture2D" uid="uid://bfsrvefjs07dj" path="res://assets/skele_idle.png" id="11_dkmse"]
 [ext_resource type="Texture2D" uid="uid://b2wsgb7frs8cu" path="res://assets/puff2.png" id="12_f373j"]
 [ext_resource type="Texture2D" uid="uid://cgc5mici7duqa" path="res://assets/p_die4.png" id="13_2lg5t"]
 [ext_resource type="Texture2D" uid="uid://4b22ctnl7dev" path="res://assets/p_die5.png" id="14_aspi5"]
@@ -44,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://dma48783oevlh" path="res://assets/blood/1_26.png" id="42_3gt20"]
 [ext_resource type="Texture2D" uid="uid://p3owven3iorh" path="res://assets/blood/1_27.png" id="43_werrb"]
 [ext_resource type="Texture2D" uid="uid://bfauy771v38ej" path="res://assets/blood/1_28.png" id="44_tr4vq"]
+[ext_resource type="Texture2D" uid="uid://cr72couikwjeo" path="res://assets/skele_hand.png" id="45_o5xro"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q0ni"]
 radius = 6.14941
@@ -93,7 +95,7 @@ animations = [{
 radius = 16.0
 height = 58.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ja6q2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2if2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -225,6 +227,37 @@ animations = [{
 "speed": 120.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ja6q2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_dkmse")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_f373j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2lg5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_aspi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_y23h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}],
+"loop": true,
+"name": &"die",
+"speed": 10.0
+}]
+
 [node name="enemy" type="Node2D"]
 script = ExtResource("1_hsy4c")
 speed = 200
@@ -266,11 +299,57 @@ shape = SubResource("CapsuleShape2D_2owxe")
 [node name="sprite" type="AnimatedSprite2D" parent="enemy_a"]
 modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_ja6q2")
+sprite_frames = SubResource("SpriteFrames_e2if2")
 animation = &"die"
-frame_progress = 0.271633
 
 [node name="blood" type="AnimatedSprite2D" parent="enemy_a"]
+modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
+position = Vector2(0, 10)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ofiba")
+frame_progress = 0.523066
+
+[node name="enemy_b" type="Area2D" parent="." groups=["enemy"]]
+scale = Vector2(0.998313, 1)
+
+[node name="arm" type="Sprite2D" parent="enemy_b"]
+modulate = Color(0.0728426, 0.0728426, 0.0728426, 1)
+z_index = 1
+position = Vector2(-40, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("45_o5xro")
+offset = Vector2(8, 0)
+flip_h = true
+
+[node name="slash_a" type="Area2D" parent="enemy_b"]
+
+[node name="slash_coll" type="CollisionShape2D" parent="enemy_b/slash_a"]
+position = Vector2(31, -0.999999)
+rotation = 0.101229
+scale = Vector2(1.8125, 2.0119)
+shape = SubResource("CapsuleShape2D_1q0ni")
+
+[node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_b/slash_a"]
+modulate = Color(0.103744, 0.103744, 0.103744, 1)
+position = Vector2(31, -0.999999)
+rotation = 0.101229
+scale = Vector2(1.80962, 2.01497)
+sprite_frames = SubResource("SpriteFrames_yg3qm")
+frame_progress = 0.349522
+
+[node name="slash_cooldown" type="Timer" parent="enemy_b/slash_a"]
+wait_time = 3.0
+
+[node name="coll" type="CollisionShape2D" parent="enemy_b"]
+shape = SubResource("CapsuleShape2D_2owxe")
+
+[node name="sprite" type="AnimatedSprite2D" parent="enemy_b"]
+modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ja6q2")
+animation = &"die"
+
+[node name="blood" type="AnimatedSprite2D" parent="enemy_b"]
 modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
 position = Vector2(0, 10)
 scale = Vector2(1.5, 1.5)
@@ -281,3 +360,7 @@ frame_progress = 0.523066
 [connection signal="timeout" from="enemy_a/slash_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
 [connection signal="animation_looped" from="enemy_a/sprite" to="." method="_on_sprite_animation_looped"]
 [connection signal="animation_looped" from="enemy_a/blood" to="." method="_on_blood_animation_looped"]
+[connection signal="area_entered" from="enemy_b" to="." method="_on_enemy_a_area_entered"]
+[connection signal="timeout" from="enemy_b/slash_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
+[connection signal="animation_looped" from="enemy_b/sprite" to="." method="_on_sprite_animation_looped"]
+[connection signal="animation_looped" from="enemy_b/blood" to="." method="_on_blood_animation_looped"]
