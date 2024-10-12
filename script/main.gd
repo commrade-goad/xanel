@@ -5,7 +5,7 @@ var enemies: Array = []  # Initialize the array
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     var enemy = preload("res://scene/enemy.tscn")
-    for i in range(3):
+    for i in range(2):
         var enemy_instance = enemy.instantiate()
         enemy_instance.position = Vector2(i * 20 * 16, i * 16)
         add_child(enemy_instance)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://x2lqimxfxth6"]
+[gd_scene load_steps=50 format=3 uid="uid://x2lqimxfxth6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr8e08ydbl8s" path="res://assets/enemya.png" id="1_dlg0p"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_hsy4c"]
@@ -15,6 +15,35 @@
 [ext_resource type="Texture2D" uid="uid://cgc5mici7duqa" path="res://assets/p_die4.png" id="13_2lg5t"]
 [ext_resource type="Texture2D" uid="uid://4b22ctnl7dev" path="res://assets/p_die5.png" id="14_aspi5"]
 [ext_resource type="Texture2D" uid="uid://datiiiwvttw3y" path="res://assets/p_die6.png" id="15_y23h1"]
+[ext_resource type="Texture2D" uid="uid://detgcqro3y7ys" path="res://assets/blood/1_0.png" id="16_naget"]
+[ext_resource type="Texture2D" uid="uid://x32w6r5m5lnb" path="res://assets/blood/1_1.png" id="17_tvqp2"]
+[ext_resource type="Texture2D" uid="uid://dfo8milfrym84" path="res://assets/blood/1_2.png" id="18_xqyo4"]
+[ext_resource type="Texture2D" uid="uid://cbhyvhe67fbem" path="res://assets/blood/1_3.png" id="19_f18n1"]
+[ext_resource type="Texture2D" uid="uid://dtlgon4lyg8jp" path="res://assets/blood/1_4.png" id="20_2oda5"]
+[ext_resource type="Texture2D" uid="uid://du2wko0iif4lp" path="res://assets/blood/1_5.png" id="21_6207t"]
+[ext_resource type="Texture2D" uid="uid://c2xn664msdtno" path="res://assets/blood/1_6.png" id="22_k4uml"]
+[ext_resource type="Texture2D" uid="uid://bvd32n7j630pt" path="res://assets/blood/1_7.png" id="23_rhgim"]
+[ext_resource type="Texture2D" uid="uid://xm100n3e6stu" path="res://assets/blood/1_8.png" id="24_km0y6"]
+[ext_resource type="Texture2D" uid="uid://btagc2btd4a40" path="res://assets/blood/1_9.png" id="25_2km1n"]
+[ext_resource type="Texture2D" uid="uid://b8t2yn6svvfb5" path="res://assets/blood/1_10.png" id="26_fit3x"]
+[ext_resource type="Texture2D" uid="uid://dj8mewsto5qmr" path="res://assets/blood/1_11.png" id="27_kr1pq"]
+[ext_resource type="Texture2D" uid="uid://cfr8p3amqttga" path="res://assets/blood/1_12.png" id="28_jb4uy"]
+[ext_resource type="Texture2D" uid="uid://ci6rjrwj51c5n" path="res://assets/blood/1_13.png" id="29_1cdmb"]
+[ext_resource type="Texture2D" uid="uid://c5yqe03c5gcjs" path="res://assets/blood/1_14.png" id="30_lculv"]
+[ext_resource type="Texture2D" uid="uid://b720m1kwscwy" path="res://assets/blood/1_15.png" id="31_lgmdw"]
+[ext_resource type="Texture2D" uid="uid://b0veax2tiw43v" path="res://assets/blood/1_16.png" id="32_iix5l"]
+[ext_resource type="Texture2D" uid="uid://mnphmjbjpjn6" path="res://assets/blood/1_17.png" id="33_0bbh7"]
+[ext_resource type="Texture2D" uid="uid://dk27s5x1en6ya" path="res://assets/blood/1_18.png" id="34_sw2v1"]
+[ext_resource type="Texture2D" uid="uid://dxdobb16t5a3g" path="res://assets/blood/1_19.png" id="35_ys234"]
+[ext_resource type="Texture2D" uid="uid://dyypug2uwf660" path="res://assets/blood/1_20.png" id="36_xovo1"]
+[ext_resource type="Texture2D" uid="uid://c76te0p35jjyj" path="res://assets/blood/1_21.png" id="37_252rt"]
+[ext_resource type="Texture2D" uid="uid://bt067iux0ian8" path="res://assets/blood/1_22.png" id="38_1xkev"]
+[ext_resource type="Texture2D" uid="uid://jujpdodbcael" path="res://assets/blood/1_23.png" id="39_va8o5"]
+[ext_resource type="Texture2D" uid="uid://chp83x1mcygah" path="res://assets/blood/1_24.png" id="40_t7dxn"]
+[ext_resource type="Texture2D" uid="uid://c1xj57ophkoee" path="res://assets/blood/1_25.png" id="41_yww0i"]
+[ext_resource type="Texture2D" uid="uid://dma48783oevlh" path="res://assets/blood/1_26.png" id="42_3gt20"]
+[ext_resource type="Texture2D" uid="uid://p3owven3iorh" path="res://assets/blood/1_27.png" id="43_werrb"]
+[ext_resource type="Texture2D" uid="uid://bfauy771v38ej" path="res://assets/blood/1_28.png" id="44_tr4vq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q0ni"]
 radius = 6.14941
@@ -95,6 +124,107 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ofiba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_naget")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_tvqp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_xqyo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_f18n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2oda5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_6207t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_k4uml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_rhgim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_km0y6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_2km1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_fit3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kr1pq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_jb4uy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_1cdmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_lculv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_lgmdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_iix5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_0bbh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_sw2v1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_ys234")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_xovo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_252rt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_1xkev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_va8o5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_t7dxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_yww0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_3gt20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_werrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_tr4vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 120.0
+}]
+
 [node name="enemy" type="Node2D"]
 script = ExtResource("1_hsy4c")
 speed = 200
@@ -140,6 +270,14 @@ sprite_frames = SubResource("SpriteFrames_ja6q2")
 animation = &"die"
 frame_progress = 0.271633
 
+[node name="blood" type="AnimatedSprite2D" parent="enemy_a"]
+modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
+position = Vector2(0, 10)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ofiba")
+frame_progress = 0.523066
+
 [connection signal="area_entered" from="enemy_a" to="." method="_on_enemy_a_area_entered"]
 [connection signal="timeout" from="enemy_a/slash_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
 [connection signal="animation_looped" from="enemy_a/sprite" to="." method="_on_sprite_animation_looped"]
+[connection signal="animation_looped" from="enemy_a/blood" to="." method="_on_blood_animation_looped"]

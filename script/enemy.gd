@@ -14,7 +14,8 @@ var attack_sprite: AnimatedSprite2D
 var attack_coll: CollisionShape2D
 var attack_cooldown: Timer
 var enemy_sprite: AnimatedSprite2D
-var arm_sprite = Sprite2D
+var arm_sprite: Sprite2D
+var blood_sprite
 var can_attack = false
 var lock_angle = false
 var p
@@ -35,6 +36,8 @@ func _ready() -> void:
     s = p.get_node("p_sword")
     enemy_sprite.animation = "default"
     enemy_sprite.play()
+    blood_sprite = get_node(active + "/blood")
+    blood_sprite.hide()
 
 func _process(delta: float) -> void:
     
@@ -45,6 +48,8 @@ func _process(delta: float) -> void:
                 enemy_sprite.animation = "die"
                 idx_to_del = idx
                 die = true
+                attack_sprite.frame = 0
+                attack_sprite.stop()
             idx += 1
     
     attack_sprite.global_position = position
@@ -140,10 +145,17 @@ func _on_enemy_a_area_entered(area: Area2D) -> void:
     if area.name == "p_sword":
         hp -= p.attack + s.bonus_damage
         print("enemy healt: " + str(hp))
+        blood_sprite.show()
+        blood_sprite.play()
     pass # Replace with function body.
 
 
 func _on_sprite_animation_looped() -> void:
     if die == true:
         emit_signal("free_mem", idx_to_del)
-        
+
+
+func _on_blood_animation_looped() -> void:
+    blood_sprite.hide()
+    blood_sprite.stop()
+    blood_sprite.frame = 0

@@ -11,6 +11,7 @@ signal rotate_sword(flip:bool)
 @export var sp = 100
 @export var attack = 2
 var screen_size
+var blood_sprite
 var player_ded = false
 var velocity = Vector2.ZERO
 var rolling = false
@@ -24,6 +25,8 @@ func _ready() -> void:
     position.x = 0
     position.y = 0
     $player_sprite.play()
+    blood_sprite = $blood
+    blood_sprite.hide()
 
 func _process(delta: float) -> void:
 
@@ -132,11 +135,19 @@ func _on_roll_timer_timeout() -> void:
 func _on_area_entered(area: Area2D) -> void:
     var build_me = "slash"
     for obj in enemy_dmg_in:
-        if area.name == build_me + "_" + obj["name"] and rolling == false:
+        if area.name == build_me + "_" + obj["name"] and rolling == false and player_ded == false:
             hp -= obj["damage"]
             print("player healt: " + str(hp))
+            blood_sprite.show()
+            blood_sprite.play()
 
 func _on_player_sprite_animation_looped() -> void:
     if player_ded == true:
         $player_sprite.stop()
         $player_sprite.frame = 6
+
+
+func _on_blood_animation_looped() -> void:
+    blood_sprite.hide()
+    blood_sprite.stop()
+    blood_sprite.frame = 0
