@@ -17,8 +17,8 @@ var velocity = Vector2.ZERO
 var rolling = false
 var attacking = false
 
-var enemy_dmg_sc = load("res://script/enemy_attack_def.gd")
-var enemy_dmg_in = enemy_dmg_sc.new().enemy_attack
+var enemy_dmg_sc = load("res://script/enemy_def.gd")
+var enemy_dmg_in = enemy_dmg_sc.new().enemy_def
 
 func _ready() -> void:
     screen_size = get_viewport_rect().size
@@ -135,7 +135,7 @@ func _on_roll_timer_timeout() -> void:
 func _on_area_entered(area: Area2D) -> void:
     var build_me = "slash"
     for obj in enemy_dmg_in:
-        if area.name == build_me + "_" + obj["name"] and rolling == false and player_ded == false:
+        if area.name == build_me + "_enemy_" + obj["name"] and rolling == false and player_ded == false:
             hp -= obj["damage"]
             print("player healt: " + str(hp))
             blood_sprite.show()

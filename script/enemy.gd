@@ -1,6 +1,7 @@
 extends Node2D
 
 signal free_mem(idx: int)
+signal died
 @export var speed = 270
 @export var friction = 0.2
 @export var hp = 100
@@ -22,18 +23,25 @@ var p
 var s
 var die = false
 var idx_to_del = -1
-var enemy_type: Array = ["enemy_a", "enemy_b"]
+var active_id
+var enemy_def_sc = load("res://script/enemy_def.gd")
+var enemy_def = enemy_def_sc.new().enemy_def
 
 func _ready() -> void:
-    #active = "enemy_b"
-    if active == enemy_type[0]:
-        $enemy_b.queue_free()
-        print(active)
-    else:
-        $enemy_a.queue_free()
-    attack_sprite = get_node(active + "/slash_a/slash_sprite")
-    attack_coll = get_node(active + "/slash_a/slash_coll")
-    attack_cooldown = get_node(active + "/slash_a/slash_cooldown")
+    var ignore
+    for i in range(len(enemy_def)):
+        if active == "enemy_" + enemy_def[i]["name"]:
+            ignore = i
+            active_id = i
+            continue
+        if ignore != i:
+            var build = "enemy_" + enemy_def[i]["name"]
+            var node = get_node(build)
+            node.queue_free()
+            
+    attack_sprite = get_node(active + "/slash_" + active + "/slash_sprite")
+    attack_coll = get_node(active + "/slash_" + active + "/slash_coll")
+    attack_cooldown = get_node(active + "/slash_" + active + "/slash_cooldown")
     arm_sprite = get_node(active + "/arm")
     enemy_sprite = get_node(active + "/sprite")
     attack_sprite.play()
@@ -56,6 +64,8 @@ func _process(delta: float) -> void:
                 die = true
                 attack_sprite.frame = 0
                 attack_sprite.stop()
+                arm_sprite.hide()
+                emit_signal("died")
             idx += 1
     
     attack_sprite.global_position = position
@@ -68,12 +78,11 @@ func _process(delta: float) -> void:
         sprite.flip_h = diff.x < 0
         
         separate_from_others(delta)
-
-        if plen <= 50 and can_attack == true:
+        if plen <= enemy_def[active_id]["attack_range"] and can_attack == true:
             attack_sprite.play()
             attack_cooldown.start()
 
-        var distance = 50
+        var distance = enemy_def[active_id]["attack_range"]
         if can_attack == false:
             distance += 100
         if plen > distance :

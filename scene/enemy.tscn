@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://x2lqimxfxth6"]
+[gd_scene load_steps=63 format=3 uid="uid://x2lqimxfxth6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr8e08ydbl8s" path="res://assets/enemya.png" id="1_dlg0p"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_hsy4c"]
@@ -45,10 +45,20 @@
 [ext_resource type="Texture2D" uid="uid://dma48783oevlh" path="res://assets/blood/1_26.png" id="42_3gt20"]
 [ext_resource type="Texture2D" uid="uid://p3owven3iorh" path="res://assets/blood/1_27.png" id="43_werrb"]
 [ext_resource type="Texture2D" uid="uid://bfauy771v38ej" path="res://assets/blood/1_28.png" id="44_tr4vq"]
+[ext_resource type="Script" path="res://script/enemy_b.gd" id="45_b1d06"]
 [ext_resource type="Texture2D" uid="uid://cr72couikwjeo" path="res://assets/skele_hand.png" id="45_o5xro"]
+[ext_resource type="Texture2D" uid="uid://dsdmpq6vgfn1s" path="res://assets/black_slash1.png" id="47_hj372"]
+[ext_resource type="Texture2D" uid="uid://d3j837kfxidcw" path="res://assets/sword1.png" id="48_cx2u6"]
+[ext_resource type="Texture2D" uid="uid://d3pg2im8e0ii0" path="res://assets/black_slash2.png" id="48_no4nv"]
+[ext_resource type="Texture2D" uid="uid://b02i8rl0nygwy" path="res://assets/black_slash3.png" id="49_yxhyp"]
+[ext_resource type="Texture2D" uid="uid://ckshh1mr2kykk" path="res://assets/black_slash4.png" id="50_asedi"]
+[ext_resource type="Texture2D" uid="uid://bxwly6gsnjvkn" path="res://assets/black_slash5.png" id="51_go24b"]
+[ext_resource type="Texture2D" uid="uid://c8cb2kfps8ixj" path="res://assets/black_slash6.png" id="52_tqtgo"]
+[ext_resource type="Texture2D" uid="uid://bquuj2y5jll1q" path="res://assets/black_slash7.png" id="53_6isv0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q0ni"]
-radius = 6.14941
+radius = 6.73819
+height = 38.7668
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yg3qm"]
 animations = [{
@@ -227,6 +237,59 @@ animations = [{
 "speed": 120.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwm8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_hj372")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_hj372")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_no4nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_no4nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_yxhyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_yxhyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_asedi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_asedi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_go24b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_go24b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_tqtgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_tqtgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_6isv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_6isv0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ja6q2"]
 animations = [{
 "frames": [{
@@ -274,15 +337,15 @@ texture = ExtResource("2_dhfjv")
 offset = Vector2(16, 0)
 flip_h = true
 
-[node name="slash_a" type="Area2D" parent="enemy_a"]
+[node name="slash_enemy_a" type="Area2D" parent="enemy_a"]
 
-[node name="slash_coll" type="CollisionShape2D" parent="enemy_a/slash_a"]
+[node name="slash_coll" type="CollisionShape2D" parent="enemy_a/slash_enemy_a"]
 position = Vector2(31, -0.999999)
 rotation = 0.101229
 scale = Vector2(1.8125, 2.0119)
 shape = SubResource("CapsuleShape2D_1q0ni")
 
-[node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_a/slash_a"]
+[node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_a/slash_enemy_a"]
 modulate = Color(0.103744, 0.103744, 0.103744, 1)
 position = Vector2(31, -0.999999)
 rotation = 0.101229
@@ -290,7 +353,7 @@ scale = Vector2(1.80962, 2.01497)
 sprite_frames = SubResource("SpriteFrames_yg3qm")
 frame_progress = 0.349522
 
-[node name="slash_cooldown" type="Timer" parent="enemy_a/slash_a"]
+[node name="slash_cooldown" type="Timer" parent="enemy_a/slash_enemy_a"]
 wait_time = 3.0
 
 [node name="coll" type="CollisionShape2D" parent="enemy_a"]
@@ -311,6 +374,7 @@ frame_progress = 0.523066
 
 [node name="enemy_b" type="Area2D" parent="." groups=["enemy"]]
 scale = Vector2(0.998313, 1)
+script = ExtResource("45_b1d06")
 
 [node name="arm" type="Sprite2D" parent="enemy_b"]
 modulate = Color(0.0728426, 0.0728426, 0.0728426, 1)
@@ -321,23 +385,24 @@ texture = ExtResource("45_o5xro")
 offset = Vector2(8, 0)
 flip_h = true
 
-[node name="slash_a" type="Area2D" parent="enemy_b"]
+[node name="slash_enemy_b" type="Area2D" parent="enemy_b"]
 
-[node name="slash_coll" type="CollisionShape2D" parent="enemy_b/slash_a"]
-position = Vector2(31, -0.999999)
+[node name="slash_coll" type="CollisionShape2D" parent="enemy_b/slash_enemy_b"]
+position = Vector2(28.9968, -1.99971)
 rotation = 0.101229
 scale = Vector2(1.8125, 2.0119)
 shape = SubResource("CapsuleShape2D_1q0ni")
 
-[node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_b/slash_a"]
-modulate = Color(0.103744, 0.103744, 0.103744, 1)
-position = Vector2(31, -0.999999)
+[node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_b/slash_enemy_b"]
+modulate = Color(0.0383972, 0.0383972, 0.0383972, 1)
+position = Vector2(26.3145, -5.12489)
 rotation = 0.101229
-scale = Vector2(1.80962, 2.01497)
-sprite_frames = SubResource("SpriteFrames_yg3qm")
-frame_progress = 0.349522
+scale = Vector2(2.35814, 2.86173)
+sprite_frames = SubResource("SpriteFrames_iwm8x")
+frame = 4
+frame_progress = 0.618432
 
-[node name="slash_cooldown" type="Timer" parent="enemy_b/slash_a"]
+[node name="slash_cooldown" type="Timer" parent="enemy_b/slash_enemy_b"]
 wait_time = 3.0
 
 [node name="coll" type="CollisionShape2D" parent="enemy_b"]
@@ -356,11 +421,20 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ofiba")
 frame_progress = 0.523066
 
+[node name="basic_sword_sprite" type="Sprite2D" parent="enemy_b"]
+modulate = Color(0.122252, 0.122252, 0.122252, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("48_cx2u6")
+centered = false
+offset = Vector2(0, -15)
+flip_h = true
+
+[connection signal="died" from="." to="enemy_b" method="_on_enemy_died"]
 [connection signal="area_entered" from="enemy_a" to="." method="_on_enemy_a_area_entered"]
-[connection signal="timeout" from="enemy_a/slash_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
+[connection signal="timeout" from="enemy_a/slash_enemy_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
 [connection signal="animation_looped" from="enemy_a/sprite" to="." method="_on_sprite_animation_looped"]
 [connection signal="animation_looped" from="enemy_a/blood" to="." method="_on_blood_animation_looped"]
 [connection signal="area_entered" from="enemy_b" to="." method="_on_enemy_a_area_entered"]
-[connection signal="timeout" from="enemy_b/slash_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
+[connection signal="timeout" from="enemy_b/slash_enemy_b/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
 [connection signal="animation_looped" from="enemy_b/sprite" to="." method="_on_sprite_animation_looped"]
 [connection signal="animation_looped" from="enemy_b/blood" to="." method="_on_blood_animation_looped"]

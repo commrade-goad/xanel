@@ -1,15 +1,20 @@
 extends Node
 
 var enemies: Array = []  # Initialize the array
-var enemy_type: Array = ["enemy_a", "enemy_b"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    
+    
+    var enemy_def_sc = load("res://script/enemy_def.gd")
+    var enemy_def = enemy_def_sc.new().enemy_def
+    
+    
     var enemy = preload("res://scene/enemy.tscn")
     for i in range(3):
         var enemy_instance = enemy.instantiate()
         enemy_instance.position = Vector2(i * 20 * 16, i * 16)
-        enemy_instance.active = enemy_type[randi() % len(enemy_type)]
+        enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
         add_child(enemy_instance)
         var callable = Callable(self, "_on_free_mem")
         enemy_instance.connect("free_mem", callable, 0)
@@ -39,7 +44,12 @@ func _process(delta: float) -> void:
 
 
 func _on_player_ded() -> void:
-    pass
+    var gameover_load = preload("res://scene/gameover.tscn")
+    var gameover = gameover_load.instantiate()
+    gameover.z_as_relative = false
+    gameover.z_index = 256
+    gameover.position = Vector2($camera.position.x - 1280 / 2, $camera.position.y - 720 / 2)
+    add_child(gameover)
 
 
 func _on_free_mem(idx: int) -> void:
