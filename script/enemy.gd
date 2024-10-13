@@ -115,7 +115,13 @@ func _process(delta: float) -> void:
         attack_coll.rotation = attack_sprite.rotation
         arm_sprite.global_position = attack_sprite.global_position - offset
 
-        arm_sprite.rotation = attack_sprite.rotation
+        if lock_angle == false:
+            arm_sprite.rotation = attack_sprite.rotation
+        else:
+            var to_use = deg_to_rad(3)
+            if arm_sprite.rotation >= 1.5 or arm_sprite.rotation <= -1.5:
+                to_use *= -1
+            arm_sprite.rotation += to_use
 
         if attack_sprite.frame == 1:
             lock_angle = true
