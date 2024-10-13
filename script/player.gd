@@ -9,7 +9,8 @@ signal rotate_sword(flip:bool)
 @export var friction = 0.2 
 @export var hp = 100
 @export var sp = 100
-@export var attack = 2
+@export var attack = 10
+@export var level = 1
 var screen_size
 var blood_sprite
 var player_ded = false
@@ -136,8 +137,8 @@ func _on_area_entered(area: Area2D) -> void:
     var build_me = "slash"
     for obj in enemy_dmg_in:
         if area.name == build_me + "_enemy_" + obj["name"] and rolling == false and player_ded == false:
-            hp -= obj["damage"]
-            print("player healt: " + str(hp))
+            hp -= obj["damage"] + level
+            print("player health: " + str(hp))
             blood_sprite.show()
             blood_sprite.play()
 

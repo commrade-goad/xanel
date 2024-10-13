@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://x2lqimxfxth6"]
+[gd_scene load_steps=68 format=3 uid="uid://x2lqimxfxth6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr8e08ydbl8s" path="res://assets/enemya.png" id="1_dlg0p"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_hsy4c"]
@@ -55,6 +55,10 @@
 [ext_resource type="Texture2D" uid="uid://bxwly6gsnjvkn" path="res://assets/black_slash5.png" id="51_go24b"]
 [ext_resource type="Texture2D" uid="uid://c8cb2kfps8ixj" path="res://assets/black_slash6.png" id="52_tqtgo"]
 [ext_resource type="Texture2D" uid="uid://bquuj2y5jll1q" path="res://assets/black_slash7.png" id="53_6isv0"]
+[ext_resource type="Texture2D" uid="uid://1iv8lvp8vwov" path="res://assets/bone1.png" id="55_157pf"]
+[ext_resource type="Texture2D" uid="uid://c5e843ae4wwmy" path="res://assets/bone2.png" id="56_nfkf5"]
+[ext_resource type="Texture2D" uid="uid://rl6dh4ejj472" path="res://assets/bone3.png" id="57_h2qmd"]
+[ext_resource type="Texture2D" uid="uid://b0vwqbxwh6cdh" path="res://assets/bone4.png" id="58_ryxxg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q0ni"]
 radius = 6.73819
@@ -321,6 +325,29 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_h8by5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("55_157pf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_nfkf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_h2qmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_ryxxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="enemy" type="Node2D"]
 script = ExtResource("1_hsy4c")
 speed = 200
@@ -418,8 +445,8 @@ animation = &"die"
 modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
 position = Vector2(0, 10)
 scale = Vector2(1.5, 1.5)
-sprite_frames = SubResource("SpriteFrames_ofiba")
-frame_progress = 0.523066
+sprite_frames = SubResource("SpriteFrames_h8by5")
+frame_progress = 0.610742
 
 [node name="basic_sword_sprite" type="Sprite2D" parent="enemy_b"]
 modulate = Color(0.122252, 0.122252, 0.122252, 1)
