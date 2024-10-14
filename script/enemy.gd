@@ -94,14 +94,12 @@ func _process(delta: float) -> void:
             var direction = diff.normalized()
             var input_velocity = direction * speed
             velocity = velocity.lerp(input_velocity, 0.2)
-            if lock_angle == false:
-                position += velocity * delta
-        elif can_attack == false and plen < distance - 50:
+        elif can_attack == false and plen < distance - 75:
             var direction = -diff.normalized()
             var input_velocity = direction * speed
             velocity = velocity.lerp(input_velocity, 0.2)
-            if lock_angle == false:
-                position += velocity * delta
+        if lock_angle == false:
+            position += velocity * delta
 
         # attack
         if plen <= enemy_def[active_id]["attack_range"] and can_attack == true:
@@ -154,9 +152,9 @@ func set_enemies(enemy_array: Array) -> void:
 
 func separate_from_others() -> void:
     var separation_force = Vector2.ZERO
-    var separation_radius = 50  # Minimum distance to keep between enemies
-    var separation_strength = .5  # Amplify this to make enemies repel more strongly
-
+    var separation_radius = 40  # Minimum distance to keep between enemies
+    var separation_strength = 5  # Amplify this to make enemies repel more strongly
+    var velo_res
     for other_enemy in enemies:
         if other_enemy != self:
             var diff = position - other_enemy.position
@@ -166,7 +164,9 @@ func separate_from_others() -> void:
                 var force = diff.normalized() / distance * speed
                 separation_force += force * separation_strength
 
-    velocity += separation_force
+    velo_res = separation_force
+    velocity = velocity.lerp(velo_res, 0.1)
+    #velocity += velo_res
 
 
 func _on_slash_cooldown_timeout():

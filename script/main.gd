@@ -31,7 +31,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
         
-    if dim_light == true and $PointLight2D.energy < 10.03 and $PointLight2D.energy >= 7:
+    if dim_light == true and $PointLight2D.energy < 10.03 and $PointLight2D.energy >= 5:
         $PointLight2D.energy -= .5
     else:
         $PointLight2D.energy = 10.03
@@ -65,6 +65,5 @@ func _on_free_mem(idx: int) -> void:
 
 
 func _on_player_player_hit() -> void:
-    print("yes")
     dim_light = true
     

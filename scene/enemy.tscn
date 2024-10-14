@@ -391,6 +391,7 @@ frame_progress = 0.523066
 
 [node name="shadow" type="Sprite2D" parent="enemy_a"]
 modulate = Color(1, 1, 1, 0.439216)
+z_index = -1
 texture = ExtResource("45_h8sqp")
 offset = Vector2(0, 30)
 
@@ -453,6 +454,7 @@ flip_h = true
 
 [node name="shadow" type="Sprite2D" parent="enemy_b"]
 modulate = Color(1, 1, 1, 0.439216)
+z_index = -1
 texture = ExtResource("45_h8sqp")
 offset = Vector2(0, 30)
 
