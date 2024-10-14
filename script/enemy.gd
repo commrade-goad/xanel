@@ -2,7 +2,7 @@ extends Node2D
 
 signal free_mem(idx: int)
 signal died
-@export var speed = 270
+var speed
 @export var friction = 0.2
 @export var hp = 100
 var velocity = Vector2.ZERO
@@ -42,7 +42,7 @@ func _ready() -> void:
     attack_sprite = get_node(active + "/slash_" + active + "/slash_sprite")
     attack_coll = get_node(active + "/slash_" + active + "/slash_coll")
     attack_cooldown = get_node(active + "/slash_" + active + "/slash_cooldown")
-    arm_sprite = get_node(active + "/arm")
+    arm_sprite = get_node_or_null(active + "/arm")
     enemy_sprite = get_node(active + "/sprite")
     attack_sprite.play()
     player = get_parent().get_node("player")
@@ -52,6 +52,12 @@ func _ready() -> void:
     enemy_sprite.play()
     blood_sprite = get_node(active + "/blood")
     blood_sprite.hide()
+    
+    speed = enemy_def[active_id]["movement_speed"]
+    
+    if enemy_def[active_id]["enable_hand"] == false:
+        if arm_sprite != null :
+            arm_sprite.hide()
 
 func _process(delta: float) -> void:
     
@@ -64,7 +70,8 @@ func _process(delta: float) -> void:
                 die = true
                 attack_sprite.frame = 0
                 attack_sprite.stop()
-                arm_sprite.hide()
+                if arm_sprite != null:
+                    arm_sprite.hide()
                 emit_signal("died")
             idx += 1
     
@@ -77,7 +84,7 @@ func _process(delta: float) -> void:
         var sprite = get_node(active + "/sprite")
         sprite.flip_h = diff.x < 0
         
-        separate_from_others(delta)
+        separate_from_others()
 
 
         var distance = enemy_def[active_id]["attack_range"]
@@ -115,15 +122,15 @@ func _process(delta: float) -> void:
 
         attack_coll.global_position = attack_sprite.global_position
         attack_coll.rotation = attack_sprite.rotation
-        arm_sprite.global_position = attack_sprite.global_position - offset
-
-        if lock_angle == false:
-            arm_sprite.rotation = attack_sprite.rotation
-        else:
-            var to_use = deg_to_rad(3)
-            if arm_sprite.rotation >= 1.5 or arm_sprite.rotation <= -1.5:
-                to_use *= -1
-            arm_sprite.rotation += to_use
+        if enemy_def[active_id]["enable_hand"] == true:
+            arm_sprite.global_position = attack_sprite.global_position - offset
+            if lock_angle == false:
+                arm_sprite.rotation = attack_sprite.rotation
+            else:
+                var to_use = deg_to_rad(3)
+                if arm_sprite.rotation >= 1.5 or arm_sprite.rotation <= -1.5:
+                    to_use *= -1
+                arm_sprite.rotation += to_use
 
         if attack_sprite.frame == 1:
             lock_angle = true
@@ -145,10 +152,10 @@ func _process(delta: float) -> void:
 func set_enemies(enemy_array: Array) -> void:
     enemies = enemy_array
 
-func separate_from_others(delta: float) -> void:
+func separate_from_others() -> void:
     var separation_force = Vector2.ZERO
-    var separation_radius = 750  # Minimum distance to keep between enemies
-    var separation_strength = 10.0  # Amplify this to make enemies repel more strongly
+    var separation_radius = 50  # Minimum distance to keep between enemies
+    var separation_strength = .5  # Amplify this to make enemies repel more strongly
 
     for other_enemy in enemies:
         if other_enemy != self:
@@ -159,7 +166,7 @@ func separate_from_others(delta: float) -> void:
                 var force = diff.normalized() / distance * speed
                 separation_force += force * separation_strength
 
-    velocity += separation_force * delta
+    velocity += separation_force
 
 
 func _on_slash_cooldown_timeout():

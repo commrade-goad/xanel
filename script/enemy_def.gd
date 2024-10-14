@@ -8,7 +8,9 @@ var enemy_def: Array[Dictionary] = [
         "attack_frame_min": 3,
         "attack_frame_max": 8,
         "attack_frame_count": 10,
+        "movement_speed": 300,
         "enable_blood": true,
+        "enable_hand": false,
     },
     {
         "id": "1",
@@ -19,6 +21,8 @@ var enemy_def: Array[Dictionary] = [
         "attack_frame_min": 3,
         "attack_frame_max": 10,
         "attack_frame_count": 14,
+        "movement_speed": 320,
         "enable_blood": true,
+        "enable_hand": true,
     },
 ]
