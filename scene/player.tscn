@@ -236,7 +236,6 @@ animations = [{
 modulate = Color(0.114897, 0.114897, 0.114897, 1)
 scale = Vector2(1.00195, 1.00449)
 script = ExtResource("1_2dlal")
-hp = 1000000
 
 [node name="player_shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.439216)

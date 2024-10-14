@@ -3,8 +3,17 @@ extends Node
 var enemies: Array = []  # Initialize the array
 var dim_light = false
 
+var sp_bar: ColorRect
+var hp_bar: ColorRect
+
+var max_hp: int = 100
+var max_sp: int = 100
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    sp_bar = $camera/sp
+    hp_bar = $camera/hp
+    
     
     var enemy_def_sc = load("res://script/enemy_def.gd")
     var enemy_def = enemy_def_sc.new().enemy_def
@@ -56,6 +65,7 @@ func _on_player_ded() -> void:
     gameover.z_as_relative = false
     gameover.z_index = 256
     gameover.position = Vector2($camera.position.x - 1280 / 2, $camera.position.y - 720 / 2)
+    hp_bar.size.x = 0
     add_child(gameover)
 
 
@@ -67,3 +77,11 @@ func _on_free_mem(idx: int) -> void:
 func _on_player_player_hit() -> void:
     dim_light = true
     
+
+
+func _on_player_current_stats(hp: int, sp: int) -> void:
+    if hp > 0:
+        var hp_percentage: float = float(hp) / float(max_hp)
+        hp_bar.size.x = 126 * hp_percentage
+    else:
+        hp_bar.size.x = 0

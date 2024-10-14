@@ -15,7 +15,10 @@
 - Dash will decrease the sp bar
 
 ## BACKBURNER
+- [ ] Make the dict for the sword variant
 - [ ] Other binding for skill, heal, and changing blade
+- [ ] Make the dict can disable the default attack (custom attack)
+- [ ] Implement walking animation for the enemy
 - [ ] HUD (HP, SP, ETC) -> Player + Enemy (Boss)
 - [ ] UI/UX (MAIN MENU, UPGRADE MENU)
 - [ ] More Enemy and Attack (effect too) + BOSS
@@ -27,6 +30,7 @@
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
 
 ## DONEEEEEEEEEEEE
+- [x] HUD (HP, SP, ETC) -> Player + Enemy (Boss) -- PARSIAL DONE
 - [x] Indicator that the player has been hit
 - [x] Game Over menu
 - [x] Enemy Shadow my guy

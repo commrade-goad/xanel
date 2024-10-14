@@ -5,6 +5,7 @@ signal hide_sword
 signal show_sword
 signal rotate_sword(flip:bool)
 signal player_hit
+signal current_stats(hp:int, sp:int)
 @export var roll_speed = 3000
 @export var speed = 250
 @export var friction = 0.2 
@@ -41,6 +42,8 @@ func _process(delta: float) -> void:
         $player_hand_main.hide()
         emit_signal("hide_sword")
         return
+
+    emit_signal("current_stats", hp, sp)
 
     if rolling == true:
         if $player_sprite.animation != "roll":
