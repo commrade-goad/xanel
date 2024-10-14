@@ -78,9 +78,7 @@ func _process(delta: float) -> void:
         sprite.flip_h = diff.x < 0
         
         separate_from_others(delta)
-        if plen <= enemy_def[active_id]["attack_range"] and can_attack == true:
-            attack_sprite.play()
-            attack_cooldown.start()
+
 
         var distance = enemy_def[active_id]["attack_range"]
         if can_attack == false:
@@ -99,6 +97,10 @@ func _process(delta: float) -> void:
                 position += velocity * delta
 
         # attack
+        if plen <= enemy_def[active_id]["attack_range"] and can_attack == true:
+            attack_sprite.play()
+            attack_cooldown.start()
+            
         if lock_angle == false:
             var angle = atan2(player.global_position.y - global_position.y, player.global_position.x - global_position.x)
             offset = Vector2(cos(angle), sin(angle)) * 30
@@ -125,13 +127,15 @@ func _process(delta: float) -> void:
 
         if attack_sprite.frame == 1:
             lock_angle = true
-
-        if attack_sprite.frame <= 3 or attack_sprite.frame >= 8:
+            
+        # TODO : make it dynamic
+        if attack_sprite.frame <= enemy_def[active_id]["attack_frame_min"] or attack_sprite.frame >= enemy_def[active_id]["attack_frame_max"]:
             attack_coll.disabled = true
         else:
             attack_coll.disabled = false
 
-        if attack_sprite.frame == 10:
+        # TODO : make it dynamic
+        if attack_sprite.frame == enemy_def[active_id]["attack_frame_count"]:
             can_attack = false
             lock_angle = false
             attack_cooldown.start()

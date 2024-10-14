@@ -4,6 +4,7 @@ signal ded
 signal hide_sword
 signal show_sword
 signal rotate_sword(flip:bool)
+signal player_hit
 @export var roll_speed = 3000
 @export var speed = 250
 @export var friction = 0.2 
@@ -141,6 +142,7 @@ func _on_area_entered(area: Area2D) -> void:
             print("player health: " + str(hp))
             blood_sprite.show()
             blood_sprite.play()
+            emit_signal("player_hit")
 
 func _on_player_sprite_animation_looped() -> void:
     if player_ded == true:

@@ -46,3 +46,4 @@ z_index = -2
 position = Vector2(-574, -328)
 
 [connection signal="ded" from="player" to="." method="_on_player_ded"]
+[connection signal="player_hit" from="player" to="." method="_on_player_player_hit"]

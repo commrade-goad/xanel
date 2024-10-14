@@ -15,8 +15,6 @@
 - Dash will decrease the sp bar
 
 ## BACKBURNER
-- [ ] Make the skeleton attack not only once but twice
-- [ ] Indicator that the player has been hit
 - [ ] Other binding for skill, heal, and changing blade
 - [ ] HUD (HP, SP, ETC) -> Player + Enemy (Boss)
 - [ ] UI/UX (MAIN MENU, UPGRADE MENU)
@@ -29,8 +27,7 @@
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
 
-## WORKING ON IT
-
 ## DONEEEEEEEEEEEE
+- [x] Indicator that the player has been hit
 - [x] Game Over menu
 - [x] Enemy Shadow my guy

@@ -1,17 +1,17 @@
 extends Node
 
 var enemies: Array = []  # Initialize the array
+var dim_light = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    
     
     var enemy_def_sc = load("res://script/enemy_def.gd")
     var enemy_def = enemy_def_sc.new().enemy_def
     
     
     var enemy = preload("res://scene/enemy.tscn")
-    for i in range(3):
+    for i in range(5):
         var enemy_instance = enemy.instantiate()
         enemy_instance.position = Vector2(i * 20 * 16, i * 16)
         enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
@@ -30,6 +30,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+        
+    if dim_light == true and $PointLight2D.energy < 10.03 and $PointLight2D.energy >= 7:
+        $PointLight2D.energy -= .5
+    else:
+        $PointLight2D.energy = 10.03
+        dim_light = false
+    
     $player.position = $player.position.clamp(Vector2(0, 0), Vector2(150 * 16, 102 * 16))
     $camera.position = $player.position
     $PointLight2D.position = $player.position
@@ -55,3 +62,9 @@ func _on_player_ded() -> void:
 func _on_free_mem(idx: int) -> void:
     enemies[idx].queue_free()
     enemies.remove_at(idx)
+
+
+func _on_player_player_hit() -> void:
+    print("yes")
+    dim_light = true
+    
