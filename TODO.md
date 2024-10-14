@@ -22,7 +22,6 @@
 - [ ] Upgrade System
 - [ ] Spawning system (Level system too)
 - [ ] Upgrade Material like souls
-- [ ] Game Icon and logo
 - [ ] AUDIO
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
@@ -31,3 +30,4 @@
 - [x] Indicator that the player has been hit
 - [x] Game Over menu
 - [x] Enemy Shadow my guy
+- [x] Game Icon and logo
