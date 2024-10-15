@@ -1,6 +1,9 @@
 extends Area2D
-@export var sword_type = "basic_sword"
-@export var bonus_damage = 0
+
+var sword_def = load("res://script/sword_def.gd")
+var s = sword_def.new().sword_def
+@export var sword_id = 0
+var bonus_damage
 
 func disable_all_sword() -> void:
     $basic_sword_sprite.hide()
@@ -11,6 +14,7 @@ func disable_all_sword() -> void:
 func enable_sword(sword_sprite, sword_coll) -> void:
     sword_sprite.show()
     sword_coll.disabled = false
+    bonus_damage = s[sword_id]["bonus_damage"]
 
 func current_sword(sword_t: String) -> Array:
     var ret = [
@@ -22,6 +26,7 @@ func current_sword(sword_t: String) -> Array:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     disable_all_sword()
+    var sword_type = s[sword_id]["name"]
     var curs = current_sword(sword_type)
     enable_sword(curs[0], curs[1])
 
@@ -36,10 +41,12 @@ func _on_player_hide_sword() -> void:
 
 
 func _on_player_show_sword() -> void:
+    var sword_type = s[sword_id]["name"]
     var curs = current_sword(sword_type)
     enable_sword(curs[0], curs[1])
 
 
 func _on_player_rotate_sword(flip) -> void:
+    var sword_type = s[sword_id]["name"]
     var curs = current_sword(sword_type)
     curs[0].flip_h = not flip

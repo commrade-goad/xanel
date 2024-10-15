@@ -83,7 +83,7 @@ func _process(delta: float) -> void:
         input_velocity = input_velocity.normalized() * speed
 
 
-    if Input.is_action_just_pressed("p_roll") and rolling == false and sp >= 30:
+    if Input.is_action_just_pressed("p_roll") and rolling == false and sp >= 25:
         if Input.is_action_pressed("p_right"):
             input_velocity.x += roll_speed
             rolling = true
@@ -101,7 +101,7 @@ func _process(delta: float) -> void:
             emit_signal("hide_sword")
             $player_hand_main.hide()
             $roll_timer.start()
-            sp -= 30
+            sp -= 25
 
     velocity = velocity.lerp(input_velocity, friction)
 

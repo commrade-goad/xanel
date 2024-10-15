@@ -86,7 +86,6 @@ func _process(delta: float) -> void:
         
         separate_from_others()
 
-
         var distance = enemy_def[active_id]["attack_range"]
         if can_attack == false:
             distance += 100
