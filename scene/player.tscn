@@ -282,6 +282,9 @@ sprite_frames = SubResource("SpriteFrames_ixyas")
 frame = 7
 frame_progress = 0.316648
 
+[node name="sp_regen_timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="hide_sword" from="." to="p_sword" method="_on_player_hide_sword"]
 [connection signal="rotate_sword" from="." to="p_sword" method="_on_player_rotate_sword"]
@@ -289,3 +292,4 @@ frame_progress = 0.316648
 [connection signal="animation_looped" from="player_sprite" to="." method="_on_player_sprite_animation_looped"]
 [connection signal="timeout" from="roll_timer" to="." method="_on_roll_timer_timeout"]
 [connection signal="animation_looped" from="blood" to="." method="_on_blood_animation_looped"]
+[connection signal="timeout" from="sp_regen_timer" to="." method="_on_sp_regen_timer_timeout"]

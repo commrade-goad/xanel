@@ -6,9 +6,12 @@ signal show_sword
 signal rotate_sword(flip:bool)
 signal player_hit
 signal current_stats(hp:int, sp:int)
+signal current_max_stats(hp: int, sp: int)
 @export var roll_speed = 3000
 @export var speed = 250
 @export var friction = 0.2 
+@export var max_hp = 100
+@export var max_sp = 100
 @export var hp = 100
 @export var sp = 100
 @export var attack = 10
@@ -19,6 +22,7 @@ var player_ded = false
 var velocity = Vector2.ZERO
 var rolling = false
 var attacking = false
+var can_regen = false
 
 var enemy_dmg_sc = load("res://script/enemy_def.gd")
 var enemy_dmg_in = enemy_dmg_sc.new().enemy_def
@@ -30,8 +34,18 @@ func _ready() -> void:
     $player_sprite.play()
     blood_sprite = $blood
     blood_sprite.hide()
+    emit_signal("current_max_stats", max_hp, max_sp)
+    $sp_regen_timer.start()
 
 func _process(delta: float) -> void:
+    
+    if sp < max_sp and can_regen == true:
+        sp += 30
+        $sp_regen_timer.start()
+        can_regen = false
+    
+    if sp > max_sp:
+        sp = max_sp
 
     if hp <= 0 and player_ded == false:
         player_ded = true
@@ -69,7 +83,7 @@ func _process(delta: float) -> void:
         input_velocity = input_velocity.normalized() * speed
 
 
-    if Input.is_action_just_pressed("p_roll") and rolling == false:
+    if Input.is_action_just_pressed("p_roll") and rolling == false and sp >= 30:
         if Input.is_action_pressed("p_right"):
             input_velocity.x += roll_speed
             rolling = true
@@ -87,6 +101,7 @@ func _process(delta: float) -> void:
             emit_signal("hide_sword")
             $player_hand_main.hide()
             $roll_timer.start()
+            sp -= 30
 
     velocity = velocity.lerp(input_velocity, friction)
 
@@ -157,3 +172,7 @@ func _on_blood_animation_looped() -> void:
     blood_sprite.hide()
     blood_sprite.stop()
     blood_sprite.frame = 0
+
+
+func _on_sp_regen_timer_timeout() -> void:
+    can_regen = true

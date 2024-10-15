@@ -6,8 +6,8 @@ var dim_light = false
 var sp_bar: ColorRect
 var hp_bar: ColorRect
 
-var max_hp: int = 100
-var max_sp: int = 100
+var max_hp: int
+var max_sp: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -80,8 +80,12 @@ func _on_player_player_hit() -> void:
 
 
 func _on_player_current_stats(hp: int, sp: int) -> void:
-    if hp > 0:
-        var hp_percentage: float = float(hp) / float(max_hp)
-        hp_bar.size.x = 126 * hp_percentage
-    else:
-        hp_bar.size.x = 0
+    var hp_percentage: float = float(hp) / float(max_hp)
+    hp_bar.size.x = 126 * hp_percentage
+    var sp_percentage: float = float(sp) / float(max_sp)
+    sp_bar.size.x = 126 * sp_percentage
+
+
+func _on_player_current_max_stats(hp: int, sp: int) -> void:
+    max_hp = hp
+    max_sp = sp
