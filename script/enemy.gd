@@ -102,49 +102,53 @@ func _process(delta: float) -> void:
             position += velocity * delta
 
         # attack
-        if plen <= enemy_def[active_id]["attack_range"] and can_attack == true:
-            attack_sprite.play()
-            attack_cooldown.start()
-            
-        if lock_angle == false:
-            var angle = atan2(player.global_position.y - global_position.y, player.global_position.x - global_position.x)
-            offset = Vector2(cos(angle), sin(angle)) * 30
-            attack_sprite.rotation = angle
-
-        if diff.x < 0 :
-            attack_sprite.global_position += offset
-            attack_sprite.flip_v = true
-        else:
-            attack_sprite.global_position += offset
-            attack_sprite.flip_v = false
-
-        attack_coll.global_position = attack_sprite.global_position
-        attack_coll.rotation = attack_sprite.rotation
-        if enemy_def[active_id]["enable_hand"] == true:
-            arm_sprite.global_position = attack_sprite.global_position - offset
+        if enemy_def[active_id]["use_default_attack_system"] == true:
+            if plen <= enemy_def[active_id]["attack_range"] and can_attack == true:
+                attack_sprite.play()
+                attack_cooldown.start()
+                
             if lock_angle == false:
-                arm_sprite.rotation = attack_sprite.rotation
+                var angle = atan2(player.global_position.y - global_position.y, player.global_position.x - global_position.x)
+                offset = Vector2(cos(angle), sin(angle)) * enemy_def[active_id]["offset_radius"]
+                attack_sprite.rotation = angle
+
+            if diff.x < 0 :
+                attack_sprite.global_position += offset
+                attack_sprite.flip_v = true
             else:
-                var to_use = deg_to_rad(3)
-                if arm_sprite.rotation >= 1.5 or arm_sprite.rotation <= -1.5:
-                    to_use *= -1
-                arm_sprite.rotation += to_use
+                attack_sprite.global_position += offset
+                attack_sprite.flip_v = false
 
-        if attack_sprite.frame == 1:
-            lock_angle = true
-            
-        # TODO : make it dynamic
-        if attack_sprite.frame <= enemy_def[active_id]["attack_frame_min"] or attack_sprite.frame >= enemy_def[active_id]["attack_frame_max"]:
-            attack_coll.disabled = true
+            attack_coll.global_position = attack_sprite.global_position
+            attack_coll.rotation = attack_sprite.rotation
+            if enemy_def[active_id]["enable_hand"] == true:
+                arm_sprite.global_position = attack_sprite.global_position - offset
+                if lock_angle == false:
+                    arm_sprite.rotation = attack_sprite.rotation
+                else:
+                    var to_use = deg_to_rad(3)
+                    if arm_sprite.rotation >= 1.5 or arm_sprite.rotation <= -1.5:
+                        to_use *= -1
+                    arm_sprite.rotation += to_use
+
+            if attack_sprite.frame == 1:
+                lock_angle = true
+                
+            # TODO : make it dynamic
+            if attack_sprite.frame <= enemy_def[active_id]["attack_frame_min"] or attack_sprite.frame >= enemy_def[active_id]["attack_frame_max"]:
+                attack_coll.disabled = true
+            else:
+                attack_coll.disabled = false
+
+            # TODO : make it dynamic
+            if attack_sprite.frame == enemy_def[active_id]["attack_frame_count"]:
+                can_attack = false
+                lock_angle = false
+                attack_cooldown.start()
+                attack_sprite.stop()
         else:
-            attack_coll.disabled = false
-
-        # TODO : make it dynamic
-        if attack_sprite.frame == enemy_def[active_id]["attack_frame_count"]:
-            can_attack = false
-            lock_angle = false
-            attack_cooldown.start()
             attack_sprite.stop()
+            attack_coll.disabled = true
 
 # Function to receive the array of enemies
 func set_enemies(enemy_array: Array) -> void:

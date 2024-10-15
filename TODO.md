@@ -4,6 +4,7 @@
 1. tposting guy
 2. Skeleton guy
 3. Racoon
+4. Zombie
 ### Mechanic
 - Every enemy will drop the currency to level up (some will drop weapon that can be used only on that run)
 - 1 Level (Wave) will spawn couple of enemies with certain delay
@@ -20,7 +21,7 @@
 - [ ] Make the dict can disable the default attack (custom attack)
 - [ ] Implement walking animation for the enemy
 - [ ] HUD (HP, SP, ETC) -> Player + Enemy (Boss)
-- [ ] UI/UX (MAIN MENU, UPGRADE MENU)
+- [ ] UI/UX (MAIN MENU, UPGRADE MENU) - PARSIAL DONE
 - [ ] More Enemy and Attack (effect too) + BOSS
 - [ ] Upgrade System
 - [ ] Spawning system (Level system too)

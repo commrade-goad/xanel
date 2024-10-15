@@ -411,19 +411,18 @@ flip_h = true
 [node name="slash_enemy_b" type="Area2D" parent="enemy_b"]
 
 [node name="slash_coll" type="CollisionShape2D" parent="enemy_b/slash_enemy_b"]
-position = Vector2(28.9968, -1.99971)
+position = Vector2(42.0174, 3.9984)
 rotation = 0.101229
 scale = Vector2(1.8125, 2.0119)
 shape = SubResource("CapsuleShape2D_1q0ni")
 
 [node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_b/slash_enemy_b"]
 modulate = Color(0.0383972, 0.0383972, 0.0383972, 1)
-position = Vector2(26.3145, -5.12489)
+position = Vector2(36.3601, 0.184403)
 rotation = 0.101229
-scale = Vector2(2.35814, 2.86173)
+scale = Vector2(3.01631, 3.12841)
 sprite_frames = SubResource("SpriteFrames_iwm8x")
-frame = 4
-frame_progress = 0.618432
+frame_progress = 0.241441
 
 [node name="slash_cooldown" type="Timer" parent="enemy_b/slash_enemy_b"]
 wait_time = 3.0
