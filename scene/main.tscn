@@ -70,6 +70,7 @@ texture = ExtResource("3_o4teq")
 z_as_relative = false
 scale = Vector2(1.00195, 1.00449)
 energy = 10.03
+range_z_max = 199
 texture = SubResource("GradientTexture2D_8hgtq")
 texture_scale = 11.86
 

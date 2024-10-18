@@ -23,7 +23,7 @@ var enemy_def: Array[Dictionary] = [
         "attack_frame_min": 2,
         "attack_frame_max": 9,
         "attack_frame_count": 14,
-        "movement_speed": 425,
+        "movement_speed": 400,
         "offset_radius": 40,
         "enable_blood": true,
         "enable_hand": true,

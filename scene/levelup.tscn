@@ -1,0 +1,301 @@
+[gd_scene load_steps=5 format=3 uid="uid://darspmonylvnw"]
+
+[ext_resource type="FontFile" uid="uid://pg5blp7l2sgd" path="res://assets/Oswald/static/Oswald-Regular.ttf" id="1_1rofq"]
+[ext_resource type="Texture2D" uid="uid://dsqjhu6hliivy" path="res://assets/hp-icon.png" id="2_n11xk"]
+[ext_resource type="Texture2D" uid="uid://mvl3ax33pbk0" path="res://assets/sp-icon.png" id="3_x4doo"]
+[ext_resource type="Texture2D" uid="uid://clksqk52urrml" path="res://assets/damage-icon.png" id="4_2o0hq"]
+
+[node name="levelup" type="Node2D"]
+visibility_layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -300.0
+offset_right = 580.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.176471, 0.176471, 0.176471, 0.784314)
+
+[node name="grid1" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -300.0
+offset_right = 580.0
+offset_bottom = -211.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.176471, 0.176471, 0.176471, 0.784314)
+
+[node name="upgrade_text" type="RichTextLabel" parent="ColorRect/grid1"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 16.0
+offset_right = 580.0
+offset_bottom = 73.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 36
+text = "Wave Complete"
+scroll_active = false
+
+[node name="upgrade_text2" type="RichTextLabel" parent="ColorRect/grid1"]
+layout_mode = 0
+offset_left = 582.0
+offset_top = 16.0
+offset_right = 1145.0
+offset_bottom = 73.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[right]0 Coins[/right]"
+scroll_active = false
+
+[node name="grid2" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -571.0
+offset_top = -196.0
+offset_right = 571.0
+offset_bottom = -135.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.618831, 0.273448, 0.324325, 0.784314)
+
+[node name="upgrade_text" type="RichTextLabel" parent="ColorRect/grid2"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 621.0
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 28
+text = "HP"
+scroll_active = false
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/grid2"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 53.0
+offset_bottom = 53.0
+texture = ExtResource("2_n11xk")
+
+[node name="Button2" type="Button" parent="ColorRect/grid2"]
+offset_left = 1077.0
+offset_top = 2.0
+offset_right = 1139.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("1_1rofq")
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="upgrade_text3" type="RichTextLabel" parent="ColorRect/grid2"]
+layout_mode = 0
+offset_left = 573.0
+offset_top = 6.0
+offset_right = 1069.0
+offset_bottom = 49.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[right]0 Coins[/right]"
+scroll_active = false
+
+[node name="grid3" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -571.0
+offset_top = -124.0
+offset_right = 571.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.337646, 0.388478, 0.585284, 0.784314)
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/grid3"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 53.0
+offset_bottom = 52.0
+texture = ExtResource("3_x4doo")
+
+[node name="upgrade_text" type="RichTextLabel" parent="ColorRect/grid3"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 621.0
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 28
+text = "SP"
+scroll_active = false
+
+[node name="Button3" type="Button" parent="ColorRect/grid3"]
+offset_left = 1077.0
+offset_top = 2.0
+offset_right = 1139.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("1_1rofq")
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="upgrade_text4" type="RichTextLabel" parent="ColorRect/grid3"]
+layout_mode = 0
+offset_left = 573.0
+offset_top = 6.0
+offset_right = 1069.0
+offset_bottom = 49.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[right]0 Coins[/right]"
+scroll_active = false
+
+[node name="grid4" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -571.0
+offset_top = -52.0
+offset_right = 571.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.339059, 0.431496, 0.317963, 0.784314)
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/grid4"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 53.0
+offset_bottom = 52.0
+texture = ExtResource("4_2o0hq")
+
+[node name="upgrade_text" type="RichTextLabel" parent="ColorRect/grid4"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 9.0
+offset_right = 621.0
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 28
+text = "DAMAGE"
+scroll_active = false
+
+[node name="Button4" type="Button" parent="ColorRect/grid4"]
+offset_left = 1077.0
+offset_top = 2.0
+offset_right = 1139.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("1_1rofq")
+theme_override_font_sizes/font_size = 32
+text = "+"
+
+[node name="upgrade_text5" type="RichTextLabel" parent="ColorRect/grid4"]
+layout_mode = 0
+offset_left = 573.0
+offset_top = 6.0
+offset_right = 1069.0
+offset_bottom = 49.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[right]0 Coins[/right]"
+scroll_active = false
+
+[node name="grid5" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -571.0
+offset_top = 28.0
+offset_right = 571.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.400698, 0.400698, 0.400698, 0.784314)
+
+[node name="upgrade_text2" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 343.0
+offset_right = 569.0
+offset_bottom = 384.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 28
+text = "Item Drop"
+scroll_active = false
+
+[node name="grid6" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -571.0
+offset_top = 100.0
+offset_right = 571.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.415567, 0.407539, 0.294079, 0.784314)
+
+[node name="upgrade_text" type="RichTextLabel" parent="ColorRect/grid6"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 9.0
+offset_right = 580.0
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("1_1rofq")
+theme_override_font_sizes/normal_font_size = 28
+text = "+1 HEALTH POTION"
+scroll_active = false
+
+[node name="Button" type="Button" parent="ColorRect"]
+offset_left = 9.0
+offset_top = 528.0
+offset_right = 1151.0
+offset_bottom = 589.0
+theme_override_fonts/font = ExtResource("1_1rofq")
+theme_override_font_sizes/font_size = 28
+text = "CONTINUE"
