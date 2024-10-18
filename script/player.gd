@@ -16,6 +16,7 @@ signal current_max_stats(hp: int, sp: int)
 @export var sp = 100
 @export var attack = 10
 @export var level = 1
+@export var hp_potion = 1
 var screen_size
 var blood_sprite
 var player_ded = false
@@ -68,6 +69,12 @@ func _process(delta: float) -> void:
     else:
         if $player_sprite.animation != "idle":
             $player_sprite.animation = "idle"
+
+    if Input.is_action_just_pressed("p_heal") and hp_potion >= 1:
+        hp_potion -=1
+        hp += 40
+        if hp > max_hp:
+            hp = max_hp
 
     var input_velocity = Vector2.ZERO
     if Input.is_action_pressed("p_right"):
@@ -157,7 +164,6 @@ func _on_area_entered(area: Area2D) -> void:
     for obj in enemy_dmg_in:
         if area.name == build_me + "_enemy_" + obj["name"] and rolling == false and player_ded == false:
             hp -= obj["damage"] + level
-            print("player health: " + str(hp))
             blood_sprite.show()
             blood_sprite.play()
             emit_signal("player_hit")

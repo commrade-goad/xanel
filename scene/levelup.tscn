@@ -52,18 +52,6 @@ theme_override_font_sizes/normal_font_size = 36
 text = "Wave Complete"
 scroll_active = false
 
-[node name="upgrade_text2" type="RichTextLabel" parent="ColorRect/grid1"]
-layout_mode = 0
-offset_left = 582.0
-offset_top = 16.0
-offset_right = 1145.0
-offset_bottom = 73.0
-theme_override_fonts/normal_font = ExtResource("1_1rofq")
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "[right]0 Coins[/right]"
-scroll_active = false
-
 [node name="grid2" type="ColorRect" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
@@ -101,6 +89,7 @@ offset_bottom = 53.0
 texture = ExtResource("2_n11xk")
 
 [node name="Button2" type="Button" parent="ColorRect/grid2"]
+layout_mode = 0
 offset_left = 1077.0
 offset_top = 2.0
 offset_right = 1139.0
@@ -118,7 +107,7 @@ offset_bottom = 49.0
 theme_override_fonts/normal_font = ExtResource("1_1rofq")
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[right]0 Coins[/right]"
+text = "[right]+0[/right]"
 scroll_active = false
 
 [node name="grid3" type="ColorRect" parent="ColorRect"]
@@ -158,6 +147,7 @@ text = "SP"
 scroll_active = false
 
 [node name="Button3" type="Button" parent="ColorRect/grid3"]
+layout_mode = 0
 offset_left = 1077.0
 offset_top = 2.0
 offset_right = 1139.0
@@ -175,7 +165,7 @@ offset_bottom = 49.0
 theme_override_fonts/normal_font = ExtResource("1_1rofq")
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[right]0 Coins[/right]"
+text = "[right]+0[/right]"
 scroll_active = false
 
 [node name="grid4" type="ColorRect" parent="ColorRect"]
@@ -215,6 +205,7 @@ text = "DAMAGE"
 scroll_active = false
 
 [node name="Button4" type="Button" parent="ColorRect/grid4"]
+layout_mode = 0
 offset_left = 1077.0
 offset_top = 2.0
 offset_right = 1139.0
@@ -232,7 +223,7 @@ offset_bottom = 49.0
 theme_override_fonts/normal_font = ExtResource("1_1rofq")
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[right]0 Coins[/right]"
+text = "[right]+0[/right]"
 scroll_active = false
 
 [node name="grid5" type="ColorRect" parent="ColorRect"]
@@ -292,6 +283,7 @@ text = "+1 HEALTH POTION"
 scroll_active = false
 
 [node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 528.0
 offset_right = 1151.0

@@ -9,13 +9,14 @@ var hp_bar: ColorRect
 var max_hp: int
 var max_sp: int
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-    
+func levelup() -> void:
     var levelup_scene = preload("res://scene/levelup.tscn")
     var levelup_dialog = levelup_scene.instantiate()
     levelup_dialog.z_index = 200
     add_child(levelup_dialog)
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
     
     sp_bar = $camera/sp
     hp_bar = $camera/hp
