@@ -81,6 +81,7 @@ z_index = 1
 z_index = -2
 position = Vector2(-574, -328)
 
+[connection signal="current_level" from="player" to="." method="_on_player_current_level"]
 [connection signal="current_max_stats" from="player" to="." method="_on_player_current_max_stats"]
 [connection signal="current_stats" from="player" to="." method="_on_player_current_stats"]
 [connection signal="ded" from="player" to="." method="_on_player_ded"]

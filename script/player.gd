@@ -7,6 +7,7 @@ signal rotate_sword(flip:bool)
 signal player_hit
 signal current_stats(hp:int, sp:int)
 signal current_max_stats(hp: int, sp: int)
+signal current_level(v: int)
 @export var roll_speed = 3000
 @export var speed = 250
 @export var friction = 0.2 

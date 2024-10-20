@@ -1,5 +1,11 @@
 extends Node
 
+signal request_level
+
+var wave_finished = false
+var current_level = 1
+var enemy_spawn_count = current_level + 1
+
 var enemies: Array = []  # Initialize the array
 var dim_light = false
 
@@ -27,7 +33,7 @@ func _ready() -> void:
     
     
     var enemy = preload("res://scene/enemy.tscn")
-    for i in range(0):
+    for i in range(enemy_spawn_count):
         var enemy_instance = enemy.instantiate()
         enemy_instance.position = Vector2(i * 20 * 16, i * 16)
         enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
@@ -96,3 +102,7 @@ func _on_player_current_stats(hp: int, sp: int) -> void:
 func _on_player_current_max_stats(hp: int, sp: int) -> void:
     max_hp = hp
     max_sp = sp
+
+
+func _on_player_current_level(v: int) -> void:
+    current_level = v
