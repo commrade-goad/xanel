@@ -192,4 +192,4 @@ func _on_upgrade_and_add_this(hp, sp, st, health) -> void:
     max_hp += hp
     max_sp += sp
     attack += st
-    hp_potion += 1
+    hp_potion += health

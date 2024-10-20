@@ -6,6 +6,7 @@
 2. Skeleton guy
 3. Racoon
 4. Zombie
+5. Vampire
 
 ### Mechanic
 - Every enemy will drop the currency to level up (some will drop weapon that can be used only on that run)
@@ -24,16 +25,16 @@
 ## BACKBURNER
 - [ ] Other binding for skill, and changing blade
 - [ ] Implement walking animation for the enemy
-- [ ] UI/UX (MAIN MENU, UPGRADE MENU) -- UPGRADE MENU DONE (NO FUNCTION YET)
+- [ ] UI/UX (MAIN MENU)
 - [ ] More Enemy and Attack (effect too)
 - [ ] Upgrade Material like souls (JUST A NORMAL COINS)
-- [ ] Upgrade System
 - [ ] Spawning system (Level system too)
 - [ ] AUDIO
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
 
 ## DONEEEEEEEEEEEE
+- [x] Upgrade system done
 - [x] Make the dict can disable the default attack (custom attack)
 - [x] Add binding to heal (maybe `R`)
 - [x] Make the dict for the sword variant
