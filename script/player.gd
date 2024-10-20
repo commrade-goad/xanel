@@ -29,6 +29,8 @@ var can_regen = false
 var enemy_dmg_sc = load("res://script/enemy_def.gd")
 var enemy_dmg_in = enemy_dmg_sc.new().enemy_def
 
+var parent
+
 func _ready() -> void:
     screen_size = get_viewport_rect().size
     position.x = 0
@@ -38,6 +40,8 @@ func _ready() -> void:
     blood_sprite.hide()
     emit_signal("current_max_stats", max_hp, max_sp)
     $sp_regen_timer.start()
+    parent = get_parent()
+    parent.connect("upgrade_and_add_this", Callable(self, "_on_upgrade_and_add_this"))
 
 func _process(delta: float) -> void:
     
@@ -183,3 +187,9 @@ func _on_blood_animation_looped() -> void:
 
 func _on_sp_regen_timer_timeout() -> void:
     can_regen = true
+
+func _on_upgrade_and_add_this(hp, sp, st, health) -> void:
+    max_hp += hp
+    max_sp += sp
+    attack += st
+    hp_potion += 1
