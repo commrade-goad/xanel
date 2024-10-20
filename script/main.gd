@@ -1,12 +1,18 @@
 extends Node
 
 signal request_level
+signal current_upgrade(obj)
+signal upgrade_and_add_this(hp: int, sp: int, st: int, heal: int) # send to player
 
+var current_up = {"hp": 0, "sp": 0, "st": 0}
 var wave_finished = false
 var current_level = 1
 var enemy_spawn_count = current_level + 1
+var enemy_spawnned = 0
+var max_spawn_count = 5
+var levelup_scene
 
-var enemies: Array = []  # Initialize the array
+var enemies: Array = []
 var dim_light = false
 
 var sp_bar: ColorRect
@@ -16,13 +22,17 @@ var max_hp: int
 var max_sp: int
 
 func levelup() -> void:
-    var levelup_scene = preload("res://scene/levelup.tscn")
-    var levelup_dialog = levelup_scene.instantiate()
-    levelup_dialog.z_index = 200
-    add_child(levelup_dialog)
+    var levelup_tscn = preload("res://scene/levelup.tscn")
+    levelup_scene = levelup_tscn.instantiate()
+    levelup_scene.z_index = 200
+    add_child(levelup_scene)
+    levelup_scene.connect("upgrade_and_del", Callable(self, "_on_upgrade_and_del"))
+    emit_signal("current_upgrade", current_up)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    
+    levelup()
     
     sp_bar = $camera/sp
     hp_bar = $camera/hp
@@ -33,7 +43,7 @@ func _ready() -> void:
     
     
     var enemy = preload("res://scene/enemy.tscn")
-    for i in range(enemy_spawn_count):
+    for i in range(0):
         var enemy_instance = enemy.instantiate()
         enemy_instance.position = Vector2(i * 20 * 16, i * 16)
         enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
@@ -106,3 +116,7 @@ func _on_player_current_max_stats(hp: int, sp: int) -> void:
 
 func _on_player_current_level(v: int) -> void:
     current_level = v
+    
+func _on_upgrade_and_del(hp, sp, st):
+    emit_signal("upgrade_and_add_this", hp, sp, st, 1)
+    levelup_scene.queue_free()
