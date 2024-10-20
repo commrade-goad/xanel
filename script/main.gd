@@ -118,5 +118,8 @@ func _on_player_current_level(v: int) -> void:
     current_level = v
     
 func _on_upgrade_and_del(hp, sp, st):
+    current_up["hp"] += hp
+    current_up["sp"] += sp
+    current_up["st"] += st
     emit_signal("upgrade_and_add_this", hp, sp, st, 1)
     levelup_scene.queue_free()

@@ -27,7 +27,6 @@
 - [ ] Implement walking animation for the enemy
 - [ ] UI/UX (MAIN MENU)
 - [ ] More Enemy and Attack (effect too)
-- [ ] Upgrade Material like souls (JUST A NORMAL COINS)
 - [ ] Spawning system (Level system too)
 - [ ] AUDIO
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
