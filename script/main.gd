@@ -11,6 +11,7 @@ var enemy_spawn_count = current_level + 1
 var enemy_spawnned = 0
 var max_spawn_count = 5
 var levelup_scene
+var can_spawn = false
 
 var enemies: Array = []
 var dim_light = false
@@ -20,6 +21,10 @@ var hp_bar: ColorRect
 
 var max_hp: int
 var max_sp: int
+
+
+var enemy_def_sc = load("res://script/enemy_def.gd")
+var enemy_def = enemy_def_sc.new().enemy_def
 
 func levelup() -> void:
     var levelup_tscn = preload("res://scene/levelup.tscn")
@@ -37,31 +42,34 @@ func _ready() -> void:
     sp_bar = $camera/sp
     hp_bar = $camera/hp
     
-    
-    var enemy_def_sc = load("res://script/enemy_def.gd")
-    var enemy_def = enemy_def_sc.new().enemy_def
-    
-    
-    var enemy = preload("res://scene/enemy.tscn")
-    for i in range(0):
-        var enemy_instance = enemy.instantiate()
-        enemy_instance.position = Vector2(i * 20 * 16, i * 16)
-        enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
-        add_child(enemy_instance)
-        var callable = Callable(self, "_on_free_mem")
-        enemy_instance.connect("free_mem", callable, 0)
-
-        enemies.append(enemy_instance)
-    
-    for single_enemy in enemies:
-        single_enemy.set_enemies(enemies)
-    
     $player.position = Vector2(0, 0)
     $bg.position = Vector2(-16, -16 * 2)
     $bg/higher_tile.position = Vector2(0, 16 * 2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+    
+    if get_node_or_null("levelup") != null:
+        var stuff = get_node("levelup")
+        stuff.global_position = $player.global_position
+    
+    if can_spawn == true:
+        var enemy = preload("res://scene/enemy.tscn")
+        for i in range(5):
+            var enemy_instance = enemy.instantiate()
+            enemy_instance.position = Vector2(i * 20 * 16, i * 16)
+            enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
+            add_child(enemy_instance)
+            var callable = Callable(self, "_on_free_mem")
+            enemy_instance.connect("free_mem", callable, 0)
+
+            enemies.append(enemy_instance)
+        
+        for single_enemy in enemies:
+            single_enemy.set_enemies(enemies)
+        can_spawn = false
+    
+    
         
     if dim_light == true and $PointLight2D.energy < 10.03 and $PointLight2D.energy >= 5:
         $PointLight2D.energy -= .5
@@ -123,3 +131,4 @@ func _on_upgrade_and_del(hp, sp, st):
     current_up["st"] += st
     emit_signal("upgrade_and_add_this", hp, sp, st, 1)
     levelup_scene.queue_free()
+    can_spawn = true

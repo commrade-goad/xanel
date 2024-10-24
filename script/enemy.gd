@@ -180,7 +180,7 @@ func _on_enemy_a_area_entered(area: Area2D) -> void:
     if area.name == "p_sword":
         hp -= p.attack + s.bonus_damage
         print("enemy healt: " + str(hp))
-        if enemy_def[active_id]["enable_blood"] == true:
+        if enemy_def[active_id]["enable_blood"] == true and die == false:
             blood_sprite.show()
             blood_sprite.play()
     pass # Replace with function body.

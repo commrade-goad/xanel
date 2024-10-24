@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ttq4gsdl055k"]
+[gd_scene load_steps=9 format=3 uid="uid://ttq4gsdl055k"]
 
 [ext_resource type="Script" path="res://script/bg.gd" id="1_bub7r"]
 [ext_resource type="Texture2D" uid="uid://bgll6gfyikbab" path="res://assets/tile_stonebrick.png" id="2_sstfa"]
 [ext_resource type="Texture2D" uid="uid://dup2mho2d5sbu" path="res://assets/tile_dirt.png" id="2_wyeal"]
+[ext_resource type="Texture2D" uid="uid://benk0uqtpkvmj" path="res://assets/tree.png" id="4_ejiik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fclau"]
 resource_name = "dirt"
@@ -32,9 +33,31 @@ texture = ExtResource("2_sstfa")
 2:1/0 = 0
 3:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_obang"]
+texture = ExtResource("4_ejiik")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(2.875, -8, 8, -8, 8, 8, -4.5, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.125, -8, 3.25, 8, -8, 8)
+
 [sub_resource type="TileSet" id="TileSet_m7ypq"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_fclau")
 sources/1 = SubResource("TileSetAtlasSource_0cwo2")
+sources/2 = SubResource("TileSetAtlasSource_obang")
 
 [node name="bg" type="Node2D"]
 script = ExtResource("1_bub7r")

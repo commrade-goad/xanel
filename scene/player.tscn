@@ -235,6 +235,7 @@ animations = [{
 [node name="player" type="Area2D"]
 modulate = Color(0.114897, 0.114897, 0.114897, 1)
 scale = Vector2(1.00195, 1.00449)
+collision_mask = 3
 script = ExtResource("1_2dlal")
 
 [node name="player_shadow" type="Sprite2D" parent="."]

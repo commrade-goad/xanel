@@ -75,7 +75,7 @@ func _process(delta: float) -> void:
         if $player_sprite.animation != "idle":
             $player_sprite.animation = "idle"
 
-    if Input.is_action_just_pressed("p_heal") and hp_potion >= 1:
+    if Input.is_action_just_pressed("p_heal") and hp_potion >= 1 and hp < max_hp:
         hp_potion -=1
         hp += 40
         if hp > max_hp:
@@ -193,3 +193,5 @@ func _on_upgrade_and_add_this(hp, sp, st, health) -> void:
     max_sp += sp
     attack += st
     hp_potion += health
+    emit_signal("current_max_stats", max_hp, max_sp)
+    emit_signal("current_stats", hp, sp)

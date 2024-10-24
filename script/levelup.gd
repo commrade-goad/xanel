@@ -25,21 +25,21 @@ func _process(delta: float) -> void:
 
 func _on_button_hp_pressed() -> void:
     if selected == false:
-        hp = 1
+        hp = 5
         $ColorRect/grid2/hp_text.text = "[right]+ " + str(obj_backup["hp"] + hp) + "[/right]"
         selected = true
 
 
 func _on_button_sp_pressed() -> void:
     if selected == false:
-        sp = 1
+        sp = 5
         $ColorRect/grid3/sp_text.text = "[right]+ " + str(obj_backup["sp"] + sp) + "[/right]"
         selected = true
 
 
 func _on_button_st_pressed() -> void:
     if selected == false:
-        st = 1
+        st = 5
         $ColorRect/grid4/st_text.text = "[right]+ " + str(obj_backup["st"] + st) + "[/right]"
         selected = true
 

@@ -23,6 +23,7 @@
 - A simple timer at the top for how long the game has been going
 
 ## BACKBURNER
+- [ ] Enemy getting upgraded every wave/level
 - [ ] Other binding for skill, and changing blade
 - [ ] Implement walking animation for the enemy
 - [ ] UI/UX (MAIN MENU)
