@@ -9,7 +9,6 @@
 5. Vampire
 
 ### Mechanic
-- Every enemy will drop the currency to level up (some will drop weapon that can be used only on that run)
 - 1 Level (Wave) will spawn couple of enemies with certain delay
 - the more wave done the more enemy damage and healt + (so boss didnt exist)
 - the more wave done the more enemy spawn too
@@ -23,17 +22,18 @@
 - A simple timer at the top for how long the game has been going
 
 ## BACKBURNER
-- [ ] Enemy getting upgraded every wave/level
 - [ ] Other binding for skill, and changing blade
 - [ ] Implement walking animation for the enemy
 - [ ] UI/UX (MAIN MENU)
 - [ ] More Enemy and Attack (effect too)
-- [ ] Spawning system (Level system too)
+- [ ] Better spawn coords
 - [ ] AUDIO
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
 
 ## DONEEEEEEEEEEEE
+- [x] Spawning system (Level system too)
+- [x] Enemy getting upgraded every wave/level
 - [x] Upgrade system done
 - [x] Make the dict can disable the default attack (custom attack)
 - [x] Add binding to heal (maybe `R`)

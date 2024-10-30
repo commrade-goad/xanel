@@ -81,8 +81,12 @@ z_index = 1
 z_index = -2
 position = Vector2(-574, -328)
 
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="current_level" from="player" to="." method="_on_player_current_level"]
 [connection signal="current_max_stats" from="player" to="." method="_on_player_current_max_stats"]
 [connection signal="current_stats" from="player" to="." method="_on_player_current_stats"]
 [connection signal="ded" from="player" to="." method="_on_player_ded"]
 [connection signal="player_hit" from="player" to="." method="_on_player_player_hit"]
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

@@ -26,9 +26,13 @@ var idx_to_del = -1
 var active_id
 var enemy_def_sc = load("res://script/enemy_def.gd")
 var enemy_def = enemy_def_sc.new().enemy_def
+var parent_main
+var c_level = 1
 
 func _ready() -> void:
     var ignore
+    parent_main = get_parent()
+    parent_main.connect("level", Callable(self, "_on_level_get"))
     for i in range(len(enemy_def)):
         if active == "enemy_" + enemy_def[i]["name"]:
             ignore = i
@@ -178,7 +182,7 @@ func _on_slash_cooldown_timeout():
 
 func _on_enemy_a_area_entered(area: Area2D) -> void:
     if area.name == "p_sword":
-        hp -= p.attack + s.bonus_damage
+        hp -= p.attack + s.bonus_damage - c_level
         print("enemy healt: " + str(hp))
         if enemy_def[active_id]["enable_blood"] == true and die == false:
             blood_sprite.show()
@@ -195,3 +199,6 @@ func _on_blood_animation_looped() -> void:
     blood_sprite.hide()
     blood_sprite.stop()
     blood_sprite.frame = 0
+
+func _on_level_get() -> void:
+    pass
