@@ -237,6 +237,8 @@ modulate = Color(0.114897, 0.114897, 0.114897, 1)
 scale = Vector2(1.00195, 1.00449)
 collision_mask = 3
 script = ExtResource("1_2dlal")
+max_hp = 250
+hp = 250
 
 [node name="player_shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.439216)
@@ -284,7 +286,7 @@ frame = 7
 frame_progress = 0.316648
 
 [node name="sp_regen_timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.5
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="hide_sword" from="." to="p_sword" method="_on_player_hide_sword"]

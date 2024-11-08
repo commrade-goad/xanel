@@ -2,7 +2,7 @@ var enemy_def: Array[Dictionary] = [
     {
         "id": "0",
         "name": "a",
-        "health": 100,
+        "health": 120,
         "damage": 40,
         "attack_range": 50,
         "attack_frame_min": 2,
@@ -17,7 +17,7 @@ var enemy_def: Array[Dictionary] = [
     {
         "id": "1",
         "name": "b",
-        "health": 120,
+        "health": 160,
         "damage": 45,
         "attack_range": 55,
         "attack_frame_min": 2,
