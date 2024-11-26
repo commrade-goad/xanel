@@ -166,6 +166,8 @@ func _on_roll_timer_timeout() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
     var build_me = "slash"
+    if area.name == "pebble":
+        speed = 100
     for obj in enemy_dmg_in:
         if area.name == build_me + "_enemy_" + obj["name"] and rolling == false and player_ded == false:
             hp -= obj["damage"] + level
@@ -195,3 +197,8 @@ func _on_upgrade_and_add_this(hp, sp, st, health) -> void:
     hp_potion += health
     emit_signal("current_max_stats", max_hp, max_sp)
     emit_signal("current_stats", hp, sp)
+
+
+func _on_area_exited(area: Area2D) -> void:
+    if area.name == "pebble":
+        speed = 250

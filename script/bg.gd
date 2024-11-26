@@ -20,6 +20,8 @@ func _ready() -> void:
         for x in range(154):
             if x == 0 or x == 153:
                 htile.set_cell(Vector2i(x -1,y -2), 1, Vector2i(randi() % 4, 0), 0)
+    
+    $pebble.global_position = Vector2(2 * 20, 5 * 20)
 
     outter_mask_bottom.position = Vector2(0, 107 *16)
     outter_mask_bottom.size = Vector2(153 *16, 100*16)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ttq4gsdl055k"]
+[gd_scene load_steps=11 format=3 uid="uid://ttq4gsdl055k"]
 
 [ext_resource type="Script" path="res://script/bg.gd" id="1_bub7r"]
 [ext_resource type="Texture2D" uid="uid://bgll6gfyikbab" path="res://assets/tile_stonebrick.png" id="2_sstfa"]
 [ext_resource type="Texture2D" uid="uid://dup2mho2d5sbu" path="res://assets/tile_dirt.png" id="2_wyeal"]
 [ext_resource type="Texture2D" uid="uid://benk0uqtpkvmj" path="res://assets/tree.png" id="4_ejiik"]
+[ext_resource type="PackedScene" uid="uid://ddatry0qhk6ds" path="res://scene/pebble.tscn" id="5_b6fng"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fclau"]
 resource_name = "dirt"
@@ -59,6 +60,25 @@ sources/0 = SubResource("TileSetAtlasSource_fclau")
 sources/1 = SubResource("TileSetAtlasSource_0cwo2")
 sources/2 = SubResource("TileSetAtlasSource_obang")
 
+[sub_resource type="GDScript" id="GDScript_nx4mi"]
+script/source = "extends Area2D
+signal slow_down
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+    pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+    pass
+
+
+func _on_area_entered(area: Area2D) -> void:
+    if area.name == \"player\":
+        emit_signal(\"slow_down\")
+"
+
 [node name="bg" type="Node2D"]
 script = ExtResource("1_bub7r")
 
@@ -92,3 +112,6 @@ z_as_relative = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 1)
+
+[node name="pebble" parent="." instance=ExtResource("5_b6fng")]
+script = SubResource("GDScript_nx4mi")

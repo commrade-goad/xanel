@@ -235,7 +235,7 @@ animations = [{
 [node name="player" type="Area2D"]
 modulate = Color(0.114897, 0.114897, 0.114897, 1)
 scale = Vector2(1.00195, 1.00449)
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_2dlal")
 max_hp = 250
 hp = 250
@@ -289,6 +289,7 @@ frame_progress = 0.316648
 wait_time = 2.5
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="hide_sword" from="." to="p_sword" method="_on_player_hide_sword"]
 [connection signal="rotate_sword" from="." to="p_sword" method="_on_player_rotate_sword"]
 [connection signal="show_sword" from="." to="p_sword" method="_on_player_show_sword"]
