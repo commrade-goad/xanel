@@ -1,7 +1,17 @@
 extends Node2D
+var pabble_max_count = 20
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    var pebble_arr = []
+    var pebble_scene = preload("res://scene/pebble.tscn")
+    for i in range(pabble_max_count):
+        var peb_obj = pebble_scene.instantiate()
+        peb_obj.position = Vector2(randi_range(2 * 20, 120 * 20), randi_range(2 * 20, 102 * 20))
+        pebble_arr.push_back(peb_obj)
+        add_child(peb_obj)
+    
     var tile = $bg_tile
     var htile = $higher_tile
     var outter_mask_bottom = $outer_black_bottom
@@ -20,8 +30,6 @@ func _ready() -> void:
         for x in range(154):
             if x == 0 or x == 153:
                 htile.set_cell(Vector2i(x -1,y -2), 1, Vector2i(randi() % 4, 0), 0)
-    
-    $pebble.global_position = Vector2(2 * 20, 5 * 20)
 
     outter_mask_bottom.position = Vector2(0, 107 *16)
     outter_mask_bottom.size = Vector2(153 *16, 100*16)

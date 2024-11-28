@@ -4,6 +4,8 @@ signal request_level
 signal current_upgrade(obj)
 signal upgrade_and_add_this(hp: int, sp: int, st: int, heal: int) # send to player
 signal level(lvl: int)
+signal pause_timer()
+signal resume_timer()
 
 var current_up = {"hp": 0, "sp": 0, "st": 0}
 var wave_finished = false
@@ -38,6 +40,8 @@ func levelup() -> void:
     levelup_scene.connect("upgrade_and_del", Callable(self, "_on_upgrade_and_del"))
     emit_signal("current_upgrade", current_up)
     levelup_exist = true
+    $camera/ui.hide()
+    emit_signal("pause_timer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,7 +62,7 @@ func _process(delta: float) -> void:
         var stuff = get_node("levelup")
         stuff.global_position = $player.global_position
         levelup_exist = true
-        
+    
     if dim_light == true and $PointLight2D.energy < 10.03 and $PointLight2D.energy >= 5:
         $PointLight2D.energy -= .5
     else:
@@ -66,7 +70,7 @@ func _process(delta: float) -> void:
         dim_light = false
     
     $player.position = $player.position.clamp(Vector2(0, 0), Vector2(150 * 16, 102 * 16))
-    $camera.position = $player.position
+    $camera.position = $player.position 
     $PointLight2D.position = $player.position
 
     # Calculate player's z_index based on its y-position
@@ -165,8 +169,23 @@ func _on_upgrade_and_del(hp, sp, st):
     levelup_scene.queue_free()
     $spawn_timer.start()
     levelup_exist = false
+    $camera/ui/wave.text = "[center] Wave " + str(current_level) + " [center]"
+    $camera/ui.show()
+    emit_signal("resume_timer")
 
 
 func _on_spawn_timer_timeout() -> void:
     $spawn_timer.stop()
     can_spawn = true
+
+
+func _on_backsound_1_finished() -> void:
+    $backsound1.play()
+
+
+func _on_backsound_2_finished() -> void:
+    $backsound2.play()
+
+
+func _on_player_current_potion(p: int) -> void:
+    $camera/ui/potion_text.text = "[right] " + str(p) + "x [right]"

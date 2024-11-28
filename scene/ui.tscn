@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://wkxfmdssdq0o"]
+
+[ext_resource type="FontFile" uid="uid://cjutvjr1f2h7g" path="res://assets/Oswald/Oswald-VariableFont_wght.ttf" id="1_n8yip"]
+[ext_resource type="Script" path="res://script/ui.gd" id="1_veubr"]
+[ext_resource type="Texture2D" uid="uid://d12yjcex6iijo" path="res://assets/potion.png" id="2_ibfuh"]
+
+[node name="ui" type="Node2D"]
+script = ExtResource("1_veubr")
+
+[node name="time" type="RichTextLabel" parent="."]
+offset_top = 653.0
+offset_right = 1280.0
+offset_bottom = 719.0
+theme_override_fonts/normal_font = ExtResource("1_n8yip")
+theme_override_font_sizes/normal_font_size = 44
+bbcode_enabled = true
+text = "[center]00 : 00[center]"
+
+[node name="potion_text" type="RichTextLabel" parent="."]
+offset_left = 1032.0
+offset_top = 659.0
+offset_right = 1219.0
+offset_bottom = 713.0
+theme_override_fonts/normal_font = ExtResource("1_n8yip")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[right] 1x [right]"
+
+[node name="wave" type="RichTextLabel" parent="."]
+offset_top = 625.0
+offset_right = 1280.0
+offset_bottom = 672.0
+theme_override_fonts/normal_font = ExtResource("1_n8yip")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]Wave 1[center]"
+
+[node name="potion" type="TextureRect" parent="."]
+offset_left = 1219.0
+offset_top = 659.0
+offset_right = 1280.0
+offset_bottom = 720.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("2_ibfuh")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -8,6 +8,7 @@ signal player_hit
 signal current_stats(hp:int, sp:int)
 signal current_max_stats(hp: int, sp: int)
 signal current_level(v: int)
+signal current_potion(p: int)
 @export var roll_speed = 3000
 @export var speed = 250
 @export var friction = 0.2 
@@ -42,6 +43,7 @@ func _ready() -> void:
     $sp_regen_timer.start()
     parent = get_parent()
     parent.connect("upgrade_and_add_this", Callable(self, "_on_upgrade_and_add_this"))
+    emit_signal("current_potion", hp_potion)
 
 func _process(delta: float) -> void:
     
@@ -80,6 +82,7 @@ func _process(delta: float) -> void:
         hp += 40 + level
         if hp > max_hp:
             hp = max_hp
+        emit_signal("current_potion", hp_potion)
 
     var input_velocity = Vector2.ZERO
     if Input.is_action_pressed("p_right"):
@@ -166,8 +169,9 @@ func _on_roll_timer_timeout() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
     var build_me = "slash"
-    if area.name == "pebble":
+    if area is Pebble:
         speed = 100
+
     for obj in enemy_dmg_in:
         if area.name == build_me + "_enemy_" + obj["name"] and rolling == false and player_ded == false:
             hp -= obj["damage"] + level
@@ -197,8 +201,12 @@ func _on_upgrade_and_add_this(hp, sp, st, health) -> void:
     hp_potion += health
     emit_signal("current_max_stats", max_hp, max_sp)
     emit_signal("current_stats", hp, sp)
+    emit_signal("current_potion", hp_potion)
 
 
 func _on_area_exited(area: Area2D) -> void:
-    if area.name == "pebble":
+    #print(area.name)
+    #if area.name == "pebble":
+        #speed = 250
+    if area is Pebble:
         speed = 250
