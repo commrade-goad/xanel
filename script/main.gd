@@ -18,7 +18,8 @@ var enemy_spawnned_total = 0
 var levelup_scene
 var can_spawn = false
 var levelup_exist = false
-var hp_percentage
+var hp_percentage = 1.0
+var low_hp_sound = true
 
 var enemies: Array = []
 var dim_light = false
@@ -60,6 +61,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	if hp_percentage < 0.40 and hp_percentage > 0 and low_hp_sound == true:
+		print(hp_percentage)
+		$LowHp.play()
+		low_hp_sound = false
+	elif low_hp_sound == false and hp_percentage > 0.41:
+		$LowHp.stop()
+		low_hp_sound = true
+		
+
 	if get_node_or_null("levelup") != null:
 		var stuff = get_node("levelup")
 		stuff.global_position = $player.global_position
@@ -122,8 +132,7 @@ func _process(delta: float) -> void:
 		can_spawn = false
 		enemy_spawnned += 1
 		enemy_spawnned_total += 1
-
-
+		
 # Kalau Player Mati / Dead
 func _on_player_ded() -> void:
 	var gameover_load = preload("res://scene/gameover.tscn")
@@ -133,7 +142,9 @@ func _on_player_ded() -> void:
 	gameover.position = Vector2($camera.position.x - 1280 / 2, $camera.position.y - 720 / 2)
 	hp_bar.size.x = 0
 	add_child(gameover)
+	# Todo cari sound gameover
 	$GameOver.play()
+	$LowHp.stop()
 	emit_signal("pause_timer")
 	
 func _on_free_mem(idx: int) -> void:
@@ -148,13 +159,6 @@ func _on_player_current_stats(hp: int, sp: int) -> void:
 	hp_bar.size.x = 229 * hp_percentage
 	var sp_percentage: float = float(sp) / float(max_sp)
 	sp_bar.size.x = 229 * sp_percentage
-	
-	if hp_percentage < 0.2 and hp_percentage > 0:
-		print(hp_percentage)
-		print("Low")
-		$LowHp.play()
-	else:
-		$LowHp.stop()
 
 func _on_player_current_max_stats(hp: int, sp: int) -> void:
 	max_hp = hp
@@ -192,3 +196,7 @@ func _on_backsound_2_finished() -> void:
 # Posisi Potion
 func _on_player_current_potion(p: int) -> void:
 	$camera/ui/potion_text.text = "[right] " + str(p) + "x [right]"
+
+
+func _on_low_hp_finished() -> void:
+	low_hp_sound = true

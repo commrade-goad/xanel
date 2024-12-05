@@ -1,5 +1,6 @@
 extends Node2D
 
+signal boleh_attack
 signal free_mem(idx: int)
 signal died
 var speed
@@ -65,6 +66,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
+	if die == true:
+		return
+		
 	if hp <= 0:
 		var idx = 0
 		for other_enemy in enemies:
@@ -107,6 +111,7 @@ func _process(delta: float) -> void:
 		# attack
 		if enemy_def[active_id]["use_default_attack_system"] == true:
 			if plen <= enemy_def[active_id]["attack_range"] and can_attack == true:
+				emit_signal("boleh_attack")
 				attack_sprite.play()
 				attack_cooldown.start()
 				

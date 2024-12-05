@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://cnb1x2mf05xb8" path="res://assets/sounds/suara dungeon.wav" id="6_yiov2"]
 [ext_resource type="AudioStream" uid="uid://hfgi5wbvrad" path="res://assets/sounds/Game_Over.mp3" id="7_scrfv"]
 [ext_resource type="PackedScene" uid="uid://wkxfmdssdq0o" path="res://scene/ui.tscn" id="7_tumi5"]
-[ext_resource type="AudioStream" uid="uid://jgo1utejcxhy" path="res://assets/sounds/Breath_In.mp3" id="9_x0hs5"]
+[ext_resource type="AudioStream" uid="uid://yvgrgvfiqhch" path="res://assets/sounds/Out_of_sp.mp3" id="9_dm43u"]
 
 [sub_resource type="Gradient" id="Gradient_ccbh3"]
 offsets = PackedFloat32Array(0, 0.621762)
@@ -115,8 +115,8 @@ autoplay = true
 mix_target = 1
 
 [node name="LowHp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_x0hs5")
-volume_db = 24.0
+stream = ExtResource("9_dm43u")
+volume_db = 6.0
 
 [connection signal="pause_timer" from="." to="camera/ui" method="_on_node_pause_timer"]
 [connection signal="resume_timer" from="." to="camera/ui" method="_on_node_resume_timer"]
@@ -130,3 +130,4 @@ volume_db = 24.0
 [connection signal="finished" from="EerieSound" to="." method="_on_backsound_1_finished"]
 [connection signal="finished" from="DungeonSound" to="." method="_on_backsound_2_finished"]
 [connection signal="finished" from="GameOver" to="." method="_on_backsound_2_finished"]
+[connection signal="finished" from="LowHp" to="." method="_on_low_hp_finished"]
