@@ -295,5 +295,6 @@ wait_time = 2.5
 [connection signal="show_sword" from="." to="p_sword" method="_on_player_show_sword"]
 [connection signal="animation_looped" from="player_sprite" to="." method="_on_player_sprite_animation_looped"]
 [connection signal="timeout" from="roll_timer" to="." method="_on_roll_timer_timeout"]
+[connection signal="sword_w" from="p_sword" to="." method="_on_p_sword_sword_w"]
 [connection signal="animation_looped" from="blood" to="." method="_on_blood_animation_looped"]
 [connection signal="timeout" from="sp_regen_timer" to="." method="_on_sp_regen_timer_timeout"]

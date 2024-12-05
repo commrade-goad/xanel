@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://k4cdpjgjjdn5"]
+[gd_scene load_steps=11 format=3 uid="uid://k4cdpjgjjdn5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_0bfpd"]
 [ext_resource type="PackedScene" uid="uid://camw5ti3r4wbu" path="res://scene/player.tscn" id="1_ox42w"]
 [ext_resource type="PackedScene" uid="uid://ttq4gsdl055k" path="res://scene/bg.tscn" id="3_cvj4k"]
+[ext_resource type="Texture2D" uid="uid://b7jkvl0n5u4ql" path="res://assets/bar-outter.png" id="3_o4teq"]
 [ext_resource type="AudioStream" uid="uid://dbwssix21w0uv" path="res://assets/sounds/Eerie_Backsound.mp3" id="5_o1ubp"]
 [ext_resource type="AudioStream" uid="uid://cnb1x2mf05xb8" path="res://assets/sounds/suara dungeon.wav" id="6_gakb2"]
-[ext_resource type="AudioStream" uid="uid://hfgi5wbvrad" path="res://assets/sounds/Game_Over.mp3" id="7_lby0u"]
 [ext_resource type="PackedScene" uid="uid://wkxfmdssdq0o" path="res://scene/ui.tscn" id="7_tumi5"]
+[ext_resource type="AudioStream" uid="uid://dan36m48lfegy" path="res://assets/sounds/Game_Over.mp3" id="8_1mevt"]
 
 [sub_resource type="Gradient" id="Gradient_ccbh3"]
 offsets = PackedFloat32Array(0, 0.621762)
@@ -57,6 +58,7 @@ offset_top = -319.0
 offset_right = -363.0
 offset_bottom = -279.0
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_o4teq")
 
 [node name="hp" type="ColorRect" parent="camera"]
 z_index = 106
@@ -73,6 +75,7 @@ offset_top = -340.0
 offset_right = -363.0
 offset_bottom = -300.0
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_o4teq")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_as_relative = false
@@ -105,7 +108,7 @@ autoplay = true
 mix_target = 1
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_lby0u")
+stream = ExtResource("8_1mevt")
 volume_db = 10.0
 autoplay = true
 mix_target = 1

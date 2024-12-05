@@ -31,6 +31,14 @@
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
 
+## SPECIAL
+- 10 stage ada change spawn special enemy
+- magic entity
+- ui menu
+- [x] diberatin movement + size
+- boss variant (special)
+
+
 ## DONEEEEEEEEEEEE
 - [x] Spawning system (Level system too)
 - [x] Enemy getting upgraded every wave/level

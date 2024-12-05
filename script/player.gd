@@ -31,6 +31,11 @@ var enemy_dmg_sc = load("res://script/enemy_def.gd")
 var enemy_dmg_in = enemy_dmg_sc.new().enemy_def
 
 var parent
+# --- NEW ---
+var sword_target_position = Vector2.ZERO
+var sword_target_rotation = 0.0
+var sw
+# ----------
 
 func _ready() -> void:
     screen_size = get_viewport_rect().size
@@ -132,23 +137,42 @@ func _process(delta: float) -> void:
     if rolling == false:
         $player_sprite.flip_h = angle >= 1.5 or angle <= -1.5
     
-    # sword
+    # sword (OLD WAY)
+    #var offset = Vector2(cos(angle), sin(angle)) * 18
+    #$p_sword.global_position = Vector2(player_global_pos.x - 5, player_global_pos.y + 2) + offset
+    #emit_signal("rotate_sword", angle >= 1.5 or angle <= -1.5)
+    #if angle >= 1.5 or angle <= -1.5 :
+        #$p_sword.global_position.x += 10
+    #$p_sword.rotation = angle + PI / 2
+    # Update the target position and rotation
+    
+    # --- NEW ---
     var offset = Vector2(cos(angle), sin(angle)) * 18
-    $p_sword.global_position = Vector2(player_global_pos.x - 5, player_global_pos.y + 2) + offset
+    sword_target_position = Vector2(player_global_pos.x - 5, player_global_pos.y + 2) + offset
+    if angle >= 1.5 or angle <= -1.5:
+        sword_target_position.x += 10
+
+    sword_target_rotation = angle + PI / 2
     emit_signal("rotate_sword", angle >= 1.5 or angle <= -1.5)
-    if angle >= 1.5 or angle <= -1.5 :
-        $p_sword.global_position.x += 10
-    $p_sword.rotation = angle + PI / 2
+
+    # Interpolate towards the target position and rotation
+    $p_sword.global_position = $p_sword.global_position.lerp(sword_target_position, 0.3) # Adjust 0.1 for speed
+    $p_sword.rotation = lerp_angle($p_sword.rotation, sword_target_rotation, sw) # Adjust 0.1 for speed
+    var new_rotation = $p_sword.rotation
+    # -----------
     
     # hand
     var hand_offset = Vector2(cos(angle) - 5, sin(angle))
     if angle >= 1.5 or angle <= -1.5 :
         hand_offset = Vector2(cos(angle) + 5, sin(angle))
     $player_hand_main.flip_v = angle >= 1.5 or angle <= -1.5
-    $player_hand_main.rotation = angle
+    #$player_hand_main.rotation = angle
+    $player_hand_main.rotation = new_rotation -1.5
     $player_hand_main.global_position = player_global_pos + hand_offset
+    
     $player_hand.flip_v = angle >= 1.5 or angle <= -1.5
-    $player_hand.rotation = angle + PI / 18
+    #$player_hand.rotation = angle + PI / 18
+    $player_hand.rotation = (new_rotation -1.5) + PI / 18
     $player_hand.global_position = Vector2(player_global_pos.x, player_global_pos.y) + hand_offset
     if (angle <= -0.8 and angle >= -1.5) or (angle <= 2.0 and angle >= 1.5):
         $player_hand.hide()
@@ -210,3 +234,7 @@ func _on_area_exited(area: Area2D) -> void:
         #speed = 250
     if area is Pebble:
         speed = 250
+
+
+func _on_p_sword_sword_w(w: Variant) -> void:
+    sw = w

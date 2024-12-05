@@ -1,5 +1,6 @@
 extends Area2D
 
+signal sword_w(w)
 var sword_def = load("res://script/sword_def.gd")
 var s = sword_def.new().sword_def
 @export var sword_id = 0
@@ -29,6 +30,7 @@ func _ready() -> void:
     var sword_type = s[sword_id]["name"]
     var curs = current_sword(sword_type)
     enable_sword(curs[0], curs[1])
+    emit_signal("sword_w", s[sword_id]["weight"])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
