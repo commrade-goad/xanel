@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://k4cdpjgjjdn5"]
+[gd_scene load_steps=12 format=3 uid="uid://k4cdpjgjjdn5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_0bfpd"]
 [ext_resource type="PackedScene" uid="uid://camw5ti3r4wbu" path="res://scene/player.tscn" id="1_ox42w"]
 [ext_resource type="PackedScene" uid="uid://ttq4gsdl055k" path="res://scene/bg.tscn" id="3_cvj4k"]
-[ext_resource type="Texture2D" uid="uid://b7jkvl0n5u4ql" path="res://assets/bar-outter.png" id="3_o4teq"]
-[ext_resource type="AudioStream" uid="uid://dbwssix21w0uv" path="res://assets/sounds/Eerie_Backsound.mp3" id="5_o1ubp"]
-[ext_resource type="AudioStream" uid="uid://cnb1x2mf05xb8" path="res://assets/sounds/suara dungeon.wav" id="6_gakb2"]
+[ext_resource type="Texture2D" uid="uid://b7jkvl0n5u4ql" path="res://assets/bar-outter.png" id="3_ugr7a"]
+[ext_resource type="AudioStream" uid="uid://dbwssix21w0uv" path="res://assets/sounds/Eerie_Backsound.mp3" id="5_jfjdp"]
+[ext_resource type="AudioStream" uid="uid://cnb1x2mf05xb8" path="res://assets/sounds/suara dungeon.wav" id="6_yiov2"]
+[ext_resource type="AudioStream" uid="uid://hfgi5wbvrad" path="res://assets/sounds/Game_Over.mp3" id="7_scrfv"]
 [ext_resource type="PackedScene" uid="uid://wkxfmdssdq0o" path="res://scene/ui.tscn" id="7_tumi5"]
-[ext_resource type="AudioStream" uid="uid://dan36m48lfegy" path="res://assets/sounds/Game_Over.mp3" id="8_1mevt"]
+[ext_resource type="AudioStream" uid="uid://jgo1utejcxhy" path="res://assets/sounds/Breath_In.mp3" id="9_x0hs5"]
 
 [sub_resource type="Gradient" id="Gradient_ccbh3"]
 offsets = PackedFloat32Array(0, 0.621762)
@@ -55,10 +56,10 @@ color = Color(0, 0, 0.486275, 1)
 z_index = 106
 offset_left = -619.0
 offset_top = -319.0
-offset_right = -363.0
+offset_right = -155.0
 offset_bottom = -279.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_o4teq")
+texture = ExtResource("3_ugr7a")
 
 [node name="hp" type="ColorRect" parent="camera"]
 z_index = 106
@@ -72,10 +73,10 @@ color = Color(0.559523, 9.26517e-07, 1.44392e-07, 1)
 z_index = 105
 offset_left = -619.0
 offset_top = -340.0
-offset_right = -363.0
+offset_right = -155.0
 offset_bottom = -300.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_o4teq")
+texture = ExtResource("3_ugr7a")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_as_relative = false
@@ -96,22 +97,26 @@ position = Vector2(-574, -328)
 wait_time = 0.5
 
 [node name="EerieSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_o1ubp")
+stream = ExtResource("5_jfjdp")
 volume_db = -12.0
 autoplay = true
 mix_target = 1
 
 [node name="DungeonSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_gakb2")
+stream = ExtResource("6_yiov2")
 volume_db = -10.0
 autoplay = true
 mix_target = 1
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_1mevt")
+stream = ExtResource("7_scrfv")
 volume_db = 10.0
 autoplay = true
 mix_target = 1
+
+[node name="LowHp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_x0hs5")
+volume_db = 24.0
 
 [connection signal="pause_timer" from="." to="camera/ui" method="_on_node_pause_timer"]
 [connection signal="resume_timer" from="." to="camera/ui" method="_on_node_resume_timer"]

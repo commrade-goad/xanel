@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://x2lqimxfxth6"]
+[gd_scene load_steps=70 format=3 uid="uid://x2lqimxfxth6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr8e08ydbl8s" path="res://assets/enemya.png" id="1_dlg0p"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_hsy4c"]
@@ -15,35 +15,35 @@
 [ext_resource type="Texture2D" uid="uid://cgc5mici7duqa" path="res://assets/p_die4.png" id="13_2lg5t"]
 [ext_resource type="Texture2D" uid="uid://4b22ctnl7dev" path="res://assets/p_die5.png" id="14_aspi5"]
 [ext_resource type="Texture2D" uid="uid://datiiiwvttw3y" path="res://assets/p_die6.png" id="15_y23h1"]
-[ext_resource type="Texture2D" uid="uid://detgcqro3y7ys" path="res://assets/blood/1_0.png" id="16_naget"]
-[ext_resource type="Texture2D" uid="uid://x32w6r5m5lnb" path="res://assets/blood/1_1.png" id="17_tvqp2"]
-[ext_resource type="Texture2D" uid="uid://dfo8milfrym84" path="res://assets/blood/1_2.png" id="18_xqyo4"]
-[ext_resource type="Texture2D" uid="uid://cbhyvhe67fbem" path="res://assets/blood/1_3.png" id="19_f18n1"]
-[ext_resource type="Texture2D" uid="uid://dtlgon4lyg8jp" path="res://assets/blood/1_4.png" id="20_2oda5"]
-[ext_resource type="Texture2D" uid="uid://du2wko0iif4lp" path="res://assets/blood/1_5.png" id="21_6207t"]
-[ext_resource type="Texture2D" uid="uid://c2xn664msdtno" path="res://assets/blood/1_6.png" id="22_k4uml"]
-[ext_resource type="Texture2D" uid="uid://bvd32n7j630pt" path="res://assets/blood/1_7.png" id="23_rhgim"]
-[ext_resource type="Texture2D" uid="uid://xm100n3e6stu" path="res://assets/blood/1_8.png" id="24_km0y6"]
-[ext_resource type="Texture2D" uid="uid://btagc2btd4a40" path="res://assets/blood/1_9.png" id="25_2km1n"]
-[ext_resource type="Texture2D" uid="uid://b8t2yn6svvfb5" path="res://assets/blood/1_10.png" id="26_fit3x"]
-[ext_resource type="Texture2D" uid="uid://dj8mewsto5qmr" path="res://assets/blood/1_11.png" id="27_kr1pq"]
-[ext_resource type="Texture2D" uid="uid://cfr8p3amqttga" path="res://assets/blood/1_12.png" id="28_jb4uy"]
-[ext_resource type="Texture2D" uid="uid://ci6rjrwj51c5n" path="res://assets/blood/1_13.png" id="29_1cdmb"]
-[ext_resource type="Texture2D" uid="uid://c5yqe03c5gcjs" path="res://assets/blood/1_14.png" id="30_lculv"]
-[ext_resource type="Texture2D" uid="uid://b720m1kwscwy" path="res://assets/blood/1_15.png" id="31_lgmdw"]
-[ext_resource type="Texture2D" uid="uid://b0veax2tiw43v" path="res://assets/blood/1_16.png" id="32_iix5l"]
-[ext_resource type="Texture2D" uid="uid://mnphmjbjpjn6" path="res://assets/blood/1_17.png" id="33_0bbh7"]
-[ext_resource type="Texture2D" uid="uid://dk27s5x1en6ya" path="res://assets/blood/1_18.png" id="34_sw2v1"]
-[ext_resource type="Texture2D" uid="uid://dxdobb16t5a3g" path="res://assets/blood/1_19.png" id="35_ys234"]
-[ext_resource type="Texture2D" uid="uid://dyypug2uwf660" path="res://assets/blood/1_20.png" id="36_xovo1"]
-[ext_resource type="Texture2D" uid="uid://c76te0p35jjyj" path="res://assets/blood/1_21.png" id="37_252rt"]
-[ext_resource type="Texture2D" uid="uid://bt067iux0ian8" path="res://assets/blood/1_22.png" id="38_1xkev"]
-[ext_resource type="Texture2D" uid="uid://jujpdodbcael" path="res://assets/blood/1_23.png" id="39_va8o5"]
-[ext_resource type="Texture2D" uid="uid://chp83x1mcygah" path="res://assets/blood/1_24.png" id="40_t7dxn"]
-[ext_resource type="Texture2D" uid="uid://c1xj57ophkoee" path="res://assets/blood/1_25.png" id="41_yww0i"]
-[ext_resource type="Texture2D" uid="uid://dma48783oevlh" path="res://assets/blood/1_26.png" id="42_3gt20"]
-[ext_resource type="Texture2D" uid="uid://p3owven3iorh" path="res://assets/blood/1_27.png" id="43_werrb"]
-[ext_resource type="Texture2D" uid="uid://bfauy771v38ej" path="res://assets/blood/1_28.png" id="44_tr4vq"]
+[ext_resource type="Texture2D" uid="uid://detgcqro3y7ys" path="res://assets/Blood/1_0.png" id="16_naget"]
+[ext_resource type="Texture2D" uid="uid://x32w6r5m5lnb" path="res://assets/Blood/1_1.png" id="17_tvqp2"]
+[ext_resource type="Texture2D" uid="uid://dfo8milfrym84" path="res://assets/Blood/1_2.png" id="18_xqyo4"]
+[ext_resource type="Texture2D" uid="uid://cbhyvhe67fbem" path="res://assets/Blood/1_3.png" id="19_f18n1"]
+[ext_resource type="Texture2D" uid="uid://dtlgon4lyg8jp" path="res://assets/Blood/1_4.png" id="20_2oda5"]
+[ext_resource type="Texture2D" uid="uid://du2wko0iif4lp" path="res://assets/Blood/1_5.png" id="21_6207t"]
+[ext_resource type="Texture2D" uid="uid://c2xn664msdtno" path="res://assets/Blood/1_6.png" id="22_k4uml"]
+[ext_resource type="Texture2D" uid="uid://bvd32n7j630pt" path="res://assets/Blood/1_7.png" id="23_rhgim"]
+[ext_resource type="Texture2D" uid="uid://xm100n3e6stu" path="res://assets/Blood/1_8.png" id="24_km0y6"]
+[ext_resource type="Texture2D" uid="uid://btagc2btd4a40" path="res://assets/Blood/1_9.png" id="25_2km1n"]
+[ext_resource type="Texture2D" uid="uid://b8t2yn6svvfb5" path="res://assets/Blood/1_10.png" id="26_fit3x"]
+[ext_resource type="Texture2D" uid="uid://dj8mewsto5qmr" path="res://assets/Blood/1_11.png" id="27_kr1pq"]
+[ext_resource type="Texture2D" uid="uid://cfr8p3amqttga" path="res://assets/Blood/1_12.png" id="28_jb4uy"]
+[ext_resource type="Texture2D" uid="uid://ci6rjrwj51c5n" path="res://assets/Blood/1_13.png" id="29_1cdmb"]
+[ext_resource type="Texture2D" uid="uid://c5yqe03c5gcjs" path="res://assets/Blood/1_14.png" id="30_lculv"]
+[ext_resource type="Texture2D" uid="uid://b720m1kwscwy" path="res://assets/Blood/1_15.png" id="31_lgmdw"]
+[ext_resource type="Texture2D" uid="uid://b0veax2tiw43v" path="res://assets/Blood/1_16.png" id="32_iix5l"]
+[ext_resource type="Texture2D" uid="uid://mnphmjbjpjn6" path="res://assets/Blood/1_17.png" id="33_0bbh7"]
+[ext_resource type="Texture2D" uid="uid://dk27s5x1en6ya" path="res://assets/Blood/1_18.png" id="34_sw2v1"]
+[ext_resource type="Texture2D" uid="uid://dxdobb16t5a3g" path="res://assets/Blood/1_19.png" id="35_ys234"]
+[ext_resource type="Texture2D" uid="uid://dyypug2uwf660" path="res://assets/Blood/1_20.png" id="36_xovo1"]
+[ext_resource type="Texture2D" uid="uid://c76te0p35jjyj" path="res://assets/Blood/1_21.png" id="37_252rt"]
+[ext_resource type="Texture2D" uid="uid://bt067iux0ian8" path="res://assets/Blood/1_22.png" id="38_1xkev"]
+[ext_resource type="Texture2D" uid="uid://jujpdodbcael" path="res://assets/Blood/1_23.png" id="39_va8o5"]
+[ext_resource type="Texture2D" uid="uid://chp83x1mcygah" path="res://assets/Blood/1_24.png" id="40_t7dxn"]
+[ext_resource type="Texture2D" uid="uid://c1xj57ophkoee" path="res://assets/Blood/1_25.png" id="41_yww0i"]
+[ext_resource type="Texture2D" uid="uid://dma48783oevlh" path="res://assets/Blood/1_26.png" id="42_3gt20"]
+[ext_resource type="Texture2D" uid="uid://p3owven3iorh" path="res://assets/Blood/1_27.png" id="43_werrb"]
+[ext_resource type="Texture2D" uid="uid://bfauy771v38ej" path="res://assets/Blood/1_28.png" id="44_tr4vq"]
 [ext_resource type="Script" path="res://script/enemy_b.gd" id="45_b1d06"]
 [ext_resource type="Texture2D" uid="uid://cd5tirr6relfq" path="res://assets/shadow.png" id="45_h8sqp"]
 [ext_resource type="Texture2D" uid="uid://cr72couikwjeo" path="res://assets/skele_hand.png" id="45_o5xro"]
@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://bxwly6gsnjvkn" path="res://assets/black_slash5.png" id="51_go24b"]
 [ext_resource type="Texture2D" uid="uid://c8cb2kfps8ixj" path="res://assets/black_slash6.png" id="52_tqtgo"]
 [ext_resource type="Texture2D" uid="uid://bquuj2y5jll1q" path="res://assets/black_slash7.png" id="53_6isv0"]
+[ext_resource type="Texture2D" uid="uid://cl0fy58v4d4q" path="res://assets/zombie_idle.png" id="54_o3uyb"]
 [ext_resource type="Texture2D" uid="uid://1iv8lvp8vwov" path="res://assets/bone1.png" id="55_157pf"]
 [ext_resource type="Texture2D" uid="uid://c5e843ae4wwmy" path="res://assets/bone2.png" id="56_nfkf5"]
 [ext_resource type="Texture2D" uid="uid://rl6dh4ejj472" path="res://assets/bone3.png" id="57_h2qmd"]
@@ -348,6 +349,34 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_w0gyl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("54_o3uyb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_f373j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2lg5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_aspi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_y23h1")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}]
+
 [node name="enemy" type="Node2D"]
 script = ExtResource("1_hsy4c")
 
@@ -434,7 +463,6 @@ shape = SubResource("CapsuleShape2D_2owxe")
 modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ja6q2")
-animation = &"die"
 
 [node name="blood" type="AnimatedSprite2D" parent="enemy_b"]
 modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
@@ -457,6 +485,50 @@ z_index = -1
 texture = ExtResource("45_h8sqp")
 offset = Vector2(0, 30)
 
+[node name="enemy_c" type="Area2D" parent="." groups=["enemy"]]
+scale = Vector2(0.998313, 1)
+
+[node name="slash_enemy_c" type="Area2D" parent="enemy_c"]
+
+[node name="slash_coll" type="CollisionShape2D" parent="enemy_c/slash_enemy_c"]
+position = Vector2(31, -0.999999)
+rotation = 0.101229
+scale = Vector2(1.8125, 2.0119)
+shape = SubResource("CapsuleShape2D_1q0ni")
+
+[node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_c/slash_enemy_c"]
+modulate = Color(0.103744, 0.103744, 0.103744, 1)
+position = Vector2(31, -0.999999)
+rotation = 0.101229
+scale = Vector2(1.80962, 2.01497)
+sprite_frames = SubResource("SpriteFrames_yg3qm")
+frame_progress = 0.349522
+
+[node name="slash_cooldown" type="Timer" parent="enemy_c/slash_enemy_c"]
+wait_time = 3.0
+
+[node name="coll" type="CollisionShape2D" parent="enemy_c"]
+shape = SubResource("CapsuleShape2D_2owxe")
+
+[node name="sprite" type="AnimatedSprite2D" parent="enemy_c"]
+modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_w0gyl")
+animation = &"die"
+
+[node name="blood" type="AnimatedSprite2D" parent="enemy_c"]
+modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
+position = Vector2(0, 10)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ofiba")
+frame_progress = 0.523066
+
+[node name="shadow" type="Sprite2D" parent="enemy_c"]
+modulate = Color(1, 1, 1, 0.439216)
+z_index = -1
+texture = ExtResource("45_h8sqp")
+offset = Vector2(0, 30)
+
 [connection signal="died" from="." to="enemy_b" method="_on_enemy_died"]
 [connection signal="area_entered" from="enemy_a" to="." method="_on_enemy_a_area_entered"]
 [connection signal="timeout" from="enemy_a/slash_enemy_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
@@ -466,3 +538,7 @@ offset = Vector2(0, 30)
 [connection signal="timeout" from="enemy_b/slash_enemy_b/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
 [connection signal="animation_looped" from="enemy_b/sprite" to="." method="_on_sprite_animation_looped"]
 [connection signal="animation_looped" from="enemy_b/blood" to="." method="_on_blood_animation_looped"]
+[connection signal="area_entered" from="enemy_c" to="." method="_on_enemy_a_area_entered"]
+[connection signal="timeout" from="enemy_c/slash_enemy_c/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
+[connection signal="animation_looped" from="enemy_c/sprite" to="." method="_on_sprite_animation_looped"]
+[connection signal="animation_looped" from="enemy_c/blood" to="." method="_on_blood_animation_looped"]
