@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://script/main.gd" id="1_0bfpd"]
 [ext_resource type="PackedScene" uid="uid://camw5ti3r4wbu" path="res://scene/player.tscn" id="1_ox42w"]
 [ext_resource type="PackedScene" uid="uid://ttq4gsdl055k" path="res://scene/bg.tscn" id="3_cvj4k"]
-[ext_resource type="Texture2D" uid="uid://b7jkvl0n5u4ql" path="res://assets/bar-outter.png" id="3_o4teq"]
-[ext_resource type="AudioStream" uid="uid://cnb1x2mf05xb8" path="res://assets/sounds/suara dungeon.wav" id="5_tiqya"]
-[ext_resource type="AudioStream" uid="uid://dbwssix21w0uv" path="res://assets/sounds/Eerie_Backsound.mp3" id="5_u334t"]
+[ext_resource type="AudioStream" uid="uid://dbwssix21w0uv" path="res://assets/sounds/Eerie_Backsound.mp3" id="5_o1ubp"]
+[ext_resource type="AudioStream" uid="uid://cnb1x2mf05xb8" path="res://assets/sounds/suara dungeon.wav" id="6_gakb2"]
+[ext_resource type="AudioStream" uid="uid://hfgi5wbvrad" path="res://assets/sounds/Game_Over.mp3" id="7_lby0u"]
 [ext_resource type="PackedScene" uid="uid://wkxfmdssdq0o" path="res://scene/ui.tscn" id="7_tumi5"]
 
 [sub_resource type="Gradient" id="Gradient_ccbh3"]
@@ -57,7 +57,6 @@ offset_top = -319.0
 offset_right = -363.0
 offset_bottom = -279.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_o4teq")
 
 [node name="hp" type="ColorRect" parent="camera"]
 z_index = 106
@@ -74,7 +73,6 @@ offset_top = -340.0
 offset_right = -363.0
 offset_bottom = -300.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_o4teq")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_as_relative = false
@@ -94,15 +92,21 @@ position = Vector2(-574, -328)
 [node name="spawn_timer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="backsound1" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_u334t")
+[node name="EerieSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_o1ubp")
 volume_db = -12.0
 autoplay = true
 mix_target = 1
 
-[node name="backsound2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_tiqya")
+[node name="DungeonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gakb2")
 volume_db = -10.0
+autoplay = true
+mix_target = 1
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lby0u")
+volume_db = 10.0
 autoplay = true
 mix_target = 1
 
@@ -115,5 +119,6 @@ mix_target = 1
 [connection signal="ded" from="player" to="." method="_on_player_ded"]
 [connection signal="player_hit" from="player" to="." method="_on_player_player_hit"]
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="finished" from="backsound1" to="." method="_on_backsound_1_finished"]
-[connection signal="finished" from="backsound2" to="." method="_on_backsound_2_finished"]
+[connection signal="finished" from="EerieSound" to="." method="_on_backsound_1_finished"]
+[connection signal="finished" from="DungeonSound" to="." method="_on_backsound_2_finished"]
+[connection signal="finished" from="GameOver" to="." method="_on_backsound_2_finished"]
