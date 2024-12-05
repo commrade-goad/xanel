@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 
 func _on_enemy_boleh_attack() -> void:
     attack_mode = true
+    print("on attack mode")
     $sprite.animation = "attack"
 
 
