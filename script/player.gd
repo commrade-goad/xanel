@@ -69,6 +69,7 @@ func _process(delta: float) -> void:
 		$player_hand.hide()
 		$player_hand_main.hide()
 		emit_signal("hide_sword")
+		$Walk_on_Dirt_Gravel.stop()
 		return
 
 	emit_signal("current_stats", hp, sp)
@@ -122,6 +123,7 @@ func _process(delta: float) -> void:
 			input_velocity.y += roll_speed
 			rolling = true
 		if rolling == true:
+			$Rolling.play()
 			$player_hand.hide()
 			emit_signal("hide_sword")
 			$player_hand_main.hide()

@@ -22,5 +22,6 @@ shape = SubResource("RectangleShape2D_64ydu")
 
 [node name="HitRock" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5pxj1")
+volume_db = -4.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

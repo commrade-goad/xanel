@@ -1593,7 +1593,6 @@ texture_scale = 13.79
 [connection signal="boleh_attack" from="." to="enemy_d" method="_on_enemy_boleh_attack"]
 [connection signal="boleh_attack" from="." to="enemy_e" method="_on_enemy_boleh_attack"]
 [connection signal="died" from="." to="enemy_b" method="_on_enemy_died"]
-[connection signal="area_entered" from="enemy_a" to="." method="_on_enemy_a_area_entered"]
 [connection signal="timeout" from="enemy_a/slash_enemy_a/slash_cooldown" to="." method="_on_slash_cooldown_timeout"]
 [connection signal="animation_looped" from="enemy_a/sprite" to="." method="_on_sprite_animation_looped"]
 [connection signal="animation_looped" from="enemy_a/blood" to="." method="_on_blood_animation_looped"]
