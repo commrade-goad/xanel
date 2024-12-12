@@ -1,8 +1,15 @@
-[gd_scene load_steps=170 format=3 uid="uid://x2lqimxfxth6"]
+[gd_scene load_steps=179 format=3 uid="uid://x2lqimxfxth6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr8e08ydbl8s" path="res://assets/enemya.png" id="1_dlg0p"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_hsy4c"]
+[ext_resource type="Texture2D" uid="uid://c8tdpnxbu2a0l" path="res://assets/test_slash1.png" id="3_r6t4i"]
+[ext_resource type="Texture2D" uid="uid://xsr0vfbo8tq8" path="res://assets/test_slash2.png" id="4_uwol6"]
+[ext_resource type="Texture2D" uid="uid://dckcxkqs6eub" path="res://assets/test_slash3.png" id="5_1ukyu"]
+[ext_resource type="Texture2D" uid="uid://c5x6ju6j8kqde" path="res://assets/test_slash4.png" id="6_d0uex"]
+[ext_resource type="Texture2D" uid="uid://b74c0v6pxjo7a" path="res://assets/test_slash5.png" id="7_vrhc8"]
+[ext_resource type="Texture2D" uid="uid://bhphmftuboi8q" path="res://assets/test_slash6.png" id="8_ov8rp"]
 [ext_resource type="Texture2D" uid="uid://dej4jqo21jm83" path="res://assets/empty.png" id="9_5qo4v"]
+[ext_resource type="Texture2D" uid="uid://caojixj5ogk72" path="res://assets/test_slash7.png" id="9_8e7rs"]
 [ext_resource type="Texture2D" uid="uid://bfsrvefjs07dj" path="res://assets/skele_idle.png" id="11_dkmse"]
 [ext_resource type="Texture2D" uid="uid://b2wsgb7frs8cu" path="res://assets/puff2.png" id="12_f373j"]
 [ext_resource type="Texture2D" uid="uid://cgc5mici7duqa" path="res://assets/p_die4.png" id="13_2lg5t"]
@@ -64,48 +71,45 @@
 radius = 6.74
 height = 38.77
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_yg3qm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_swlyj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_5qo4v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": ExtResource("3_r6t4i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": ExtResource("4_uwol6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": ExtResource("4_uwol6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": ExtResource("5_1ukyu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": ExtResource("5_1ukyu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": ExtResource("6_d0uex")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": ExtResource("7_vrhc8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": ExtResource("8_ov8rp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": ExtResource("9_8e7rs")
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_5qo4v")
 }],
 "loop": true,
 "name": &"default",
-"speed": 30.0
+"speed": 20.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2owxe"]
@@ -459,6 +463,47 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_es8hj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r6t4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uwol6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uwol6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1ukyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1ukyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d0uex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vrhc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ov8rp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8e7rs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_w0gyl"]
 animations = [{
 "frames": [{
@@ -547,6 +592,50 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_px0qj"]
 radius = 22.6294
 height = 45.2589
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yg3qm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qo4v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eg573"]
 radius = 30.0507
@@ -1342,8 +1431,8 @@ modulate = Color(0.103744, 0.103744, 0.103744, 1)
 position = Vector2(31, -0.999999)
 rotation = 0.101229
 scale = Vector2(1.80962, 2.01497)
-sprite_frames = SubResource("SpriteFrames_yg3qm")
-frame_progress = 0.349522
+sprite_frames = SubResource("SpriteFrames_swlyj")
+frame_progress = 0.892694
 
 [node name="slash_cooldown" type="Timer" parent="enemy_a/slash_enemy_a"]
 wait_time = 3.0
@@ -1355,7 +1444,6 @@ shape = SubResource("CapsuleShape2D_2owxe")
 modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_e2if2")
-animation = &"die"
 
 [node name="blood" type="AnimatedSprite2D" parent="enemy_a"]
 modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
@@ -1371,6 +1459,7 @@ texture = ExtResource("45_h8sqp")
 offset = Vector2(0, 30)
 
 [node name="enemy_b" type="Area2D" parent="." groups=["enemy"]]
+visible = false
 scale = Vector2(0.998313, 1)
 script = ExtResource("45_b1d06")
 
@@ -1433,6 +1522,7 @@ texture = ExtResource("45_h8sqp")
 offset = Vector2(0, 30)
 
 [node name="enemy_c" type="Area2D" parent="." groups=["enemy"]]
+visible = false
 scale = Vector2(0.998313, 1)
 
 [node name="slash_enemy_c" type="Area2D" parent="enemy_c"]
@@ -1448,8 +1538,7 @@ modulate = Color(0.103744, 0.103744, 0.103744, 1)
 position = Vector2(31, -0.999999)
 rotation = 0.101229
 scale = Vector2(1.80962, 2.01497)
-sprite_frames = SubResource("SpriteFrames_yg3qm")
-frame_progress = 0.349522
+sprite_frames = SubResource("SpriteFrames_es8hj")
 
 [node name="slash_cooldown" type="Timer" parent="enemy_c/slash_enemy_c"]
 wait_time = 3.0
@@ -1477,6 +1566,7 @@ texture = ExtResource("45_h8sqp")
 offset = Vector2(0, 30)
 
 [node name="enemy_d" type="Area2D" parent="." groups=["enemy"]]
+visible = false
 scale = Vector2(0.998313, 1)
 script = ExtResource("54_063sv")
 
@@ -1534,6 +1624,7 @@ texture = SubResource("GradientTexture2D_fqkec")
 texture_scale = 13.79
 
 [node name="enemy_e" type="Area2D" parent="." groups=["enemy"]]
+visible = false
 scale = Vector2(0.998313, 1)
 script = ExtResource("56_bleea")
 
