@@ -10,7 +10,7 @@
 
 ## You can see our progress on
 
-## Google Docs 
+## Notion 
 - [GDD Notion](https://www.notion.so/XANEL-13024d4c8e5b808e843cde97b0f15789?pvs=4)
 
 ## Canva
