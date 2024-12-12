@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://b87lc5tecb0nw"]
+
+[ext_resource type="PackedScene" uid="uid://ttq4gsdl055k" path="res://scene/bg.tscn" id="1_j1fl2"]
+[ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="2_3o8yl"]
+[ext_resource type="FontFile" uid="uid://cjutvjr1f2h7g" path="res://assets/Oswald/Oswald-VariableFont_wght.ttf" id="3_177yj"]
+
+[sub_resource type="Gradient" id="Gradient_6msc1"]
+offsets = PackedFloat32Array(0, 0.621762)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_edwbh"]
+gradient = SubResource("Gradient_6msc1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button_Play" type="Button" parent="."]
+offset_left = 575.0
+offset_top = 440.0
+offset_right = 705.0
+offset_bottom = 497.0
+theme = ExtResource("2_3o8yl")
+text = "PLAY"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 498.0
+offset_top = 38.0
+offset_right = 783.0
+offset_bottom = 392.0
+theme_override_fonts/normal_font = ExtResource("3_177yj")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "[center][img=84x84]res://icon_inkscape.svg[/img] 
+
+XANEL[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+z_as_relative = false
+position = Vector2(644.42, 334.5)
+scale = Vector2(1.06509, 0.467593)
+energy = 30.0
+range_z_max = 199
+texture = SubResource("GradientTexture2D_edwbh")
+texture_scale = 8.0
+
+[node name="bg" parent="." instance=ExtResource("1_j1fl2")]
+light_mask = 4
+visibility_layer = 4
+z_index = -2
+position = Vector2(-574, -328)

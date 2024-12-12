@@ -299,7 +299,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 120.0
+"speed": 60.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iwm8x"]
@@ -1450,7 +1450,8 @@ modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
 position = Vector2(0, 10)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ofiba")
-frame_progress = 0.523066
+frame = 24
+frame_progress = 0.0835861
 
 [node name="shadow" type="Sprite2D" parent="enemy_a"]
 modulate = Color(1, 1, 1, 0.439216)
@@ -1504,7 +1505,6 @@ modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
 position = Vector2(0, 10)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_h8by5")
-frame_progress = 0.610742
 
 [node name="basic_sword_sprite" type="Sprite2D" parent="enemy_b"]
 modulate = Color(0.122252, 0.122252, 0.122252, 1)
@@ -1603,7 +1603,7 @@ modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
 position = Vector2(7, -3)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ofiba")
-frame_progress = 0.523066
+frame_progress = 0.253774
 
 [node name="shadow" type="Sprite2D" parent="enemy_d"]
 modulate = Color(1, 1, 1, 0.439216)
@@ -1652,7 +1652,7 @@ position = Vector2(-5.00845, -30)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_50d2k")
 animation = &"attack"
-frame_progress = 0.555539
+frame_progress = 0.316869
 
 [node name="blood" type="AnimatedSprite2D" parent="enemy_e"]
 modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)

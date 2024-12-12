@@ -11,12 +11,12 @@
 [ext_resource type="AudioStream" uid="uid://yvgrgvfiqhch" path="res://assets/sounds/Out_of_sp.mp3" id="9_dm43u"]
 [ext_resource type="AudioStream" uid="uid://dl2ec5g088na3" path="res://assets/sounds/LevelComplete.mp3" id="10_8o576"]
 
-[sub_resource type="Gradient" id="Gradient_l4w65"]
+[sub_resource type="Gradient" id="Gradient_c1pwp"]
 offsets = PackedFloat32Array(0, 0.621762)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8hgtq"]
-gradient = SubResource("Gradient_l4w65")
+gradient = SubResource("Gradient_c1pwp")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -116,7 +116,6 @@ mix_target = 1
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_nxcr3")
-volume_db = 10.0
 autoplay = true
 mix_target = 1
 
