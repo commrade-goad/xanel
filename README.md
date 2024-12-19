@@ -10,8 +10,8 @@
 
 ## You can see our progress on
 
-## Notion 
-- [GDD Notion](https://www.notion.so/XANEL-13024d4c8e5b808e843cde97b0f15789?pvs=4)
+## Google Docs 
+- www.google.com
 
 ## Canva
-- [Presentation Canva](https://www.canva.com/design/DAGZFsEneWI/Nq6Ki6cwIbrbeBavU83FTQ/edit?utm_content=DAGZFsEneWI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+- www.google.com

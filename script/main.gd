@@ -1,5 +1,7 @@
 extends Node
 
+@onready var transition = $Transition
+
 signal request_level
 signal current_upgrade(obj)
 signal upgrade_and_add_this(hp: int, sp: int, st: int, heal: int) # send to player
@@ -46,7 +48,13 @@ func levelup() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+
+	if transition:
+		print("Transition node found, playing fade_in.")
+		transition.play("fade_in")
+	else:
+		print("Transition node not found!")
+
 	$GameOver.stop()
 	$LowHp.stop()
 	levelup()
