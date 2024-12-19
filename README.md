@@ -11,7 +11,7 @@
 ## You can see our progress on
 
 ## Google Docs 
-- www.google.com
+- https://docs.google.com/document/d/16nAZHjBpvtuH3f4V9vam_HMf1nC88_wmVc1dT1NOtKk/edit?usp=sharing
 
 ## Canva
 - www.google.com
