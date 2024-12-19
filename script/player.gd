@@ -93,7 +93,7 @@ func _process(delta: float) -> void:
 
     if Input.is_action_just_pressed("p_heal") and hp_potion >= 1 and hp < max_hp:
         hp_potion -=1
-        hp += 40 + level
+        hp += 30 + level * 2
         if hp > max_hp:
             hp = max_hp
         emit_signal("current_potion", hp_potion)

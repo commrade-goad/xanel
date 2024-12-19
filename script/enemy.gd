@@ -184,13 +184,19 @@ func _on_slash_cooldown_timeout():
     can_attack = true
 
 func _on_enemy_a_area_entered(area: Area2D) -> void:
-    if area.name == "p_sword":
-        hp -= p.attack + s.bonus_damage - c_level
+    if area.name == "p_sword" and hp >= 0 :
+        # kata vincent agar lebih susah
+        #hp -= abs((p.attack + s.bonus_damage) - c_level * 2)
+        if p.attack + s.bonus_damage - (c_level * 3) > 0 :
+            hp -= ((p.attack + s.bonus_damage) - c_level * 3)
+        else :
+            hp -= 1
         print("enemy healt: " + str(hp))
         if enemy_def[active_id]["enable_blood"] == true and die == false:
             blood_sprite.show()
             blood_sprite.play()
-    pass # Replace with function body.
+    else:
+        emit_signal("died")
 
 func _on_sprite_animation_looped() -> void:
     if die == true:
