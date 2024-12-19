@@ -7,9 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://dbwssix21w0uv" path="res://assets/sounds/Eerie_Backsound.mp3" id="5_jfjdp"]
 [ext_resource type="AudioStream" uid="uid://cnb1x2mf05xb8" path="res://assets/sounds/suara dungeon.wav" id="6_yiov2"]
 [ext_resource type="PackedScene" uid="uid://wkxfmdssdq0o" path="res://scene/ui.tscn" id="7_tumi5"]
-[ext_resource type="AudioStream" uid="uid://b6qw3usdcrd0k" path="res://assets/sounds/Game_over_drum_failure.mp3" id="8_nxcr3"]
-[ext_resource type="AudioStream" uid="uid://yvgrgvfiqhch" path="res://assets/sounds/Out_of_sp.mp3" id="9_dm43u"]
-[ext_resource type="AudioStream" uid="uid://dl2ec5g088na3" path="res://assets/sounds/LevelComplete.mp3" id="10_8o576"]
+[ext_resource type="AudioStream" uid="uid://cwllilch0wa7h" path="res://assets/sounds/Game_over_drum_failure.mp3" id="8_nxcr3"]
+[ext_resource type="AudioStream" uid="uid://cdxyi2kqy8dka" path="res://assets/sounds/Out_of_sp.mp3" id="9_dm43u"]
+[ext_resource type="AudioStream" uid="uid://bk3g0l0ioaaj1" path="res://assets/sounds/LevelComplete.mp3" id="10_8o576"]
 
 [sub_resource type="Gradient" id="Gradient_c1pwp"]
 offsets = PackedFloat32Array(0, 0.621762)
