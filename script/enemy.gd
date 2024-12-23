@@ -3,6 +3,8 @@ extends Node2D
 signal boleh_attack
 signal free_mem(idx: int)
 signal died
+signal e_idle
+signal e_walking
 var speed
 @export var friction = 0.2
 @export var hp = 100
@@ -29,6 +31,7 @@ var enemy_def_sc = load("res://script/enemy_def.gd")
 var enemy_def = enemy_def_sc.new().enemy_def
 var parent_main
 var c_level = 1
+var current_state = ""
 
 func _ready() -> void:
     var ignore
@@ -82,7 +85,7 @@ func _process(delta: float) -> void:
                     arm_sprite.hide()
                 emit_signal("died")
             idx += 1
-    
+ 
     attack_sprite.global_position = position
     attack_sprite.z_index = 101
     if player:
@@ -107,6 +110,20 @@ func _process(delta: float) -> void:
             velocity = velocity.lerp(input_velocity, 0.2)
         if lock_angle == false:
             position += velocity * delta
+        
+            
+        var new_state = ""
+        if plen > distance or (can_attack == false and plen < distance - 75):
+            new_state = "walking"
+        else:
+            new_state = "idle"
+        if new_state != current_state:
+            current_state = new_state
+            if current_state == "walking":
+                emit_signal("e_walking")
+            elif current_state == "idle":
+                emit_signal("e_idle")
+    
 
         # attack
         if enemy_def[active_id]["use_default_attack_system"] == true:
@@ -115,10 +132,12 @@ func _process(delta: float) -> void:
                 attack_sprite.play()
                 attack_cooldown.start()
                 
+                
             if lock_angle == false:
                 var angle = atan2(player.global_position.y - global_position.y, player.global_position.x - global_position.x)
                 offset = Vector2(cos(angle), sin(angle)) * enemy_def[active_id]["offset_radius"]
                 attack_sprite.rotation = angle
+                print(velocity)
 
             if diff.x < 0 :
                 attack_sprite.global_position += offset
@@ -142,13 +161,11 @@ func _process(delta: float) -> void:
             if attack_sprite.frame == 1:
                 lock_angle = true
                 
-            # TODO : make it dynamic
             if attack_sprite.frame <= enemy_def[active_id]["attack_frame_min"] or attack_sprite.frame >= enemy_def[active_id]["attack_frame_max"]:
                 attack_coll.disabled = true
             else:
                 attack_coll.disabled = false
 
-            # TODO : make it dynamic
             if attack_sprite.frame == enemy_def[active_id]["attack_frame_count"]:
                 can_attack = false
                 lock_angle = false

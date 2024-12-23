@@ -23,11 +23,11 @@
 
 ## BACKBURNER
 - [ ] Other binding for skill, and changing blade
-- [ ] Implement walking animation for the enemy
-- [ ] UI/UX (MAIN MENU)
+- [ ] Implement walking animation for the enemy - WIP (Half done because rn it broke attack sprite)
+- [ ] UI/UX (MAIN MENU) - WIP
 - [ ] More Enemy and Attack (effect too)
 - [ ] Better spawn coords
-- [ ] AUDIO
+- [ ] AUDIO - WIP
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://k4cdpjgjjdn5"]
+[gd_scene load_steps=13 format=3 uid="uid://k4cdpjgjjdn5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_0bfpd"]
 [ext_resource type="PackedScene" uid="uid://camw5ti3r4wbu" path="res://scene/player.tscn" id="1_ox42w"]
@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://cwllilch0wa7h" path="res://assets/sounds/Game_over_drum_failure.mp3" id="8_nxcr3"]
 [ext_resource type="AudioStream" uid="uid://cdxyi2kqy8dka" path="res://assets/sounds/Out_of_sp.mp3" id="9_dm43u"]
 [ext_resource type="AudioStream" uid="uid://bk3g0l0ioaaj1" path="res://assets/sounds/LevelComplete.mp3" id="10_8o576"]
-[ext_resource type="PackedScene" uid="uid://cyjxfqci38yhh" path="res://scene/enemy_manager.tscn" id="11_77st6"]
 
 [sub_resource type="Gradient" id="Gradient_c1pwp"]
 offsets = PackedFloat32Array(0, 0.621762)
@@ -127,9 +126,6 @@ volume_db = 6.0
 [node name="LevelComplete" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_8o576")
 
-[node name="EnemyManager" parent="." instance=ExtResource("11_77st6")]
-
-[connection signal="level" from="." to="EnemyManager" method="_on_node_level"]
 [connection signal="pause_timer" from="." to="camera/ui" method="_on_node_pause_timer"]
 [connection signal="resume_timer" from="." to="camera/ui" method="_on_node_resume_timer"]
 [connection signal="current_level" from="player" to="." method="_on_player_current_level"]
