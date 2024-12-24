@@ -1,9 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://b87lc5tecb0nw"]
+[gd_scene load_steps=14 format=3 uid="uid://b87lc5tecb0nw"]
 
 [ext_resource type="PackedScene" uid="uid://ttq4gsdl055k" path="res://scene/bg.tscn" id="1_j1fl2"]
 [ext_resource type="Script" path="res://script/menu.gd" id="1_ysf1d"]
 [ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="2_3o8yl"]
 [ext_resource type="FontFile" uid="uid://cjutvjr1f2h7g" path="res://assets/Oswald/Oswald-VariableFont_wght.ttf" id="3_177yj"]
+[ext_resource type="AudioStream" uid="uid://b6nga0ewhj7nw" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="5_2cmkr"]
+[ext_resource type="AudioStream" uid="uid://7fa0gv8g0idn" path="res://assets/sounds/main_menu.wav" id="6_ba7yk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qaeh5"]
+light_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_6msc1"]
 offsets = PackedFloat32Array(0, 0.621762)
@@ -13,6 +18,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_6msc1")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wwigp"]
+light_mode = 1
 
 [sub_resource type="Animation" id="Animation_usc78"]
 resource_name = "fade_in"
@@ -77,15 +85,36 @@ _data = {
 [node name="menu" type="Node2D"]
 script = ExtResource("1_ysf1d")
 
-[node name="Button_Play" type="Button" parent="."]
+[node name="Play" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_qaeh5")
 offset_left = 575.0
-offset_top = 440.0
+offset_top = 400.0
 offset_right = 705.0
-offset_bottom = 497.0
+offset_bottom = 457.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_3o8yl")
 text = "PLAY"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_as_relative = false
+position = Vector2(647.878, 286)
+scale = Vector2(1.41063, 1.04687)
+energy = 20.0
+range_z_max = 199
+texture = SubResource("GradientTexture2D_edwbh")
+texture_scale = 8.0
+
+[node name="Exit" type="Button" parent="."]
+material = SubResource("CanvasItemMaterial_wwigp")
+offset_left = 575.0
+offset_top = 460.0
+offset_right = 705.0
+offset_bottom = 517.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_3o8yl")
+text = "EXIT"
 
 [node name="Title" type="RichTextLabel" parent="."]
 offset_left = 498.0
@@ -99,17 +128,6 @@ text = "[center]XANEL[/center]"
 fit_content = true
 scroll_active = false
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-z_as_relative = false
-position = Vector2(644.42, 274.5)
-scale = Vector2(1.06509, 0.787109)
-energy = 20.0
-range_z_max = 199
-texture = SubResource("GradientTexture2D_edwbh")
-texture_scale = 8.0
-
 [node name="bg" parent="." instance=ExtResource("1_j1fl2")]
 light_mask = 4
 visibility_layer = 4
@@ -122,13 +140,24 @@ libraries = {
 }
 
 [node name="bg_transition" type="ColorRect" parent="Transition"]
+visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 1)
 
 [node name="Pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2cmkr")
 
-[connection signal="pressed" from="Button_Play" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="Button_Play" to="bg" method="_on_button_play_pressed"]
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ba7yk")
+volume_db = 4.0
+autoplay = true
+playback_type = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="Play" to="bg" method="_on_button_play_pressed"]
+[connection signal="button_down" from="Exit" to="." method="_on_exit_button_down"]
+[connection signal="pressed" from="Exit" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="Exit" to="bg" method="_on_button_play_pressed"]
 [connection signal="animation_changed" from="Transition" to="." method="_on_transition_animation_changed"]
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]

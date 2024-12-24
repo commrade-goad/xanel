@@ -1,7 +1,6 @@
 extends Node2D
 var pabble_max_count = 20
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var pebble_arr = []
 	var pebble_scene = preload("res://scene/pebble.tscn")
@@ -36,7 +35,3 @@ func _ready() -> void:
 	outter_mask_left.size = Vector2(3 *16, 107 * 16)
 	outter_mask_right.position = Vector2(153 * 16, 0)
 	outter_mask_right.size = Vector2(3 *16, 107 * 16)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
