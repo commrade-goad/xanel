@@ -23,13 +23,13 @@
 
 ## BACKBURNER
 - [ ] Other binding for skill, and changing blade
-- [ ] Implement walking animation for the enemy - WIP (Half done because rn it broke attack sprite)
 - [ ] UI/UX (MAIN MENU) - WIP
 - [ ] More Enemy and Attack (effect too)
 - [ ] Better spawn coords
 - [ ] AUDIO - WIP
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
+- [ ]  walk sprite for all the enemy (this is not URGENT)
 
 ## SPECIAL
 - 10 stage ada change spawn special enemy
@@ -40,6 +40,7 @@
 
 
 ## DONEEEEEEEEEEEE
+- [x] Implement walking animation for the enemy
 - [x] Spawning system (Level system too)
 - [x] Enemy getting upgraded every wave/level
 - [x] Upgrade system done

@@ -153,7 +153,7 @@ func _on_player_ded() -> void:
     
 func _on_free_mem(idx: int) -> void:
     if idx >= len(enemies):
-        return
+        idx -= 1
     enemies[idx].queue_free()
     enemies.remove_at(idx)
 

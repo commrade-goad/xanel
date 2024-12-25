@@ -1,4 +1,4 @@
-[gd_scene load_steps=179 format=3 uid="uid://x2lqimxfxth6"]
+[gd_scene load_steps=188 format=3 uid="uid://x2lqimxfxth6"]
 
 [ext_resource type="Texture2D" uid="uid://bnr8e08ydbl8s" path="res://assets/enemya.png" id="1_dlg0p"]
 [ext_resource type="Script" path="res://script/enemy.gd" id="1_hsy4c"]
@@ -63,9 +63,10 @@
 [ext_resource type="Texture2D" uid="uid://dj7qp7hi42y2f" path="res://assets/new assests/Undead executioner puppet/png/attacking.png" id="56_blrwp"]
 [ext_resource type="Texture2D" uid="uid://c5e843ae4wwmy" path="res://assets/bone2.png" id="56_nfkf5"]
 [ext_resource type="Texture2D" uid="uid://rl6dh4ejj472" path="res://assets/bone3.png" id="57_h2qmd"]
-[ext_resource type="Texture2D" uid="uid://7tdsksqa2wpn" path="res://assets/new assests/Undead executioner puppet/png/idle2.png" id="57_rk7oh"]
 [ext_resource type="Texture2D" uid="uid://wblunpi6ewmu" path="res://assets/new assests/Undead executioner puppet/png/death.png" id="58_i4rgq"]
 [ext_resource type="Texture2D" uid="uid://b0vwqbxwh6cdh" path="res://assets/bone4.png" id="58_ryxxg"]
+[ext_resource type="Texture2D" uid="uid://brilaoaipey2t" path="res://assets/reaper-attack.png" id="64_eyopx"]
+[ext_resource type="Texture2D" uid="uid://iqi4yqfh3b3c" path="res://assets/new assests/Undead executioner puppet/png/idle.png" id="65_ix5v0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q0ni"]
 radius = 6.74
@@ -1027,47 +1028,95 @@ fill_from = Vector2(0.5, 0.5)
 radius = 12.129
 height = 41.7415
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dcq2"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etrrp"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt02b"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orila"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvar4"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfbps"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3woc"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sho8l"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7idh"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v17j"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ywff"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8obg"]
+atlas = ExtResource("64_eyopx")
+region = Rect2(640, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_fxroy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_7dcq2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_etrrp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_yt02b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_orila")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_yvar4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_mfbps")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_o3woc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_sho8l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_y7idh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_4v17j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_1ywff")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_e8obg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qo4v")
+"texture": SubResource("AtlasTexture_7dcq2")
 }],
 "loop": true,
 "name": &"default",
@@ -1130,37 +1179,21 @@ region = Rect2(500, 100, 100, 100)
 atlas = ExtResource("56_blrwp")
 region = Rect2(0, 200, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_35xul"]
-atlas = ExtResource("57_rk7oh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y68e"]
+atlas = ExtResource("65_ix5v0")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0snmi"]
-atlas = ExtResource("57_rk7oh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp7os"]
+atlas = ExtResource("65_ix5v0")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wanfp"]
-atlas = ExtResource("57_rk7oh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxxp6"]
+atlas = ExtResource("65_ix5v0")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbh57"]
-atlas = ExtResource("57_rk7oh")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pjuc"]
+atlas = ExtResource("65_ix5v0")
 region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3gyn"]
-atlas = ExtResource("57_rk7oh")
-region = Rect2(0, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wm3w"]
-atlas = ExtResource("57_rk7oh")
-region = Rect2(100, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tdnie"]
-atlas = ExtResource("57_rk7oh")
-region = Rect2(200, 100, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aat5t"]
-atlas = ExtResource("57_rk7oh")
-region = Rect2(300, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_21ubj"]
 atlas = ExtResource("58_i4rgq")
@@ -1290,28 +1323,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_35xul")
+"texture": SubResource("AtlasTexture_8y68e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0snmi")
+"texture": SubResource("AtlasTexture_dp7os")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wanfp")
+"texture": SubResource("AtlasTexture_gxxp6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kbh57")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t3gyn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3wm3w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tdnie")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aat5t")
+"texture": SubResource("AtlasTexture_7pjuc")
 }],
 "loop": true,
 "name": &"default",
@@ -1632,10 +1653,12 @@ shape = SubResource("CapsuleShape2D_n88xu")
 
 [node name="slash_sprite" type="AnimatedSprite2D" parent="enemy_e/slash_enemy_e"]
 modulate = Color(0.103744, 0.103744, 0.103744, 1)
-position = Vector2(31, -0.999999)
+position = Vector2(60.0485, -1.00442)
 rotation = 0.101229
 scale = Vector2(1.80962, 2.01497)
 sprite_frames = SubResource("SpriteFrames_fxroy")
+frame = 7
+frame_progress = 0.700384
 
 [node name="slash_cooldown" type="Timer" parent="enemy_e/slash_enemy_e"]
 wait_time = 5.0
@@ -1649,8 +1672,6 @@ modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
 position = Vector2(-5.00845, -30)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_50d2k")
-animation = &"attack"
-frame_progress = 0.316869
 
 [node name="blood" type="AnimatedSprite2D" parent="enemy_e"]
 modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
@@ -1674,6 +1695,10 @@ energy = 7.0
 range_z_max = 199
 texture = SubResource("GradientTexture2D_fqkec")
 texture_scale = 13.79
+
+[node name="ForceDeadTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="boleh_attack" from="." to="enemy_d" method="_on_enemy_boleh_attack"]
 [connection signal="boleh_attack" from="." to="enemy_e" method="_on_enemy_boleh_attack"]
@@ -1702,3 +1727,4 @@ texture_scale = 13.79
 [connection signal="animation_looped" from="enemy_e/sprite" to="." method="_on_sprite_animation_looped"]
 [connection signal="animation_looped" from="enemy_e/sprite" to="enemy_e" method="_on_sprite_animation_looped"]
 [connection signal="animation_looped" from="enemy_e/blood" to="." method="_on_blood_animation_looped"]
+[connection signal="timeout" from="ForceDeadTimer" to="." method="_on_force_dead_timer_timeout"]

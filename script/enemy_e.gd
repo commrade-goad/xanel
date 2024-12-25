@@ -10,15 +10,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     pass
-
-
-func _on_enemy_boleh_attack() -> void:
-    attack_mode = true
-    print("on attack mode")
-    $sprite.animation = "attack"
-
-
-func _on_sprite_animation_looped() -> void:
-    if attack_mode == true:
-        attack_mode = false
-        $sprite.animation = "default"
