@@ -4,12 +4,16 @@
 [ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="1_p1as0"]
 [ext_resource type="Script" path="res://script/panel_menu.gd" id="2_610ey"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_udmly"]
+shader = ExtResource("1_1ab23")
+shader_parameter/lod = 0.0
+
 [sub_resource type="Animation" id="Animation_bv146"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel Menu/Blur/Blur_P:material:shader_parameter/lod")
+tracks/0/path = NodePath("Blur_P:material:shader_parameter/lod")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +40,7 @@ resource_name = "blur"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel Menu/Blur/Blur_P:material:shader_parameter/lod")
+tracks/0/path = NodePath("Blur_P:material:shader_parameter/lod")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,13 +68,18 @@ _data = {
 "blur": SubResource("Animation_gbu5b")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_udmly"]
-shader = ExtResource("1_1ab23")
-shader_parameter/lod = 0.0
-
 [node name="Pause" type="Control"]
 process_mode = 3
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur_P" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_udmly")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -123,15 +132,6 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_4gfnc")
 }
-
-[node name="Blur_P" type="ColorRect" parent="Panel Menu/Blur"]
-visible = false
-material = SubResource("ShaderMaterial_udmly")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="pressed" from="Panel Menu/VBoxContainer/Resume Button" to="Panel Menu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Panel Menu/VBoxContainer/Restart Button" to="Panel Menu" method="_on_restart_button_pressed"]
