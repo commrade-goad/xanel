@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="2_3o8yl"]
 [ext_resource type="FontFile" uid="uid://cjutvjr1f2h7g" path="res://assets/Oswald/Oswald-VariableFont_wght.ttf" id="3_177yj"]
 [ext_resource type="AudioStream" uid="uid://b6nga0ewhj7nw" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="5_2cmkr"]
-[ext_resource type="AudioStream" uid="uid://7fa0gv8g0idn" path="res://assets/sounds/main_menu.wav" id="6_ba7yk"]
+[ext_resource type="AudioStream" uid="uid://bpjeocinrw3hx" path="res://assets/sounds/main_menu.mp3" id="6_7meei"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qaeh5"]
 light_mode = 1
@@ -141,15 +141,18 @@ libraries = {
 
 [node name="bg_transition" type="ColorRect" parent="Transition"]
 visible = false
-offset_right = 1280.0
-offset_bottom = 720.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Pressed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_2cmkr")
 
 [node name="Menu" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ba7yk")
+stream = ExtResource("6_7meei")
 volume_db = 4.0
 autoplay = true
 playback_type = 1
