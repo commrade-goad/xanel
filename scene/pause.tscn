@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfc048xdea4un"]
+[gd_scene load_steps=10 format=3 uid="uid://dfc048xdea4un"]
 
 [ext_resource type="Shader" path="res://pause.gdshader" id="1_1ab23"]
 [ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="1_p1as0"]
 [ext_resource type="Script" path="res://script/panel_menu.gd" id="2_610ey"]
+[ext_resource type="AudioStream" uid="uid://b6nga0ewhj7nw" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="4_nyjls"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_udmly"]
 shader = ExtResource("1_1ab23")
@@ -34,6 +35,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blur_P:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blur_P:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_gbu5b"]
 resource_name = "blur"
@@ -62,10 +87,38 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_yny5j"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur_P:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blur_P:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4gfnc"]
 _data = {
 "RESET": SubResource("Animation_bv146"),
-"blur": SubResource("Animation_gbu5b")
+"blur": SubResource("Animation_gbu5b"),
+"fade_out": SubResource("Animation_yny5j")
 }
 
 [node name="Pause" type="Control"]
@@ -126,6 +179,9 @@ custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 theme = ExtResource("1_p1as0")
 text = "EXIT"
+
+[node name="Pressed" type="AudioStreamPlayer" parent="Panel Menu/VBoxContainer"]
+stream = ExtResource("4_nyjls")
 
 [node name="Blur" type="AnimationPlayer" parent="Panel Menu"]
 root_node = NodePath("../..")

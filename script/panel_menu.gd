@@ -1,13 +1,11 @@
 extends PanelContainer
 
 @onready var transition = $Blur
-
-func _ready() -> void:
-	transition.play("RESET")
+var is_exiting = false
 
 func resume():
 	get_tree().paused = false
-	transition.play_backwards("blur")
+	transition.play_backwards("blur", -3)
 
 func pause():
 	get_tree().paused = true
@@ -18,15 +16,23 @@ func esc():
 		pause()
 	elif Input.is_action_just_pressed("pause") and get_tree().paused == true:
 		resume()
+		
+func _ready() -> void:
+	transition.play("RESET")
+	
+func _process(delta: float) -> void:
+	esc()
 
 func _on_resume_button_pressed() -> void:
+	$VBoxContainer/Pressed.play()
 	resume()
 
 func _on_restart_button_pressed() -> void:
-	get_tree().reload_current_scene()
+	$VBoxContainer/Pressed.play()
+	await $VBoxContainer/Pressed.finished
+	#get_tree().reload_current_scene()
 
-func _on_exit_button_pressed() -> void:
+func _on_exit_button_pressed() -> void:	
+	$VBoxContainer/Pressed.play()
+	await $VBoxContainer/Pressed.finished
 	get_tree().quit()
-
-func _process(delta: float) -> void:
-	esc()
