@@ -21,8 +21,10 @@ func _on_sprite_animation_looped() -> void:
 
 
 func _on_enemy_e_idle() -> void:
-    $sprite.animation = "idle"
+    if attack_mode == false:
+        $sprite.animation = "idle"
 
 
 func _on_enemy_e_walking() -> void:
-    $sprite.animation = "default"
+    if attack_mode == false:
+        $sprite.animation = "default"
