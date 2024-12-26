@@ -1,7 +1,6 @@
 extends PanelContainer
 
-@onready var transition = $Blur
-
+@onready var transition = $AnimationPlayer
 var is_exiting = false
 var is_paused = false
 
