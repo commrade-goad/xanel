@@ -85,6 +85,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_ugr7a")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 4
 z_as_relative = false
 scale = Vector2(1.00195, 1.00449)
 energy = 10.03

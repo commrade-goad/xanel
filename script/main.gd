@@ -34,14 +34,17 @@ var enemy_def_sc = load("res://script/enemy_def.gd")
 var enemy_def = enemy_def_sc.new().enemy_def
 
 var menu_scene = preload("res://scene/pause.tscn")
+var pobj
 
 func show_menu() -> void:
-	var pobj = menu_scene.instantiate()
-	var canvas_layer = CanvasLayer.new()
-	canvas_layer.add_child(pobj)
-	add_child(canvas_layer)
+	pobj = menu_scene.instantiate()
+	pobj.z_index = 255
+	pobj.light_mask = 2
+	$camera.add_child(pobj)
 
 func levelup() -> void:
+	if is_instance_valid(pobj):
+		pobj.queue_free()
 	var levelup_tscn = preload("res://scene/levelup.tscn")
 	levelup_scene = levelup_tscn.instantiate()
 	levelup_scene.z_index = 200

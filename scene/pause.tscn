@@ -189,6 +189,10 @@ libraries = {
 "": SubResource("AnimationLibrary_4gfnc")
 }
 
+[connection signal="child_entered_tree" from="." to="Panel Menu" method="_on_pause_child_entered_tree"]
+[connection signal="tree_exiting" from="." to="Panel Menu" method="_on_pause_tree_exiting"]
+[connection signal="button_down" from="Panel Menu/VBoxContainer/Resume Button" to="Panel Menu" method="_on_resume_button_button_down"]
+[connection signal="button_up" from="Panel Menu/VBoxContainer/Resume Button" to="Panel Menu" method="_on_resume_button_button_up"]
 [connection signal="pressed" from="Panel Menu/VBoxContainer/Resume Button" to="Panel Menu" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Panel Menu/VBoxContainer/Restart Button" to="Panel Menu" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Panel Menu/VBoxContainer/Exit Button" to="Panel Menu" method="_on_exit_button_pressed"]

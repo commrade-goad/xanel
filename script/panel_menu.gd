@@ -1,22 +1,27 @@
 extends PanelContainer
 
 @onready var transition = $Blur
+
 var is_exiting = false
+var is_paused = false
 
 func resume():
 	get_tree().paused = false
-	transition.play_backwards("blur", -3)
+	is_paused = false
+	transition.play_backwards("blur")
 
 func pause():
 	get_tree().paused = true
+	is_paused = true
 	transition.play("blur")
 
 func esc():
-	if Input.is_action_just_pressed("pause") and get_tree().paused == false:
-		pause()
-	elif Input.is_action_just_pressed("pause") and get_tree().paused == true:
-		resume()
-		
+	if Input.is_action_just_pressed("pause"):
+		if is_paused:
+			resume()
+		else:
+			pause()
+
 func _ready() -> void:
 	transition.play("RESET")
 	
@@ -30,7 +35,7 @@ func _on_resume_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	$VBoxContainer/Pressed.play()
 	await $VBoxContainer/Pressed.finished
-	#get_tree().reload_current_scene()
+	#get_tree().reload_current_scene() ini buat restart tp rusak
 
 func _on_exit_button_pressed() -> void:	
 	$VBoxContainer/Pressed.play()
