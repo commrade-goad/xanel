@@ -25,7 +25,7 @@
 - [ ] Other binding for skill, and changing blade
 - [ ] UI/UX (MAIN MENU) - WIP
 - [ ] More Enemy and Attack (effect too)
-- [ ] Better spawn coords
+- [ ] Better spawn coords - WIP
 - [ ] AUDIO - WIP
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))

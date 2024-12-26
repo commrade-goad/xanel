@@ -125,7 +125,9 @@ func _process(delta: float) -> void:
         #enemy_instance.active = "enemy_" + enemy_def[3]["name"]
         add_child(enemy_instance)
         var callable = Callable(self, "_on_free_mem")
+        var callable2 = Callable(self, "_on_enemies_arr_change")
         enemy_instance.connect("free_mem", callable, 0)
+        enemy_instance.connect("enemies_arr_chage", callable2, 0)
         enemies.append(enemy_instance)
 
         for single_enemy in enemies:
@@ -206,3 +208,6 @@ func _on_player_current_potion(p: int) -> void:
 # Kondisi saat Low HP
 func _on_low_hp_finished() -> void:
     low_hp_sound = true
+
+func _on_enemies_arr_change(arr: Array) -> void:
+    enemies = enemies

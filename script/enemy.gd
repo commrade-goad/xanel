@@ -5,6 +5,7 @@ signal free_mem(idx: int)
 signal died
 signal e_idle
 signal e_walking
+signal enemies_arr_chage(arr: Array)
 var speed
 @export var friction = 0.2
 @export var hp = 100
@@ -243,4 +244,5 @@ func _on_force_dead_timer_timeout() -> void:
             enemies.erase(en)
             break
     set_enemies(enemies)
+    emit_signal("enemies_arr_chage", enemies)
     queue_free()
