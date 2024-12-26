@@ -24,7 +24,6 @@
 ## BACKBURNER
 - [ ] Other binding for skill, and changing blade
 - [ ] Implement walking animation for the enemy
-- [ ] UI/UX (MAIN MENU)
 - [ ] More Enemy and Attack (effect too)
 - [ ] Better spawn coords
 - [ ] AUDIO
@@ -38,8 +37,8 @@
 - [x] diberatin movement + size
 - boss variant (special)
 
-
 ## DONEEEEEEEEEEEE
+- [x] UI/UX (MAIN MENU)
 - [x] Spawning system (Level system too)
 - [x] Enemy getting upgraded every wave/level
 - [x] Upgrade system done

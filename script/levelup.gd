@@ -9,12 +9,10 @@ var current_up = {}
 var selected = false
 var obj_backup
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	parents = get_parent()
 	parents.connect("current_upgrade", Callable(self, "_on_current_upgrade"))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if selected == true:
 		$ColorRect/grid2/Button2.disabled = true

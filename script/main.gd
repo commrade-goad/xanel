@@ -55,7 +55,6 @@ func levelup() -> void:
 	$camera/ui.hide()
 	emit_signal("pause_timer")
 	
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
 	$GameOver.stop()
@@ -160,6 +159,8 @@ func _on_player_ded() -> void:
 	$GameOver.play()
 	$LowHp.stop()
 	emit_signal("pause_timer")
+	if is_instance_valid(pobj):
+		pobj.queue_free()
 	
 func _on_free_mem(idx: int) -> void:
 	enemies[idx].queue_free()
