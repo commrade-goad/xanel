@@ -25,7 +25,6 @@
 - [ ] Other binding for skill, and changing blade
 - [ ] UI/UX (MAIN MENU) - WIP
 - [ ] More Enemy and Attack (effect too)
-- [ ] Better spawn coords - WIP
 - [ ] AUDIO - WIP
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
@@ -34,12 +33,12 @@
 ## SPECIAL
 - 10 stage ada change spawn special enemy
 - magic entity
-- ui menu
-- [x] diberatin movement + size
-- boss variant (special)
+- [x] boss variant (special) - half done
 
 
 ## DONEEEEEEEEEEEE
+- [x] diberatin movement + size
+- [x] Better spawn coords - enemy spawn now >= 15 grid away from players
 - [x] Implement walking animation for the enemy
 - [x] Spawning system (Level system too)
 - [x] Enemy getting upgraded every wave/level

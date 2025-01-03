@@ -58,6 +58,14 @@ func _ready() -> void:
     $bg.position = Vector2(-16, -16 * 2)
     $bg/higher_tile.position = Vector2(0, 16 * 2)
 
+func gen_random_pos() -> Vector2:
+    var ppos = $player.position
+    var result: Vector2 = Vector2(randi_range(1, 150) * 16, 100 * 16)
+    var min_distance_from_player = 15 * 16
+    while abs(result.x - ppos.x) < min_distance_from_player:
+        result = Vector2(randi_range(1, 150) * 16, 100 * 16)
+    return result
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 
@@ -120,7 +128,7 @@ func _process(delta: float) -> void:
     if can_spawn == true and max_spawn_count > enemy_spawnned:
         var enemy = preload("res://scene/enemy.tscn")
         var enemy_instance = enemy.instantiate()
-        enemy_instance.position = Vector2(randi_range(1, 150) * 16, 10 * 16)
+        enemy_instance.position = gen_random_pos()
         enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
         #enemy_instance.active = "enemy_" + enemy_def[3]["name"]
         add_child(enemy_instance)

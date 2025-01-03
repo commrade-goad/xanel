@@ -138,7 +138,6 @@ func _process(delta: float) -> void:
                 var angle = atan2(player.global_position.y - global_position.y, player.global_position.x - global_position.x)
                 offset = Vector2(cos(angle), sin(angle)) * enemy_def[active_id]["offset_radius"]
                 attack_sprite.rotation = angle
-                print(velocity)
 
             if diff.x < 0 :
                 attack_sprite.global_position += offset
