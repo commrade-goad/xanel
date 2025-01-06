@@ -22,13 +22,14 @@
 - A simple timer at the top for how long the game has been going
 
 ## BACKBURNER
-- [ ] Other binding for skill, and changing blade
-- [ ] UI/UX (MAIN MENU) - WIP
+- [ ] Other binding for skill, and changing blade - WIP
 - [ ] More Enemy and Attack (effect too)
 - [ ] AUDIO - WIP
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
 - [ ]  walk sprite for all the enemy (this is not URGENT)
+- [ ] HUD (HP, SP, ETC) -> Player -- PARSIAL DONE
+- [ ] Unique enemy spawning type per wave
 
 ## SPECIAL
 - 10 stage ada change spawn special enemy
@@ -37,6 +38,7 @@
 
 
 ## DONEEEEEEEEEEEE
+- [x] UI/UX (MAIN MENU) - look main branch
 - [x] diberatin movement + size
 - [x] Better spawn coords - enemy spawn now >= 15 grid away from players
 - [x] Implement walking animation for the enemy
@@ -46,7 +48,6 @@
 - [x] Make the dict can disable the default attack (custom attack)
 - [x] Add binding to heal (maybe `R`)
 - [x] Make the dict for the sword variant
-- [x] HUD (HP, SP, ETC) -> Player -- PARSIAL DONE
 - [x] Indicator that the player has been hit
 - [x] Game Over menu
 - [x] Enemy Shadow my guy

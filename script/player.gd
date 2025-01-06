@@ -1,6 +1,7 @@
 extends Node2D
 
 signal ded
+signal change_sword
 signal hide_sword
 signal show_sword
 signal rotate_sword(flip:bool)
@@ -91,6 +92,9 @@ func _process(delta: float) -> void:
             $player_sprite.animation = "idle"
             $Dash.stop()
 
+    if Input.is_action_just_pressed("cycles_sword"):
+        emit_signal("change_sword")
+        
     if Input.is_action_just_pressed("p_heal") and hp_potion >= 1 and hp < max_hp:
         hp_potion -=1
         hp += 30 + level * 2

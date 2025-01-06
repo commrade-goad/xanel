@@ -52,3 +52,18 @@ func _on_player_rotate_sword(flip) -> void:
     var sword_type = s[sword_id]["name"]
     var curs = current_sword(sword_type)
     curs[0].flip_h = not flip
+
+
+func cycle_sword():
+    if sword_id < len(s) - 1:
+        sword_id += 1
+    else :
+        sword_id = 0
+
+func _on_player_change_sword() -> void:
+    cycle_sword()
+    disable_all_sword()
+    var sword_type = s[sword_id]["name"]
+    var curs = current_sword(sword_type)
+    enable_sword(curs[0], curs[1])
+    emit_signal("sword_w", s[sword_id]["weight"])
