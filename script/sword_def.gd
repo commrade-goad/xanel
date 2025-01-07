@@ -19,8 +19,16 @@ var sword_def: Array[Dictionary] = [
         "id": "2",
         "name": "spear",
         "pname": "Spear",
-        "bonus_damage": 15,
+        "bonus_damage": 12,
         "texture": "res://assets/spear.png",
         "weight": 0.5,
+    },
+    {
+        "id": "3",
+        "name": "ruby_sword",
+        "pname": "Ruby Sword",
+        "bonus_damage": 7,
+        "texture": "res://assets/sword2.png",
+        "weight": 0.8,
     },
 ]
