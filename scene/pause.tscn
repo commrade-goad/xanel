@@ -116,7 +116,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Resume Button" type="Button" parent="Panel Menu/VBoxContainer"]
-custom_minimum_size = Vector2(150, 60)
+custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -124,13 +124,13 @@ theme = ExtResource("1_p1as0")
 text = "RESUME"
 
 [node name="Restart Button" type="Button" parent="Panel Menu/VBoxContainer"]
-custom_minimum_size = Vector2(150, 60)
+custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 theme = ExtResource("1_p1as0")
-text = "Restart"
+text = "RESTART"
 
 [node name="Exit Button" type="Button" parent="Panel Menu/VBoxContainer"]
-custom_minimum_size = Vector2(150, 60)
+custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 theme = ExtResource("1_p1as0")
 text = "EXIT"

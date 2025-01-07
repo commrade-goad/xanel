@@ -5,7 +5,7 @@ var is_changing_scene = false
 var is_exiting = false
 
 func _ready() -> void:
-	$Menu.play()
+	$Backsound.play()
 	
 # Button Play func
 func _on_button_play_pressed() -> void:
@@ -14,6 +14,9 @@ func _on_button_play_pressed() -> void:
 		$Transition/bg_transition.show()
 		transition.play("fade_out")
 		is_changing_scene = true # change bool after pressed play button
+		
+func _on_settings_pressed() -> void:
+	$Pressed.play()
 
 # Button Exit func
 func _on_exit_button_down() -> void:
