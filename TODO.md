@@ -22,22 +22,24 @@
 - A simple timer at the top for how long the game has been going
 
 ## BACKBURNER
-- [ ] Other binding for skill, and changing blade - WIP
+- [ ] Other binding for skill
+- [ ] Blade requirement to unlock
 - [ ] More Enemy and Attack (effect too)
 - [ ] AUDIO - WIP
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
-- [ ]  walk sprite for all the enemy (this is not URGENT)
-- [ ] HUD (HP, SP, ETC) -> Player -- PARSIAL DONE
+- [ ] walk sprite for all the enemy (this is not URGENT)
+- [ ] HUD (HP, SP, ETC) -> Player -- WIP
 - [ ] Unique enemy spawning type per wave
 
 ## SPECIAL
 - 10 stage ada change spawn special enemy
 - magic entity
-- [x] boss variant (special) - half done
+- [x] boss variant (special) - half done (2/5)
 
 
 ## DONEEEEEEEEEEEE
+- [x] changing blade (Q)
 - [x] UI/UX (MAIN MENU) - look main branch
 - [x] diberatin movement + size
 - [x] Better spawn coords - enemy spawn now >= 15 grid away from players
