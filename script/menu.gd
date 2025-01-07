@@ -17,6 +17,13 @@ func _on_button_play_pressed() -> void:
 		
 func _on_settings_pressed() -> void:
 	$Pressed.play()
+	$Menu.hide()
+	$Video.show()
+
+func _on_back_from_video_pressed() -> void:
+	$Pressed.play()
+	$Menu.show()
+	$Video.hide()
 
 # Button Exit func
 func _on_exit_button_down() -> void:
