@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://vae7nqxekj24"]
+[gd_scene load_steps=6 format=3 uid="uid://vae7nqxekj24"]
 
 [ext_resource type="Script" path="res://script/p_sword.gd" id="1_b12wl"]
 [ext_resource type="Texture2D" uid="uid://d3j837kfxidcw" path="res://assets/sword1.png" id="1_l016k"]
 [ext_resource type="Texture2D" uid="uid://cbw3h2gnv2lcp" path="res://assets/sword3.png" id="2_3f0em"]
+[ext_resource type="Texture2D" uid="uid://cn4wfuuav33mt" path="res://assets/spear.png" id="4_8ppm7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uoiur"]
 radius = 3.0
@@ -32,3 +33,12 @@ flip_h = true
 [node name="flamming_sword_coll" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -43)
 polygon = PackedVector2Array(-2, -21, 2, -21, 6, -5, 8, 5, 10, 13, 10, 19, 6, 23, -6, 23, -10, 19, -10, 13, -8, 5, -6, -5)
+
+[node name="spear_sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -35)
+scale = Vector2(2, 2)
+texture = ExtResource("4_8ppm7")
+
+[node name="spear_coll" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -10)
+polygon = PackedVector2Array(-9, -38, -9, -42, -3, -70, 4, -70, 9, -42, 9, -38, 0, -32)

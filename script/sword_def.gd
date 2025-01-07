@@ -15,4 +15,12 @@ var sword_def: Array[Dictionary] = [
         "texture": "res://assets/sword3.png",
         "weight": 0.2,
     },
+    {
+        "id": "2",
+        "name": "spear",
+        "pname": "Spear",
+        "bonus_damage": 15,
+        "texture": "res://assets/spear.png",
+        "weight": 0.5,
+    },
 ]
