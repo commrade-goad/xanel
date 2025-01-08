@@ -169,7 +169,7 @@ func _process(delta: float) -> void:
     emit_signal("rotate_sword", angle >= 1.5 or angle <= -1.5)
 
     # Interpolate towards the target position and rotation
-    $p_sword.global_position = $p_sword.global_position.lerp(sword_target_position, 0.3) # Adjust 0.1 for speed
+    $p_sword.global_position = $p_sword.global_position.lerp(sword_target_position, 0.1) # Adjust 0.1 for speed
     $p_sword.rotation = lerp_angle($p_sword.rotation, sword_target_rotation, sw) # Adjust 0.1 for speed
     var new_rotation = $p_sword.rotation
     # -----------

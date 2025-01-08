@@ -2064,7 +2064,6 @@ wait_time = 6.0
 
 [node name="slash_coll" type="CollisionShape2D" parent="enemy_f/slash_enemy_f"]
 position = Vector2(131.221, 34)
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_nhq4p")
 
 [node name="coll" type="CollisionShape2D" parent="enemy_f"]
@@ -2095,7 +2094,17 @@ offset = Vector2(0, 30)
 
 [node name="PointLight2D" type="PointLight2D" parent="enemy_f"]
 z_as_relative = false
-position = Vector2(-34.3692, -50.2026)
+position = Vector2(83.1403, -77)
+scale = Vector2(0.311692, 0.312481)
+color = Color(0.93, 0.3906, 0.45353, 1)
+energy = 11.6
+range_z_max = 199
+texture = SubResource("GradientTexture2D_fqkec")
+texture_scale = 13.79
+
+[node name="PointLight2D2" type="PointLight2D" parent="enemy_f"]
+z_as_relative = false
+position = Vector2(-45.0761, -77)
 scale = Vector2(0.311692, 0.312481)
 color = Color(0.93, 0.3906, 0.45353, 1)
 energy = 11.6
