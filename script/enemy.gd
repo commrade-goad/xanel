@@ -16,7 +16,7 @@ var active: String
 var plen
 var offset
 var attack_sprite: AnimatedSprite2D
-var attack_coll: CollisionShape2D
+var attack_coll
 var attack_cooldown: Timer
 var enemy_sprite: AnimatedSprite2D
 var arm_sprite: Sprite2D
@@ -95,6 +95,8 @@ func _process(delta: float) -> void:
         plen = diff.length()
         var sprite = get_node(active + "/sprite")
         sprite.flip_h = diff.x < 0
+        if enemy_def[active_id].has("flip_again"):
+            sprite.flip_h = !sprite.flip_h
         
         separate_from_others()
 

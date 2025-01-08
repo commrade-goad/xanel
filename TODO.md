@@ -23,13 +23,12 @@
 
 ## BACKBURNER
 - [ ] Other binding for skill
-- [ ] Blade requirement to unlock
+- [ ] Blade requirement to unlock (after defeating boss)
 - [ ] More Enemy and Attack (effect too)
 - [ ] AUDIO - WIP
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
 - [ ] walk sprite for all the enemy (this is not URGENT)
-- [ ] HUD (HP, SP, ETC) -> Player -- WIP
 - [ ] Unique enemy spawning type per wave
 
 ## SPECIAL
@@ -39,6 +38,7 @@
 
 
 ## DONEEEEEEEEEEEE
+- [x] HUD (HP, SP, ETC) -> Player
 - [x] changing blade (Q)
 - [x] UI/UX (MAIN MENU) - look main branch
 - [x] diberatin movement + size
