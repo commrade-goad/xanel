@@ -15,6 +15,8 @@ func disable_all_sword() -> void:
     $spear_coll.disabled = true
     $ruby_sword_sprite.hide()
     $ruby_sword_coll.disabled = true
+    $red_great_sword_sprite.hide()
+    $red_great_sword_coll.disabled = true
 
 
 func enable_sword(sword_sprite, sword_coll) -> void:
