@@ -40,6 +40,8 @@ func show_menu() -> void:
 	pobj = menu_scene.instantiate()
 	pobj.z_index = 255
 	pobj.light_mask = 2
+	var a = pobj.get_node("Panel Menu")
+	a.connect("restart", Callable(self, "_on_restart"))
 	$camera.add_child(pobj)
 
 func levelup() -> void:
@@ -217,3 +219,11 @@ func _on_player_current_potion(p: int) -> void:
 # Kondisi saat Low HP
 func _on_low_hp_finished() -> void:
 	low_hp_sound = true
+	
+func _on_restart() -> void:
+	print("test")
+	var reset = get_node("pause")
+	if reset != null:
+		reset.queue_free()
+	print("WIP")
+	get_tree().quit()

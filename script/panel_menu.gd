@@ -1,5 +1,7 @@
 extends PanelContainer
 
+signal restart
+
 @onready var transition = $AnimationPlayer
 var is_exiting = false
 var is_paused = false
@@ -34,6 +36,8 @@ func _on_resume_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	$VBoxContainer/Pressed.play()
 	await $VBoxContainer/Pressed.finished
+	emit_signal("restart")
+	#print("test")
 	#get_tree().reload_current_scene() ini buat restart tp rusak
 
 func _on_exit_button_pressed() -> void:	
