@@ -1,13 +1,6 @@
 # TODO
 ## NOTE
 
-### Enemy Spawn
-1. tposting guy
-2. Skeleton guy
-3. Racoon
-4. Zombie
-5. Vampire
-
 ### Mechanic
 - 1 Level (Wave) will spawn couple of enemies with certain delay
 - the more wave done the more enemy damage and healt + (so boss didnt exist)
@@ -22,22 +15,25 @@
 - A simple timer at the top for how long the game has been going
 
 ## BACKBURNER
-- [ ] Other binding for skill
-- [ ] Blade requirement to unlock (after defeating boss)
+- [ ] Blade requirement to unlock (after defeating boss or certain wave)
 - [ ] More Enemy and Attack (effect too)
 - [ ] AUDIO - WIP
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
-- [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
+- [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used)) + binding skill
+- [ ] (MAYBE) boss uniqe ability?
 - [ ] walk sprite for all the enemy (this is not URGENT)
 - [ ] Unique enemy spawning type per wave
+- [ ] exit ke main menu
+- [ ] game over - finished n wave
+- [ ] add how to on main menu
 
 ## SPECIAL
 - 10 stage ada change spawn special enemy
 - magic entity
-- [x] boss variant (special) - half done (2/5)
-
 
 ## DONEEEEEEEEEEEE
+- [x] boss variant (special)
+- [x] custom cursor ( I LOVE BANANA )
 - [x] HUD (HP, SP, ETC) -> Player
 - [x] changing blade (Q)
 - [x] UI/UX (MAIN MENU) - look main branch

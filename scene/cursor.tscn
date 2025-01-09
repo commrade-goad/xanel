@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://co45htl1k648"]
+
+[ext_resource type="Script" path="res://script/cursor.gd" id="1_sptqr"]
+[ext_resource type="Texture2D" uid="uid://d4i7qcfuf6s2m" path="res://assets/banana.png" id="2_umah2"]
+
+[node name="cursor" type="Node2D"]
+script = ExtResource("1_sptqr")
+
+[node name="cur_sprite" type="Sprite2D" parent="."]
+light_mask = 2
+z_index = 255
+texture = ExtResource("2_umah2")
+centered = false

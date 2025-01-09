@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://k4cdpjgjjdn5"]
+[gd_scene load_steps=14 format=3 uid="uid://k4cdpjgjjdn5"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_0bfpd"]
 [ext_resource type="PackedScene" uid="uid://camw5ti3r4wbu" path="res://scene/player.tscn" id="1_ox42w"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cwllilch0wa7h" path="res://assets/sounds/Game_over_drum_failure.mp3" id="8_nxcr3"]
 [ext_resource type="AudioStream" uid="uid://cdxyi2kqy8dka" path="res://assets/sounds/Out_of_sp.mp3" id="9_dm43u"]
 [ext_resource type="AudioStream" uid="uid://bk3g0l0ioaaj1" path="res://assets/sounds/LevelComplete.mp3" id="10_8o576"]
+[ext_resource type="PackedScene" uid="uid://co45htl1k648" path="res://scene/cursor.tscn" id="11_rnr2a"]
 
 [sub_resource type="Gradient" id="Gradient_c1pwp"]
 offsets = PackedFloat32Array(0, 0.621762)
@@ -83,6 +84,8 @@ offset_right = -155.0
 offset_bottom = -300.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_ugr7a")
+
+[node name="cursor" parent="camera" instance=ExtResource("11_rnr2a")]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_as_relative = false
