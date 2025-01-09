@@ -114,6 +114,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
 offset_left = 560.0
 offset_top = 400.0
 offset_right = 720.0
@@ -190,6 +191,7 @@ layout_mode = 2
 light_mask = 0
 material = SubResource("CanvasItemMaterial_qaeh5")
 custom_minimum_size = Vector2(160, 60)
+layout_mode = 0
 offset_left = -10.0
 offset_top = 191.0
 offset_right = 150.0

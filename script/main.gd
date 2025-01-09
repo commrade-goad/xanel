@@ -159,6 +159,7 @@ func _on_player_ded() -> void:
 	$GameOver.play()
 	$LowHp.stop()
 	emit_signal("pause_timer")
+	emit_signal("level", current_level)
 	if is_instance_valid(pobj):
 		pobj.queue_free()
 	
