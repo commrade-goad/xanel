@@ -1,5 +1,7 @@
 extends Node
 
+@onready var transition = $Transition
+
 signal request_level
 signal current_upgrade(obj)
 signal upgrade_and_add_this(hp: int, sp: int, st: int, heal: int) # send to player
@@ -37,11 +39,16 @@ var menu_scene = preload("res://scene/pause.tscn")
 var pobj
 
 func show_menu() -> void:
+	# Memuat scene pause
 	pobj = menu_scene.instantiate()
 	pobj.z_index = 255
 	pobj.light_mask = 2
-	var a = pobj.get_node("Panel Menu")
-	a.connect("restart", Callable(self, "_on_restart"))
+
+	# Menghubungkan sinyal restart ke menu pause
+	if pobj.name == "pause":  # Pastikan root adalah "Pause"
+		pobj.connect("restart", Callable(self, "_on_restart"))
+
+	# Menambahkan pause menu ke dalam scene
 	$camera.add_child(pobj)
 
 func levelup() -> void:
@@ -58,7 +65,6 @@ func levelup() -> void:
 	emit_signal("pause_timer")
 	
 func _ready() -> void:
-
 	$GameOver.stop()
 	$LowHp.stop()
 	levelup()
@@ -224,3 +230,5 @@ func _on_restart() -> void:
 	var reset = get_node("pause")
 	if reset != null:
 		reset.queue_free()
+	transition.play("fade_out")
+	await transition.animation_finished
