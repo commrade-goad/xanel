@@ -5,6 +5,10 @@ var is_changing_scene = false
 var is_exiting = false
 
 func _ready() -> void:
+	$Transition/bg_transition.show()
+	transition.play("fade_in")
+	await transition.animation_finished
+	$Transition/bg_transition.hide()
 	$Backsound.play()
 	
 # Button Play func

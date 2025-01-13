@@ -1,24 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqwvhknelmcej"]
+[gd_scene load_steps=8 format=3 uid="uid://cqwvhknelmcej"]
 
 [ext_resource type="Script" path="res://script/gameover.gd" id="1_bhgw1"]
 [ext_resource type="FontFile" uid="uid://cjutvjr1f2h7g" path="res://assets/Oswald/Oswald-VariableFont_wght.ttf" id="2_xpmfo"]
 [ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="5_4wdyj"]
 [ext_resource type="AudioStream" uid="uid://b6nga0ewhj7nw" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="6_go817"]
 
+[sub_resource type="Animation" id="Animation_a2lx5"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_transition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t0koq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg_transition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f408g"]
+_data = {
+"RESET": SubResource("Animation_t0koq"),
+"fade_out": SubResource("Animation_a2lx5")
+}
+
 [node name="gameover" type="Node2D"]
 script = ExtResource("1_bhgw1")
-
-[node name="GameOver" type="RichTextLabel" parent="."]
-offset_left = 391.0
-offset_top = 163.0
-offset_right = 889.0
-offset_bottom = 298.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/normal_font = ExtResource("2_xpmfo")
-theme_override_font_sizes/normal_font_size = 90
-bbcode_enabled = true
-text = "[center] YOU DIED [center]"
 
 [node name="Blur" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.686275)
@@ -76,8 +100,30 @@ layout_mode = 2
 theme = ExtResource("5_4wdyj")
 text = "EXIT"
 
+[node name="GameOver" type="RichTextLabel" parent="."]
+offset_left = 391.0
+offset_top = 163.0
+offset_right = 889.0
+offset_bottom = 298.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_xpmfo")
+theme_override_font_sizes/normal_font_size = 90
+bbcode_enabled = true
+text = "[center] YOU DIED [center]"
+
+[node name="bg_transition" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1280.0
+offset_bottom = 720.0
+
 [node name="Pressed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_go817")
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f408g")
+}
 
 [connection signal="pressed" from="Panel Game Over/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Panel Game Over/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -221,9 +221,6 @@ func _on_low_hp_finished() -> void:
 	low_hp_sound = true
 	
 func _on_restart() -> void:
-	print("test")
 	var reset = get_node("pause")
 	if reset != null:
 		reset.queue_free()
-	print("WIP")
-	get_tree().quit()

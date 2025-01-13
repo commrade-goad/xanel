@@ -2,29 +2,30 @@ extends PanelContainer
 
 signal restart
 
-@onready var transition = $AnimationPlayer
-var is_exiting = false
+@onready var transition_fade = $Transition
+@onready var transition_blur = $Blur
 var is_paused = false
 
 func resume():
 	get_tree().paused = false
 	is_paused = false
-	transition.play_backwards("blur")
+	transition_blur.play_backwards("blur")
 
 func pause():
 	get_tree().paused = true
 	is_paused = true
-	transition.play("blur")
+	transition_blur.play("blur")
 
 func esc():
 	if Input.is_action_just_pressed("pause"):
-		if is_paused:
+		if is_paused == true:
 			resume()
-		else:
+		elif is_paused == false:
 			pause()
 
 func _ready() -> void:
-	transition.play("RESET")
+	$Transition/bg_transition.hide()
+	transition_blur.play("RESET")
 	
 func _process(delta: float) -> void:
 	esc()
@@ -37,10 +38,15 @@ func _on_restart_button_pressed() -> void:
 	$VBoxContainer/Pressed.play()
 	await $VBoxContainer/Pressed.finished
 	emit_signal("restart")
-	#print("test")
-	#get_tree().reload_current_scene() ini buat restart tp rusak
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
-func _on_exit_button_pressed() -> void:	
+func _on_exit_button_pressed() -> void:
+	$Transition/bg_transition.show()
 	$VBoxContainer/Pressed.play()
-	await $VBoxContainer/Pressed.finished
-	get_tree().quit()
+	transition_fade.play("fade_out")
+	await transition_fade.animation_finished
+	var scene_menu = "res://scene/menu.tscn"
+	get_tree().paused = false
+	get_tree().change_scene_to_file(scene_menu)
+	#get_tree().quit()
