@@ -52,7 +52,7 @@ offset_right = 580.0
 offset_bottom = 73.0
 theme_override_fonts/normal_font = ExtResource("1_1rofq")
 theme_override_font_sizes/normal_font_size = 36
-text = "Wave Complete"
+text = "UPGRADE"
 scroll_active = false
 
 [node name="grid2" type="ColorRect" parent="ColorRect"]

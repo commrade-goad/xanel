@@ -147,8 +147,8 @@ func _process(delta: float) -> void:
 		var enemy = preload("res://scene/enemy.tscn")
 		var enemy_instance = enemy.instantiate()
 		enemy_instance.position = gen_random_pos()
-		enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
-		#enemy_instance.active = "enemy_" + enemy_def[5]["name"]
+		#enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
+		enemy_instance.active = "enemy_" + enemy_def[6]["name"]
 		add_child(enemy_instance)
 		var callable = Callable(self, "_on_free_mem")
 		var callable2 = Callable(self, "_on_enemies_arr_change")
