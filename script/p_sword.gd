@@ -11,6 +11,13 @@ func disable_all_sword() -> void:
 	$basic_sword_coll.disabled = true
 	$flamming_sword_sprite.hide()
 	$flamming_sword_coll.disabled = true
+	$spear_sprite.hide()
+	$spear_coll.disabled = true
+	$ruby_sword_sprite.hide()
+	$ruby_sword_coll.disabled = true
+	$red_great_sword_sprite.hide()
+	$red_great_sword_coll.disabled = true
+
 
 func enable_sword(sword_sprite, sword_coll) -> void:
 	sword_sprite.show()
@@ -52,3 +59,18 @@ func _on_player_rotate_sword(flip) -> void:
 	var sword_type = s[sword_id]["name"]
 	var curs = current_sword(sword_type)
 	curs[0].flip_h = not flip
+
+
+func cycle_sword():
+	if sword_id < len(s) - 1:
+		sword_id += 1
+	else :
+		sword_id = 0
+
+func _on_player_change_sword() -> void:
+	cycle_sword()
+	disable_all_sword()
+	var sword_type = s[sword_id]["name"]
+	var curs = current_sword(sword_type)
+	enable_sword(curs[0], curs[1])
+	emit_signal("sword_w", s[sword_id]["weight"])

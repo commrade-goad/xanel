@@ -1,6 +1,7 @@
 extends Node2D
 
 signal ded
+signal change_sword
 signal hide_sword
 signal show_sword
 signal rotate_sword(flip:bool)
@@ -92,9 +93,12 @@ func _process(delta: float) -> void:
 			$WalkDirtGravel.stop()
 			$Dash.stop()
 
+	if Input.is_action_just_pressed("cycles_sword"):
+		emit_signal("change_sword")
+		
 	if Input.is_action_just_pressed("p_heal") and hp_potion >= 1 and hp < max_hp:
 		hp_potion -=1
-		hp += 40 + level
+		hp += 30 + level * 2
 		if hp > max_hp:
 			hp = max_hp
 		emit_signal("current_potion", hp_potion)
@@ -166,7 +170,7 @@ func _process(delta: float) -> void:
 	emit_signal("rotate_sword", angle >= 1.5 or angle <= -1.5)
 
 	# Interpolate towards the target position and rotation
-	$p_sword.global_position = $p_sword.global_position.lerp(sword_target_position, 0.3) # Adjust 0.1 for speed
+	$p_sword.global_position = $p_sword.global_position.lerp(sword_target_position, 0.5) # Adjust 0.1 for speed
 	$p_sword.rotation = lerp_angle($p_sword.rotation, sword_target_rotation, sw) # Adjust 0.1 for speed
 	var new_rotation = $p_sword.rotation
 	# -----------

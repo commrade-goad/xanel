@@ -3,6 +3,9 @@ extends Node2D
 signal boleh_attack
 signal free_mem(idx: int)
 signal died
+signal e_idle
+signal e_walking
+signal enemies_arr_chage(arr: Array)
 var speed
 @export var friction = 0.2
 @export var hp = 100
@@ -13,7 +16,7 @@ var active: String
 var plen
 var offset
 var attack_sprite: AnimatedSprite2D
-var attack_coll: CollisionShape2D
+var attack_coll
 var attack_cooldown: Timer
 var enemy_sprite: AnimatedSprite2D
 var arm_sprite: Sprite2D
@@ -29,6 +32,7 @@ var enemy_def_sc = load("res://script/enemy_def.gd")
 var enemy_def = enemy_def_sc.new().enemy_def
 var parent_main
 var c_level = 1
+var current_state = ""
 
 func _ready() -> void:
 	var ignore
@@ -82,7 +86,7 @@ func _process(delta: float) -> void:
 					arm_sprite.hide()
 				emit_signal("died")
 			idx += 1
-	
+ 
 	attack_sprite.global_position = position
 	attack_sprite.z_index = 101
 	if player:
@@ -91,6 +95,8 @@ func _process(delta: float) -> void:
 		plen = diff.length()
 		var sprite = get_node(active + "/sprite")
 		sprite.flip_h = diff.x < 0
+		if enemy_def[active_id].has("flip_again"):
+			sprite.flip_h = !sprite.flip_h
 		
 		separate_from_others()
 
@@ -107,6 +113,20 @@ func _process(delta: float) -> void:
 			velocity = velocity.lerp(input_velocity, 0.2)
 		if lock_angle == false:
 			position += velocity * delta
+		
+			
+		var new_state = ""
+		if plen > distance or (can_attack == false and plen < distance - 75):
+			new_state = "walking"
+		else:
+			new_state = "idle"
+		if new_state != current_state:
+			current_state = new_state
+			if current_state == "walking":
+				emit_signal("e_walking")
+			elif current_state == "idle":
+				emit_signal("e_idle")
+	
 
 		# attack
 		if enemy_def[active_id]["use_default_attack_system"] == true:
@@ -114,6 +134,7 @@ func _process(delta: float) -> void:
 				emit_signal("boleh_attack")
 				attack_sprite.play()
 				attack_cooldown.start()
+				
 				
 			if lock_angle == false:
 				var angle = atan2(player.global_position.y - global_position.y, player.global_position.x - global_position.x)
@@ -142,13 +163,11 @@ func _process(delta: float) -> void:
 			if attack_sprite.frame == 1:
 				lock_angle = true
 				
-			# TODO : make it dynamic
 			if attack_sprite.frame <= enemy_def[active_id]["attack_frame_min"] or attack_sprite.frame >= enemy_def[active_id]["attack_frame_max"]:
 				attack_coll.disabled = true
 			else:
 				attack_coll.disabled = false
 
-			# TODO : make it dynamic
 			if attack_sprite.frame == enemy_def[active_id]["attack_frame_count"]:
 				can_attack = false
 				lock_angle = false
@@ -184,17 +203,32 @@ func _on_slash_cooldown_timeout():
 	can_attack = true
 
 func _on_enemy_a_area_entered(area: Area2D) -> void:
-	if area.name == "p_sword":
-		hp -= p.attack + s.bonus_damage - c_level
+	if area.name == "p_sword" and hp >= 0 :
+		# kata vincent agar lebih susah
+		#hp -= abs((p.attack + s.bonus_damage) - c_level * 2)
+		if p.attack + s.bonus_damage - (c_level * 3) > 0 :
+			hp -= ((p.attack + s.bonus_damage) - c_level * 3)
+		else :
+			hp -= 1
 		print("enemy healt: " + str(hp))
 		if enemy_def[active_id]["enable_blood"] == true and die == false:
 			blood_sprite.show()
 			blood_sprite.play()
-	pass # Replace with function body.
+	else:
+		emit_signal("died")
 
 func _on_sprite_animation_looped() -> void:
 	if die == true:
 		emit_signal("free_mem", idx_to_del)
+		$ForceDeadTimer.start()
+		#OS.delay_msec(2000)
+		#for en in enemies:
+			#if en == self:
+				#enemies.erase(en)
+				#break
+		#set_enemies(enemies)
+		#queue_free()
+		
 
 func _on_blood_animation_looped() -> void:
 	blood_sprite.hide()
@@ -203,3 +237,13 @@ func _on_blood_animation_looped() -> void:
 
 func _on_level_get() -> void:
 	pass
+
+
+func _on_force_dead_timer_timeout() -> void:
+	for en in enemies:
+		if en == self:
+			enemies.erase(en)
+			break
+	set_enemies(enemies)
+	emit_signal("enemies_arr_chage", enemies)
+	queue_free()

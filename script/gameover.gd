@@ -5,6 +5,9 @@ var p
 @onready var transition = $Transition
 
 func _ready() -> void:
+	label = $CenterContainer/RichTextLabel
+	color = $ColorRect
+	$Timer.start()
 	$bg_transition.hide()
 	p = get_parent()
 	if p != null:
@@ -18,6 +21,17 @@ func _on_restart_pressed() -> void:
 	emit_signal("restart")
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_timer_timeout() -> void:
+	var col = color.color
+	if col.a < 0.7:
+		color.color = Color(0, 0, 0, col.a + 0.05)
+		$Timer.start()
 
 func _on_exit_pressed() -> void:
 	$Pressed.play()

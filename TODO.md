@@ -1,13 +1,6 @@
 # TODO
 ## NOTE
 
-### Enemy Spawn
-1. tposting guy
-2. Skeleton guy
-3. Racoon
-4. Zombie
-5. Vampire
-
 ### Mechanic
 - 1 Level (Wave) will spawn couple of enemies with certain delay
 - the more wave done the more enemy damage and healt + (so boss didnt exist)
@@ -22,30 +15,36 @@
 - A simple timer at the top for how long the game has been going
 
 ## BACKBURNER
-- [ ] Other binding for skill, and changing blade
-- [ ] Implement walking animation for the enemy
-- [ ] More Enemy and Attack (effect too)
-- [ ] Better spawn coords
+- [ ] Blade requirement to unlock (after defeating boss or certain wave)
+- [ ] More Enemy and Attack (effect too) - WIP
 - [ ] AUDIO
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
-- [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used))
+- [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used)) + binding skill
+- [ ] (MAYBE) boss uniqe ability?
+- [ ] walk sprite for all the enemy (this is not URGENT)
+- [ ] Unique enemy spawning type per wave (main branch)
+- [ ] exit ke main menu (main branch)
 
 ## SPECIAL
 - 10 stage ada change spawn special enemy
 - magic entity
-- ui menu
-- [x] diberatin movement + size
-- boss variant (special)
 
 ## DONEEEEEEEEEEEE
-- [x] UI/UX (MAIN MENU)
+- [x] game over - finished n wave
+- [x] boss variant (special)
+- [x] custom cursor ( I LOVE BANANA )
+- [x] HUD (HP, SP, ETC) -> Player
+- [x] changing blade (Q)
+- [x] UI/UX (MAIN MENU) - look main branch
+- [x] diberatin movement + size
+- [x] Better spawn coords - enemy spawn now >= 15 grid away from players
+- [x] Implement walking animation for the enemy
 - [x] Spawning system (Level system too)
 - [x] Enemy getting upgraded every wave/level
 - [x] Upgrade system done
 - [x] Make the dict can disable the default attack (custom attack)
 - [x] Add binding to heal (maybe `R`)
 - [x] Make the dict for the sword variant
-- [x] HUD (HP, SP, ETC) -> Player -- PARSIAL DONE
 - [x] Indicator that the player has been hit
 - [x] Game Over menu
 - [x] Enemy Shadow my guy

@@ -63,7 +63,7 @@ func levelup() -> void:
 	levelup_exist = true
 	$camera/ui.hide()
 	emit_signal("pause_timer")
-	
+
 func _ready() -> void:
 	$GameOver.stop()
 	$LowHp.stop()
@@ -75,6 +75,14 @@ func _ready() -> void:
 	$player.position = Vector2(0, 0)
 	$bg.position = Vector2(-16, -16 * 2)
 	$bg/higher_tile.position = Vector2(0, 16 * 2)
+
+func gen_random_pos() -> Vector2:
+	var ppos = $player.position
+	var result: Vector2 = Vector2(randi_range(1, 150) * 16, 100 * 16)
+	var min_distance_from_player = 15 * 16
+	while abs(result.x - ppos.x) < min_distance_from_player:
+		result = Vector2(randi_range(1, 150) * 16, 100 * 16)
+	return result
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -138,11 +146,14 @@ func _process(delta: float) -> void:
 	if can_spawn == true and max_spawn_count > enemy_spawnned:
 		var enemy = preload("res://scene/enemy.tscn")
 		var enemy_instance = enemy.instantiate()
-		enemy_instance.position = Vector2(randi_range(1, 150) * 16, 10 * 16)
+		enemy_instance.position = gen_random_pos()
 		enemy_instance.active = "enemy_" + enemy_def[randi() % len(enemy_def)]["name"]
+		#enemy_instance.active = "enemy_" + enemy_def[5]["name"]
 		add_child(enemy_instance)
 		var callable = Callable(self, "_on_free_mem")
+		var callable2 = Callable(self, "_on_enemies_arr_change")
 		enemy_instance.connect("free_mem", callable, 0)
+		enemy_instance.connect("enemies_arr_chage", callable2, 0)
 		enemies.append(enemy_instance)
 
 		for single_enemy in enemies:
@@ -172,6 +183,8 @@ func _on_player_ded() -> void:
 		pobj.queue_free()
 	
 func _on_free_mem(idx: int) -> void:
+	if idx >= len(enemies):
+		idx -= 1
 	enemies[idx].queue_free()
 	enemies.remove_at(idx)
 
@@ -225,6 +238,9 @@ func _on_player_current_potion(p: int) -> void:
 # Kondisi saat Low HP
 func _on_low_hp_finished() -> void:
 	low_hp_sound = true
+
+func _on_enemies_arr_change(arr: Array) -> void:
+	enemies = enemies
 	
 func _on_restart() -> void:
 	var reset = get_node("pause")
