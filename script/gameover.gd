@@ -5,17 +5,14 @@ var p
 @onready var transition = $Transition
 
 func _ready() -> void:
-	label = $CenterContainer/RichTextLabel
-	color = $ColorRect
-	$Timer.start()
 	$bg_transition.hide()
 	p = get_parent()
 	if p != null:
 		p.connect("level", Callable(self, "_on_get_wave"))
 
 func _on_restart_pressed() -> void:
-	$Pressed.play()
-	await $Pressed.finished
+	#$Pressed.play()
+	#await $Pressed.finished
 	#transition.play("fade_out")
 	#await transition.animation_finished
 	emit_signal("restart")
@@ -27,15 +24,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_timer_timeout() -> void:
-	var col = color.color
-	if col.a < 0.7:
-		color.color = Color(0, 0, 0, col.a + 0.05)
-		$Timer.start()
-
 func _on_exit_pressed() -> void:
-	$Pressed.play()
-	await $Pressed.finished
+	#$Pressed.play()
+	#await $Pressed.finished
 	$bg_transition.show()
 	#transition.play("fade_out")
 	#await transition.animation_finished

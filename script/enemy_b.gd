@@ -6,6 +6,7 @@ var arm: Sprite2D
 func _ready() -> void:
 	sword_sprite = $basic_sword_sprite
 	arm = $arm
+	sword_sprite.show()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,5 +20,5 @@ func _process(delta: float) -> void:
 		sword_sprite.flip_v = false
 		sword_sprite.offset.y = -15
 
-func _on_enemy_died() -> void:
-	sword_sprite.hide()
+#func _on_enemy_died() -> void:
+	#sword_sprite.hide()

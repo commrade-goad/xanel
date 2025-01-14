@@ -1,40 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfc048xdea4un"]
+[gd_scene load_steps=11 format=3 uid="uid://dfc048xdea4un"]
 
 [ext_resource type="Shader" path="res://pause.gdshader" id="1_1ab23"]
 [ext_resource type="Script" path="res://script/pause.gd" id="1_lqvvn"]
 [ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="1_p1as0"]
-[ext_resource type="AudioStream" uid="uid://b6nga0ewhj7nw" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="4_nyjls"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gnpnq"]
 shader = ExtResource("1_1ab23")
 shader_parameter/lod = 0.0
-
-[sub_resource type="Animation" id="Animation_74qbo"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Transition/bg_transition:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Transition/bg_transition:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_usc78"]
 resource_name = "fade_in"
@@ -58,6 +30,33 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_74qbo"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/bg_transition:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/bg_transition:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -191,7 +190,6 @@ theme = ExtResource("1_p1as0")
 text = "EXIT"
 
 [node name="Pressed" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_nyjls")
 
 [node name="Transition" type="AnimationPlayer" parent="."]
 libraries = {
