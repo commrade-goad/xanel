@@ -35,8 +35,8 @@ func _on_resume_button_pressed() -> void:
 	resume()
 
 func _on_restart_button_pressed() -> void:
-	#$Pressed.play()
-	#await $Pressed.finished
+	$Pressed.play()
+	await $Pressed.finished
 	emit_signal("restart")
 	get_tree().paused = false
 	#transition_fade.play("fade_out")
@@ -45,8 +45,8 @@ func _on_restart_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	#$Transition/bg_transition.show()
-	#$Pressed.play()
-	#await $Pressed.finished
+	$Pressed.play()
+	await $Pressed.finished
 	#transition_fade.play("fade_out")
 	#await transition_fade.animation_finished
 	var scene_menu = "res://scene/menu.tscn"

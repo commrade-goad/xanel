@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfc048xdea4un"]
+[gd_scene load_steps=12 format=3 uid="uid://dfc048xdea4un"]
 
 [ext_resource type="Shader" path="res://pause.gdshader" id="1_1ab23"]
 [ext_resource type="Script" path="res://script/pause.gd" id="1_lqvvn"]
 [ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="1_p1as0"]
+[ext_resource type="AudioStream" uid="uid://b6nga0ewhj7nw" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="4_xcwib"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gnpnq"]
 shader = ExtResource("1_1ab23")
@@ -190,6 +191,7 @@ theme = ExtResource("1_p1as0")
 text = "EXIT"
 
 [node name="Pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xcwib")
 
 [node name="Transition" type="AnimationPlayer" parent="."]
 libraries = {

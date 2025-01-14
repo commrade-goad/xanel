@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://script/pebble.gd" id="1_j6byf"]
 [ext_resource type="Texture2D" uid="uid://edsjjeban2x2" path="res://assets/obstacle.png" id="1_kajl5"]
-[ext_resource type="AudioStream" uid="uid://djmpgf5hf78ve" path="res://assets/sounds/Hit_Rock.mp3" id="3_3hq2w"]
+[ext_resource type="AudioStream" uid="uid://b6uvayk0wal8y" path="res://assets/sounds/Hit_Rock.mp3" id="3_3hq2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64ydu"]
 size = Vector2(32, 13)
