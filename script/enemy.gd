@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name EnemyEnt
+
 signal boleh_attack
 signal free_mem(idx: int)
 signal died
@@ -33,6 +35,7 @@ var enemy_def = enemy_def_sc.new().enemy_def
 var parent_main
 var c_level = 1
 var current_state = ""
+var called_free_mem = false
 
 func _ready() -> void:
 	var ignore
@@ -219,8 +222,10 @@ func _on_enemy_a_area_entered(area: Area2D) -> void:
 
 func _on_sprite_animation_looped() -> void:
 	if die == true:
+		if called_free_mem:
+			$ForceDeadTimer.start()
 		emit_signal("free_mem", idx_to_del)
-		$ForceDeadTimer.start()
+		called_free_mem = true
 		#OS.delay_msec(2000)
 		#for en in enemies:
 			#if en == self:

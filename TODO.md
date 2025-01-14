@@ -16,7 +16,6 @@
 
 ## BACKBURNER
 - [ ] Blade requirement to unlock (after defeating boss or certain wave)
-- [ ] More Enemy and Attack (effect too) - WIP
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used)) + binding skill
 - [ ] (MAYBE) boss uniqe ability?
@@ -28,6 +27,7 @@
 - magic entity
 
 ## DONEEEEEEEEEEEE
+- [x] More Enemy and Attack (effect too)
 - [x] exit ke main menu (main branch)
 - [x] AUDIO
 - [x] game over - finished n wave

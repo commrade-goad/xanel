@@ -30,8 +30,8 @@ func _ready() -> void:
 				htile.set_cell(Vector2i(x -1,y -2), 1, Vector2i(randi() % 4, 0), 0)
 
 	outter_mask_bottom.position = Vector2(0, 107 *16)
-	outter_mask_bottom.size = Vector2(153 *16, 100*16)
-	outter_mask_left.position = Vector2(-4 * 16, 0)
-	outter_mask_left.size = Vector2(3 *16, 107 * 16)
+	outter_mask_bottom.size = Vector2(153 *16, 110*16)
+	outter_mask_left.position = Vector2(-10 * 16, 0)
+	outter_mask_left.size = Vector2(9 *16, 107 * 16)
 	outter_mask_right.position = Vector2(153 * 16, 0)
-	outter_mask_right.size = Vector2(3 *16, 107 * 16)
+	outter_mask_right.size = Vector2(9 *16, 107 * 16)
