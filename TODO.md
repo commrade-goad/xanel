@@ -15,18 +15,18 @@
 - A simple timer at the top for how long the game has been going
 
 ## BACKBURNER
-- [ ] Blade requirement to unlock (after defeating boss or certain wave)
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used)) + binding skill
 - [ ] (MAYBE) boss uniqe ability?
 - [ ] walk sprite for all the enemy (this is not URGENT)
-- [ ] Unique enemy spawning type per wave (main branch)
 
 ## SPECIAL
 - 10 stage ada change spawn special enemy
 - magic entity
 
 ## DONEEEEEEEEEEEE
+- [x] Blade requirement to unlock (after defeating boss or certain wave)
+- [x] Unique enemy spawning type per wave (main branch)
 - [x] More Enemy and Attack (effect too)
 - [x] exit ke main menu (main branch)
 - [x] AUDIO

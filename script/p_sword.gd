@@ -61,14 +61,18 @@ func _on_player_rotate_sword(flip) -> void:
 	curs[0].flip_h = not flip
 
 
-func cycle_sword():
-	if sword_id < len(s) - 1:
-		sword_id += 1
-	else :
-		sword_id = 0
+func cycle_sword(u):
+	var start_id = sword_id
+	while true:
+		sword_id = (sword_id + 1) % len(s)
+		if u[sword_id]:
+			break
+		if sword_id == start_id:
+			sword_id = start_id
+			break
 
-func _on_player_change_sword() -> void:
-	cycle_sword()
+func _on_player_change_sword(unlocked) -> void:
+	cycle_sword(unlocked)
 	disable_all_sword()
 	var sword_type = s[sword_id]["name"]
 	var curs = current_sword(sword_type)

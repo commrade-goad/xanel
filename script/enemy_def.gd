@@ -2,7 +2,7 @@ var enemy_def: Array[Dictionary] = [
 	{
 		"id": "0",
 		"name": "a",
-		"health": 120,
+		"health": 300,
 		"damage": 40,
 		"attack_range": 50,
 		"attack_frame_min": 2,
@@ -17,7 +17,7 @@ var enemy_def: Array[Dictionary] = [
 	{
 		"id": "1",
 		"name": "b",
-		"health": 160,
+		"health": 350,
 		"damage": 45,
 		"attack_range": 55,
 		"attack_frame_min": 2,
@@ -32,7 +32,7 @@ var enemy_def: Array[Dictionary] = [
 	{
 		"id": "2",
 		"name": "c",
-		"health": 200,
+		"health": 500,
 		"damage": 25,
 		"attack_range": 50,
 		"attack_frame_min": 2,
@@ -47,7 +47,7 @@ var enemy_def: Array[Dictionary] = [
 	{
 		"id": "3",
 		"name": "d",
-		"health":1000,
+		"health":2000,
 		"damage": 75,
 		"attack_range": 100,
 		"attack_frame_min": 8,
@@ -62,7 +62,7 @@ var enemy_def: Array[Dictionary] = [
 	{
 		"id": "4",
 		"name": "e",
-		"health":800,
+		"health":2200,
 		"damage": 65,
 		"attack_range": 95,
 		"attack_frame_min": 5,
@@ -77,7 +77,7 @@ var enemy_def: Array[Dictionary] = [
 	{
 		"id": "5",
 		"name": "f",
-		"health":1200,
+		"health":6000,
 		"damage": 100,
 		"attack_range": 120,
 		"attack_frame_min": 5,
@@ -93,7 +93,7 @@ var enemy_def: Array[Dictionary] = [
 	{
 		"id": "6",
 		"name": "g",
-		"health":2400,
+		"health":6000,
 		"damage": 70,
 		"attack_range": 120,
 		"attack_frame_min": 5,

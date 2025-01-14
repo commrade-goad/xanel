@@ -2382,7 +2382,7 @@ position = Vector2(119.356, 40.2624)
 rotation = 0.101229
 scale = Vector2(1.80962, 3.49984)
 sprite_frames = SubResource("SpriteFrames_vura1")
-frame_progress = 0.821213
+frame_progress = 0.657413
 
 [node name="slash_cooldown" type="Timer" parent="enemy_g/slash_enemy_g"]
 wait_time = 3.0
@@ -2400,7 +2400,7 @@ modulate = Color(0.0768358, 0.0768358, 0.0768358, 1)
 position = Vector2(0, 20)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_sd414")
-frame_progress = 0.704648
+frame_progress = 0.234846
 
 [node name="blood" type="AnimatedSprite2D" parent="enemy_g"]
 visible = false

@@ -1,7 +1,7 @@
 extends Node2D
 
 signal ded
-signal change_sword
+signal change_sword(unlocked:Array)
 signal hide_sword
 signal show_sword
 signal rotate_sword(flip:bool)
@@ -27,6 +27,7 @@ var velocity = Vector2.ZERO
 var rolling = false
 var attacking = false
 var can_regen = false
+@export var unlocked = [true, false, false, false, false]
 
 var enemy_dmg_sc = load("res://script/enemy_def.gd")
 var enemy_dmg_in = enemy_dmg_sc.new().enemy_def
@@ -52,6 +53,12 @@ func _ready() -> void:
 	emit_signal("current_potion", hp_potion)
 
 func _process(delta: float) -> void:
+	
+	if level % 10 == 9:
+		for i in range(len(unlocked)):
+			if unlocked[i] == false:
+				unlocked[i] = true
+				break
 	
 	if sp < max_sp and can_regen == true:
 		sp += 30
@@ -92,9 +99,9 @@ func _process(delta: float) -> void:
 			$player_sprite.animation = "idle"
 			$WalkDirtGravel.stop()
 			$Dash.stop()
-
+	# TODO: add the limiter
 	if Input.is_action_just_pressed("cycles_sword"):
-		emit_signal("change_sword")
+		emit_signal("change_sword", unlocked)
 		
 	if Input.is_action_just_pressed("p_heal") and hp_potion >= 1 and hp < max_hp:
 		hp_potion -=1

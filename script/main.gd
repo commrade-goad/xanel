@@ -253,7 +253,8 @@ func _on_low_hp_finished() -> void:
 	low_hp_sound = true
 
 func _on_enemies_arr_change(arr: Array) -> void:
-	enemies = enemies
+	sync_enemy_arr()
+	#enemies = enemies
 	
 func _on_restart() -> void:
 	var reset = get_node("pause")

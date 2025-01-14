@@ -45,6 +45,7 @@ func _ready() -> void:
 		if active == "enemy_" + enemy_def[i]["name"]:
 			ignore = i
 			active_id = i
+			hp = enemy_def[i]["health"]
 			continue
 		if ignore != i:
 			var build = "enemy_" + enemy_def[i]["name"]
@@ -190,7 +191,7 @@ func separate_from_others() -> void:
 	var separation_strength = 5  # Amplify this to make enemies repel more strongly
 	var velo_res
 	for other_enemy in enemies:
-		if other_enemy != self:
+		if other_enemy != self and other_enemy != null:
 			var diff = position - other_enemy.position
 			var distance = diff.length()
 
