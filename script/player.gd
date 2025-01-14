@@ -90,6 +90,7 @@ func _process(delta: float) -> void:
 	else:
 		if $player_sprite.animation != "idle":
 			$player_sprite.animation = "idle"
+			$WalkDirtGravel.stop()
 			$Dash.stop()
 
 	if Input.is_action_just_pressed("cycles_sword"):

@@ -1,0 +1,220 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfc048xdea4un"]
+
+[ext_resource type="Shader" path="res://pause.gdshader" id="1_1ab23"]
+[ext_resource type="Script" path="res://script/pause.gd" id="1_lqvvn"]
+[ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="1_p1as0"]
+[ext_resource type="AudioStream" uid="uid://b6nga0ewhj7nw" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="4_nyjls"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnpnq"]
+shader = ExtResource("1_1ab23")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_74qbo"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/bg_transition:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/bg_transition:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_usc78"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/bg_transition:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/bg_transition:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ixjhn"]
+_data = {
+"fade_in": SubResource("Animation_usc78"),
+"fade_out": SubResource("Animation_74qbo")
+}
+
+[sub_resource type="Animation" id="Animation_1srbn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur_Transition:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel Menu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ma235"]
+resource_name = "blur"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur_Transition:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel Menu:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4owfq"]
+_data = {
+"RESET": SubResource("Animation_1srbn"),
+"blur": SubResource("Animation_ma235")
+}
+
+[node name="Pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lqvvn")
+
+[node name="Blur_Transition" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gnpnq")
+layout_mode = 2
+offset_left = 539.5
+offset_top = 266.0
+offset_right = 740.5
+offset_bottom = 454.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel Menu" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = -94.0
+offset_right = 100.5
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel Menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resume Button" type="Button" parent="Panel Menu/VBoxContainer"]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_p1as0")
+text = "RESUME"
+
+[node name="Restart Button" type="Button" parent="Panel Menu/VBoxContainer"]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+theme = ExtResource("1_p1as0")
+text = "RESTART"
+
+[node name="Exit Button" type="Button" parent="Panel Menu/VBoxContainer"]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+theme = ExtResource("1_p1as0")
+text = "EXIT"
+
+[node name="Pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nyjls")
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ixjhn")
+}
+
+[node name="bg_transition" type="ColorRect" parent="Transition"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Blur" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4owfq")
+}
+
+[connection signal="child_entered_tree" from="." to="Panel Menu" method="_on_pause_child_entered_tree"]
+[connection signal="tree_exiting" from="." to="Panel Menu" method="_on_pause_tree_exiting"]
+[connection signal="pressed" from="Panel Menu/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Panel Menu/VBoxContainer/Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Panel Menu/VBoxContainer/Exit Button" to="." method="_on_exit_button_pressed"]
+[connection signal="ready" from="Blur" to="Panel Menu" method="_on_animation_player_ready"]

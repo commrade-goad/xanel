@@ -1,5 +1,7 @@
 extends Node
 
+@onready var transition = $Transition
+
 signal request_level
 signal current_upgrade(obj)
 signal upgrade_and_add_this(hp: int, sp: int, st: int, heal: int) # send to player
@@ -33,7 +35,25 @@ var max_sp: int
 var enemy_def_sc = load("res://script/enemy_def.gd")
 var enemy_def = enemy_def_sc.new().enemy_def
 
+var menu_scene = preload("res://scene/pause.tscn")
+var pobj
+
+func show_menu() -> void:
+	# Memuat scene pause
+	pobj = menu_scene.instantiate()
+	pobj.z_index = 255
+	pobj.light_mask = 2
+
+	# Menghubungkan sinyal restart ke menu pause
+	if pobj.name == "pause":  # Pastikan root adalah "Pause"
+		pobj.connect("restart", Callable(self, "_on_restart"))
+
+	# Menambahkan pause menu ke dalam scene
+	$camera.add_child(pobj)
+
 func levelup() -> void:
+	if is_instance_valid(pobj):
+		pobj.queue_free()
 	var levelup_tscn = preload("res://scene/levelup.tscn")
 	levelup_scene = levelup_tscn.instantiate()
 	levelup_scene.z_index = 200
@@ -44,7 +64,6 @@ func levelup() -> void:
 	$camera/ui.hide()
 	emit_signal("pause_timer")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$GameOver.stop()
 	$LowHp.stop()
@@ -159,6 +178,9 @@ func _on_player_ded() -> void:
 	$GameOver.play()
 	$LowHp.stop()
 	emit_signal("pause_timer")
+	emit_signal("level", current_level)
+	if is_instance_valid(pobj):
+		pobj.queue_free()
 	
 func _on_free_mem(idx: int) -> void:
 	if idx >= len(enemies):
@@ -194,6 +216,7 @@ func _on_upgrade_and_del(hp, sp, st):
 	$camera/ui/wave.text = "[center] Wave " + str(current_level) + " [center]"
 	$camera/ui.show()
 	emit_signal("resume_timer")
+	show_menu()
 
 # Timer
 func _on_spawn_timer_timeout() -> void:
@@ -218,3 +241,10 @@ func _on_low_hp_finished() -> void:
 
 func _on_enemies_arr_change(arr: Array) -> void:
 	enemies = enemies
+	
+func _on_restart() -> void:
+	var reset = get_node("pause")
+	if reset != null:
+		reset.queue_free()
+	transition.play("fade_out")
+	await transition.animation_finished
