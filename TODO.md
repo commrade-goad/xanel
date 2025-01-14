@@ -17,19 +17,19 @@
 ## BACKBURNER
 - [ ] Blade requirement to unlock (after defeating boss or certain wave)
 - [ ] More Enemy and Attack (effect too) - WIP
-- [ ] AUDIO
 - [ ] (MAYBE) Magic items like holocure asacoco plug, etc
 - [ ] (MAYBE) Player skill (maybe shot magic, etc using mouse trigger (depend from the sword used)) + binding skill
 - [ ] (MAYBE) boss uniqe ability?
 - [ ] walk sprite for all the enemy (this is not URGENT)
 - [ ] Unique enemy spawning type per wave (main branch)
-- [ ] exit ke main menu (main branch)
 
 ## SPECIAL
 - 10 stage ada change spawn special enemy
 - magic entity
 
 ## DONEEEEEEEEEEEE
+- [x] exit ke main menu (main branch)
+- [x] AUDIO
 - [x] game over - finished n wave
 - [x] boss variant (special)
 - [x] custom cursor ( I LOVE BANANA )
