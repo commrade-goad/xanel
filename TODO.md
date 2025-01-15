@@ -21,7 +21,6 @@
 - [ ] walk sprite for all the enemy (this is not URGENT)
 
 ## SPECIAL
-- 10 stage ada change spawn special enemy
 - magic entity
 
 ## DONEEEEEEEEEEEE

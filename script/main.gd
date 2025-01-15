@@ -154,9 +154,8 @@ func _process(delta: float) -> void:
 		var enemy = preload("res://scene/enemy.tscn")
 		var enemy_instance = enemy.instantiate()
 		enemy_instance.position = gen_random_pos()
-		if current_level % 10 == 9:
+		if current_level % 10 == 9 and randi_range(0,1) == 0:
 			#enemy_instance.active = "enemy_" + enemy_def[6]["name"]
-			print(current_level)
 			enemy_instance.active = "enemy_" + enemy_def[randi_range(4, 6)]["name"]
 		else:
 			enemy_instance.active = "enemy_" + enemy_def[randi_range(0, 3)]["name"]

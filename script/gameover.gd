@@ -27,5 +27,5 @@ func _on_exit_pressed() -> void:
 	get_tree().change_scene_to_file("res://scene/menu.tscn")
 
 func _on_get_wave(lvl):
-	var change_this = $Blur/wave
-	change_this.text = "[center] Last Wave : " + str(lvl) + "[center]"
+	var change_this = $wave
+	change_this.text = "[center] Lasted " + str(lvl) + " wave[center]"

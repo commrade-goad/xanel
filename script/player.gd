@@ -54,7 +54,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if level % 10 == 9:
+	if level % 5 == 4:
 		for i in range(len(unlocked)):
 			if unlocked[i] == false:
 				unlocked[i] = true

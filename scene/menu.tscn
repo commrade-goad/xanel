@@ -5,8 +5,8 @@
 [ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="2_3o8yl"]
 [ext_resource type="FontFile" uid="uid://cjutvjr1f2h7g" path="res://assets/Oswald/Oswald-VariableFont_wght.ttf" id="3_177yj"]
 [ext_resource type="Script" path="res://script/video.gd" id="4_idm8c"]
-[ext_resource type="AudioStream" uid="uid://b6nga0ewhj7nw" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="5_2cmkr"]
-[ext_resource type="AudioStream" uid="uid://bpjeocinrw3hx" path="res://assets/sounds/main_menu.mp3" id="6_7meei"]
+[ext_resource type="AudioStream" uid="uid://c6ke33gsxof6a" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="5_2cmkr"]
+[ext_resource type="AudioStream" uid="uid://o1trev8ov5mw" path="res://assets/sounds/main_menu.mp3" id="6_7meei"]
 
 [sub_resource type="Gradient" id="Gradient_6msc1"]
 offsets = PackedFloat32Array(0, 0.621762)
@@ -32,7 +32,7 @@ tracks/0/path = NodePath("Transition/bg_transition:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -44,7 +44,7 @@ tracks/1/path = NodePath("Transition/bg_transition:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.966667),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
