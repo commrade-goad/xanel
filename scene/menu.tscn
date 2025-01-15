@@ -86,6 +86,15 @@ _data = {
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_ysf1d")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1000
+z_as_relative = false
+offset_left = -4482.0
+offset_top = -4021.0
+offset_right = 5518.0
+offset_bottom = 5979.0
+color = Color(0, 0, 0, 1)
+
 [node name="Title" type="RichTextLabel" parent="."]
 offset_left = 498.0
 offset_top = 214.0
@@ -98,10 +107,13 @@ text = "[center]XANEL[/center]"
 fit_content = true
 scroll_active = false
 
+[node name="blink_timer" type="Timer" parent="."]
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_as_relative = false
 position = Vector2(647.878, 286)
 scale = Vector2(1.41063, 1.04687)
+color = Color(1, 1, 1, 0.588235)
 energy = 20.0
 range_z_max = 199
 texture = SubResource("GradientTexture2D_edwbh")
@@ -129,6 +141,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_3o8yl")
+theme_override_fonts/font = ExtResource("3_177yj")
 text = "PLAY"
 
 [node name="Settings" type="Button" parent="Menu/VBoxContainer"]
@@ -139,6 +152,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_3o8yl")
+theme_override_fonts/font = ExtResource("3_177yj")
 text = "SETTINGS"
 
 [node name="Exit" type="Button" parent="Menu/VBoxContainer"]
@@ -149,6 +163,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_3o8yl")
+theme_override_fonts/font = ExtResource("3_177yj")
 text = "EXIT"
 
 [node name="Video" type="Control" parent="."]
@@ -180,6 +195,7 @@ theme_override_constants/separation = 160
 light_mask = 0
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_177yj")
 theme_override_font_sizes/font_size = 30
 text = "VIDEO"
 
@@ -187,6 +203,7 @@ text = "VIDEO"
 light_mask = 0
 custom_minimum_size = Vector2(256, 50)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_177yj")
 
 [node name="Back_from_Video" type="Button" parent="Video"]
 light_mask = 0
@@ -200,6 +217,7 @@ offset_bottom = 251.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_3o8yl")
+theme_override_fonts/font = ExtResource("3_177yj")
 text = "BACK"
 
 [node name="bg" parent="." instance=ExtResource("1_j1fl2")]
@@ -214,7 +232,6 @@ libraries = {
 }
 
 [node name="bg_transition" type="ColorRect" parent="Transition"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -231,6 +248,7 @@ volume_db = 4.0
 autoplay = true
 playback_type = 1
 
+[connection signal="timeout" from="blink_timer" to="." method="_on_blink_timer_timeout"]
 [connection signal="pressed" from="Menu/VBoxContainer/Play" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Play" to="bg" method="_on_button_play_pressed"]
 [connection signal="pressed" from="Menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

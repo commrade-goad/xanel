@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfc048xdea4un"]
+[gd_scene load_steps=13 format=3 uid="uid://dfc048xdea4un"]
 
 [ext_resource type="Shader" path="res://pause.gdshader" id="1_1ab23"]
 [ext_resource type="Script" path="res://script/pause.gd" id="1_lqvvn"]
 [ext_resource type="Theme" uid="uid://ciej81owmdlvh" path="res://button.tres" id="1_p1as0"]
+[ext_resource type="FontFile" uid="uid://cjutvjr1f2h7g" path="res://assets/Oswald/Oswald-VariableFont_wght.ttf" id="4_62p4y"]
 [ext_resource type="AudioStream" uid="uid://c6ke33gsxof6a" path="res://assets/sounds/sound_for_button_is_pressed.mp3" id="4_xcwib"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gnpnq"]
@@ -193,18 +194,21 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_p1as0")
+theme_override_fonts/font = ExtResource("4_62p4y")
 text = "RESUME"
 
 [node name="Restart Button" type="Button" parent="Panel Menu/VBoxContainer"]
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 theme = ExtResource("1_p1as0")
+theme_override_fonts/font = ExtResource("4_62p4y")
 text = "RESTART"
 
 [node name="Exit Button" type="Button" parent="Panel Menu/VBoxContainer"]
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 theme = ExtResource("1_p1as0")
+theme_override_fonts/font = ExtResource("4_62p4y")
 text = "EXIT"
 
 [node name="Pressed" type="AudioStreamPlayer" parent="."]
