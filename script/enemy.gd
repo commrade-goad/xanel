@@ -210,11 +210,10 @@ func _on_enemy_a_area_entered(area: Area2D) -> void:
 	if area.name == "p_sword" and hp >= 0 :
 		# kata vincent agar lebih susah
 		#hp -= abs((p.attack + s.bonus_damage) - c_level * 2)
-		if p.attack + s.bonus_damage - (c_level * 3) > 0 :
-			hp -= ((p.attack + s.bonus_damage) - c_level * 3)
+		if p.attack + s.bonus_damage - (c_level * 2) > 0 :
+			hp -= ((p.attack + s.bonus_damage) - c_level * 2)
 		else :
 			hp -= 1
-		print("enemy healt: " + str(hp))
 		if enemy_def[active_id]["enable_blood"] == true and die == false:
 			blood_sprite.show()
 			blood_sprite.play()
@@ -241,8 +240,8 @@ func _on_blood_animation_looped() -> void:
 	blood_sprite.stop()
 	blood_sprite.frame = 0
 
-func _on_level_get() -> void:
-	pass
+func _on_level_get(lvl) -> void:
+	c_level = lvl
 
 
 func _on_force_dead_timer_timeout() -> void:

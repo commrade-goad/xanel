@@ -16,8 +16,10 @@ func _on_restart_pressed() -> void:
 	#transition.play("fade_out")
 	#await transition.animation_finished
 	emit_signal("restart")
-	get_tree().paused = false
-	get_tree().reload_current_scene()
+	var t = get_tree()
+	if t:
+		t.paused = false
+		t.reload_current_scene()
 
 func _on_exit_pressed() -> void:
 	$Pressed.play()

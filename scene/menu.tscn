@@ -86,15 +86,6 @@ _data = {
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_ysf1d")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1000
-z_as_relative = false
-offset_left = -4482.0
-offset_top = -4021.0
-offset_right = 5518.0
-offset_bottom = 5979.0
-color = Color(0, 0, 0, 1)
-
 [node name="Title" type="RichTextLabel" parent="."]
 offset_left = 498.0
 offset_top = 214.0
@@ -104,6 +95,18 @@ theme_override_fonts/normal_font = ExtResource("3_177yj")
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
 text = "[center]XANEL[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="cred" type="RichTextLabel" parent="."]
+offset_left = 2.0
+offset_top = 684.0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_fonts/normal_font = ExtResource("3_177yj")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]Made by the Xanel Team.[/center]"
 fit_content = true
 scroll_active = false
 
@@ -232,6 +235,7 @@ libraries = {
 }
 
 [node name="bg_transition" type="ColorRect" parent="Transition"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

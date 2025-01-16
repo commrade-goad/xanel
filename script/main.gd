@@ -95,7 +95,6 @@ func gen_random_pos() -> Vector2:
 func _process(delta: float) -> void:
 
 	if hp_percentage < 0.40 and hp_percentage > 0 and low_hp_sound == true:
-		print(hp_percentage)
 		$LowHp.play()
 		low_hp_sound = false
 		
