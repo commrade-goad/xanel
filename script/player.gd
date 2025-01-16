@@ -55,7 +55,7 @@ func _ready() -> void:
 	emit_signal("current_potion", hp_potion)
 
 func _process(delta: float) -> void:
-	if level % 2 == 0:
+	if level % 5 == 0:
 		for i in range(len(unlocked)):
 			if unlocked[i] == false and can_unlock:
 				unlocked[i] = true
