@@ -137,6 +137,7 @@ func _process(delta: float) -> void:
 		enemy_spawnned_total = 0
 		levelup() 
 		current_level += 1
+		emit_signal("level", current_level)
 		if current_level > 1:
 			$LevelComplete.play()
 		enemy_nums += 1

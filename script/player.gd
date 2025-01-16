@@ -28,6 +28,7 @@ var rolling = false
 var attacking = false
 var can_regen = false
 @export var unlocked = [true, false, false, false, false]
+var can_unlock = true
 
 var enemy_dmg_sc = load("res://script/enemy_def.gd")
 var enemy_dmg_in = enemy_dmg_sc.new().enemy_def
@@ -50,14 +51,15 @@ func _ready() -> void:
 	$sp_regen_timer.start()
 	parent = get_parent()
 	parent.connect("upgrade_and_add_this", Callable(self, "_on_upgrade_and_add_this"))
+	parent.connect("level", Callable(self, "_on_level_upgrade"))
 	emit_signal("current_potion", hp_potion)
 
 func _process(delta: float) -> void:
-	
-	if level % 5 == 4:
+	if level % 2 == 0:
 		for i in range(len(unlocked)):
-			if unlocked[i] == false:
+			if unlocked[i] == false and can_unlock:
 				unlocked[i] = true
+				can_unlock = false
 				break
 	
 	if sp < max_sp and can_regen == true:
@@ -244,12 +246,16 @@ func _on_upgrade_and_add_this(hp, sp, st, health) -> void:
 	emit_signal("current_stats", hp, sp)
 	emit_signal("current_potion", hp_potion)
 
+
 func _on_area_exited(area: Area2D) -> void:
-	#print(area.name)
-	#if area.name == "pebble":
-		#speed = 250
 	if area is Pebble:
 		speed = 250
 
 func _on_p_sword_sword_w(w: Variant) -> void:
 	sw = w
+
+func _on_level_upgrade(lvl) -> void:
+	if level != lvl:
+		can_unlock = true
+		level = lvl
+	
