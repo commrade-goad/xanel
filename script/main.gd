@@ -156,9 +156,9 @@ func _process(delta: float) -> void:
 		enemy_instance.position = gen_random_pos()
 		if current_level % 10 == 9 and randi_range(0,1) == 0:
 			#enemy_instance.active = "enemy_" + enemy_def[6]["name"]
-			enemy_instance.active = "enemy_" + enemy_def[randi_range(4, 6)]["name"]
+			enemy_instance.active = "enemy_" + enemy_def[randi_range(3, 6)]["name"]
 		else:
-			enemy_instance.active = "enemy_" + enemy_def[randi_range(0, 3)]["name"]
+			enemy_instance.active = "enemy_" + enemy_def[randi_range(0, 2)]["name"]
 			
 		
 		add_child(enemy_instance)
